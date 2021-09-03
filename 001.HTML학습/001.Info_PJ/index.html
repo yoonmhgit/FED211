@@ -4,47 +4,86 @@
 <head>
     <title>네이버 요약뉴스 - 메인페이지</title>
     <meta charset="utf-8">
+    <style>
+        /* css 코딩구역 */
+        /* 이 방식은 페이지 내부에 구역을 잡고 쓰는 인터널방식 */
+        /* 문법: 
+            선택자{속성:값;}
+            -> 선택자는 요소명 또는 이름 
+            */
+        a {
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            /* 안쪽여백 위아래 10px 양쪽 0 */
+        }
+
+        address {
+            font-style: normal;
+            /* 이탤릭없앰 */
+        }
+    </style>
+    <!-- 
+        style 요소: css 문법 구역
+        - 여기에 코딩되는 css설정은 선택된 요소에 모두 적용된다
+     -->
 </head>
 
 <body>
-    <!-- 1. 상단영역 -->
-    <header>
-        <!-- 1-1. 제목 -->
-        <h1>네이버 요약뉴스 - 메인페이지</h1>
-        <!-- 1-2. 메뉴 -->
-        <nav>
-            <a href="">
-                <img src="./images/logo.png" alt="네이버로고">
-            </a>
-            <a href="">정치</a>
-            <a href="">경제</a>
-            <a href="">사회</a>
-            <a href="">IT/과학</a>
-            <a href="">TV/연예</a>
-        </nav>
-    </header>
-    <!-- 3. 메인 컨텐츠 -->
-    <main>
-        <img src="./images/news.jpg" alt="메인이미지">
+    <div style="width: 727px; margin: 0 auto;">
         <!-- 
-            img 요소: 이미지를 불러오는 요소
-            - src 속성 : 이미지 경로
-            - alt 속성 : 이미지 설명
-            (alternative text - 대체 텍스트
-            웹 접근성을 위한 필수 속성)
+            style 속성 : 요소에 직접 css를 변경해주는 속성
+            -> 값으로 css문법을 그대로 쓴다!
+            -> 기본 css문법
+            속성명:값;
+            예) width 727px; 가로크기를 727px로 설정
+            marjin: 0 auto; 바깥여백을 위아래 0, 양쪽 등분할
          -->
-    </main>
-    <!-- 4. 하단 정보 -->
-    <footer>
-        <address>
-            서울시 강남구 대호빌딩 8층 <br>
-            대표 : 탐쌤 <br>
-            전화 : 010-2355-1241
-        </address>
-        <!-- 
-            address 요소 : 주소를 담는 요소
-         -->
-    </footer>
+        <!-- 1. 상단영역 -->
+        <header style="text-align: center;">
+            <!-- 1-1. 제목 -->
+            <h1>네이버 요약뉴스 - 메인페이지</h1>
+            <!-- 1-2. 메뉴 -->
+            <nav style="text-decoration: none;">
+                <a href="">
+                    <img src="./images/logo.png" alt="네이버로고" style="width: 20px; vertical-align: bottom;">
+                </a> &nbsp;
+                <a href="">정치</a> |
+                <a href="">경제</a> |
+                <a href="">사회</a> |
+                <a href="">IT/과학</a> |
+                <a href="">TV/연예</a>
+            </nav>
+        </header>
+        <hr>
+        <!-- hr요소: 가로구분선(CSS디자인시 사용안함) -->
+        <!-- 3. 메인 컨텐츠 -->
+        <main>
+            <img src="./images/news.jpg" alt="메인이미지" style="width: 100%;">
+            <!--
+                img 요소: 이미지를 불러오는 요소
+                - src 속성 : 이미지 경로
+                - alt 속성 : 이미지 설명
+                (alternative text - 대체 텍스트
+                웹 접근성을 위한 필수 속성)
+             -->
+        </main>
+        <hr>
+        <!-- 4. 하단 정보 -->
+        <footer>
+            <address>
+                서울시 강남구 대호빌딩 8층 <br>
+                대표 : 탐쌤 <br>
+                전화 : 010-2355-1241
+            </address>
+            <!--
+                address 요소 : 주소를 담는 요소
+             -->
+        </footer>
+    </div>
 
     <!-- 
             [html 핵심 요소들 단 한번만 등장! ]
@@ -57,7 +96,10 @@
             2. header : 머리부분
             3. footer : 하단부분
             4. main : 중앙 내용부분(한 웹페이지에 하나만 씀!(head,body도))
-
+            5. nav : 네비게이션 영역(메뉴? 쓰는곳도있고 안쓰는곳도 있음)
+            ※ 레이아웃용 테그인 header, footer, main, nav 등은 
+            div를 구체적으로 변경한 형제들이다!(시멘틱태그-유의미한 요소)
+            (시멘틱검색에 더 구체적으로 걸리기떄문에 노출에 유리)
      -->
 
 </body>
