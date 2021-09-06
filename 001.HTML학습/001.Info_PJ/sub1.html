@@ -25,6 +25,15 @@
             font-style: normal;
             /* 이탤릭없앰 */
         }
+
+        /* 피겨박스 이미지 */
+        figure img{
+            width: 100%;
+        }
+        /*  피겨설명박스(글자를 작게) */
+        figcaption{
+            font-size: 9px;
+        }
     </style>
     <!-- 
         style 요소: css 문법 구역
@@ -48,7 +57,7 @@
             <h1>네이버 요약뉴스 - 정치페이지</h1>
             <!-- 1-2. 메뉴 -->
             <nav style="text-decoration: none;">
-                <a href="index.html">
+                <a href="index.html" title="첫페이지로 가기">
                     <img src="./images/logo.png" alt="네이버로고" style="width: 20px; vertical-align: bottom;">
                 </a> &nbsp;
                 <a href="sub1.html">정치</a> |
@@ -66,27 +75,125 @@
             <h2>김총리, 삼성바이오 방문…"백신주권 확보 역할 당부"</h2>
 
             <!-- 2. 기사 이미지 -->
-            삼성바이오로직스<sup>①</sup> 둘러보는 김부겸 총리
-            (인천=연합뉴스) 김승두 기자 = 김부겸 국무총리(앞줄 가운데)가 3일 오후 코로나19 백신 위탁생산 현장인 인천시 송도 삼성바이오로직스를 방문해 존림 대표이사(맨 오른쪽) 등과 함께 홍보관을
-            둘러보고 있다. 2021.9.3 kimsdoo@yna.co.kr
+            <figure>
+                <img src="images/at1-2.jpg" alt="정치기사사진">
+                <figcaption>
+                    삼성바이오로직스<sup>①</sup> 둘러보는 김부겸 총리
+                    (인천=연합뉴스) 김승두 기자 = 김부겸 국무총리(앞줄 가운데)가 3일 오후 코로나19 백신 위탁생산 현장인 인천시 송도 삼성바이오로직스를 방문해 존림 대표이사(맨 오른쪽) 등과 함께 홍보관을
+                    둘러보고 있다. <br> 2021.9.3 kimsdoo@yna.co.kr
+                </figcaption>
+            </figure>
             <br>
 
             <!-- 3. 기사내용 -->
-            <p>(서울=연합뉴스) 조민정 기자 = 김부겸 국무총리는 3일 오후 인천 연수구 삼성바이오로직스 본사를 찾아 <b>백신·치료제 생산 현장을 둘러봤다.</b></p><br>
+            <p>(서울=연합뉴스) 조민정 기자 = 김부겸 국무총리는 3일 오후 인천 연수구 삼성바이오로직스 본사를 찾아 <b>백신·치료제 생산 현장을 둘러봤다.<abbr title="아주잘봄">아잘봄</abbr></b></p><br>
 
-            <p>삼성바이오로직스는 <strong>한미 정상회담을 계기로</strong> 모더나와 백신 <i>위탁생산 계약</i>을 체결한 바 있다.</p><br>
+            <p>삼성바이오로직스는 <strong>한미 정상회담<sup>②</sup>을 계기로</strong> 모더나와 백신 <i>위탁생산 계약</i>을 체결한 바 있다.</p><br>
 
-            <p><mark>김 총리</mark>는 이 자리에서 "국민의 삶<sub>life</sub>을 보호하기 위해 <em><ins>코로나</ins>백신이 얼마나 중요한지</em> 절감하고 있다. 삼성바이오로직스가 우리나라의 백신 주권 확보를 위해 적극적인 역할을 해주시기를 바란다"고 말했다.<del>나도 참석하고 싶었다!</del></p><br>
+            <p><mark>김 총리</mark>는 이 자리에서 <q>국민의 삶<sub>life</sub>을 보호하기 위해 <em><ins>코로나</ins>백신이 얼마나 중요한지</em> 절감하고 있다. 삼성바이오로직스가 우리나라의 백신 주권 확보를 위해 적극적인 역할을 해주시기를 바란다</q>고 말했다.<del>나도 참석하고 싶었다!</del></p><br>
 
-            chomj@yna.co.kr
+            chomj@yna.co.kr <br>
 
-            조민정(chomj@yna.co.kr)
+            조민정(chomj@yna.co.kr) <br>
+            <br>
 
-            원본기사
-            https://news.naver.com/main/read.naver?mode=LSD&mid=shm&sid1=100&oid=001&aid=0012641381
+            <a href="https://news.naver.com/main/read.naver?mode=LSD&mid=shm&sid1=100&oid=001&aid=0012641381" target="_blank">원본  기사</a>
             
+            
+
+            <!-- 인용구 -->
+            <blockquote cite="https://ko.wikipedia.org/wiki/%EC%BD%94%EB%A1%9C%EB%82%98%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4">코로나바이러스(영어: Coronavirus, 문화어: 코로나비루스)는 코로나바이러스과(영어: Coronaviridae)의 코로나바이러스아과(Coronavirinae)에 속하는 RNA 바이러스의 총칭으로,[1][2] 사람과 동물의 호흡기와 소화기계 감염을 유발한다. 주로 점막전염(粘膜感染), 비말전파(飛沫傳播)로 쉽게 감염되며, 사람에게는 일반적으로 경미한 호흡기 감염을 일으키지만 치명적인 감염을 유발하기도 하며, 소와 돼지는 설사, 닭은 호흡기 질환이 발생하기도 한다.</blockquote>
+
             <hr>
             <small><small>① 삼성바이오로직스는 바이오의약품의 개발 및 생산에 특화된 세계 최고 수준의 CDMO</small></small>
+            <small><small>② 문재인 대통령과 조 바이든 대통령이 처음으로 대면하는 정상회담이다.</small></small>
+
+            <hr>
+            <h3>오늘의 명화</h3>
+            <img src="https://www.w3schools.com/html/img_the_scream.jpg" alt="물크의 절규" style="width: 50px;">
+            <br>
+            뭉크의 <cite>[절규]</cite>
+            <br>
+            <bdo dir="rtl">얄리얄리얄라숑얄라리얄라</bdo>
+
+
+<h3>연합뉴스 주요뉴스</h3>
+<!-- 순서 없는 리스트 -->
+
+<ui>
+    <li>
+        <a href="https://www.nocutnews.co.kr/news/5619462" target="_blank">제주 초등학생 4.8% 학폭 피해 "코로나19로 늘어"</a>
+        
+    </li>
+</ul>
+<ui>
+    <li>
+        <a href="https://www.nocutnews.co.kr/news/5619453" target="_blank">파주서 추석 앞두고 벌초하던 50대 남성 벌에 쏘여 숨져</a>
+        
+    </li>
+</ul>
+<ui>
+    <li>
+        <a href="https://www.nocutnews.co.kr/news/5619382" target="_blank">부산 100대 기업 '0'…전국 위상 '초라'</a>
+        
+    </li>
+</ul>
+
+<hr>
+
+<h3>연합뉴스 랭킹 뉴스</h3>
+<!-- 순서 있는 리스트 -->
+<ol>
+    <li>
+        <a href="https://news.naver.com/main/ranking/read.naver?mode=LSD&mid=shm&sid1=001&oid=079&aid=0003549700&rankingType=RANKING" target="_blank">[속보]오세훈 "청와대 하명에 의한 기획수사 의심"</a>
+    </li>
+    <li>
+        <a href="https://news.naver.com/main/ranking/read.naver?mode=LSD&mid=shm&sid1=001&oid=079&aid=0003549684&rankingType=RANKING" target="_blank">[영상]첫 1위 홍준표 '무야홍' 현실화?…"이재명 대적할 …</a>
+    </li>
+    <li>
+        <a href="https://news.naver.com/main/ranking/read.naver?mode=LSD&mid=shm&sid1=001&oid=079&aid=0003549501&rankingType=RANKING" target="_blank">천은미 "경구치료제 나오는 11월, 위드 코로나 가능"</a>
+    </li>
+</ol>
+
+
+<hr>
+
+<h3>분야별 주요뉴스</h3>
+<!-- 용어설명리스트 -->
+<dl>
+    <dt>정치</dt>
+    <dd>
+        <a href="https://news.naver.com/main/read.naver?mode=LSD&mid=shm&sid1=100&oid=214&aid=0001146452" target="_blank">	
+            與 "윤석열, 후보 사퇴하고 수사받아야" vs 野 "찍어내기 시즌2"</a>
+    </dd>
+    <dd>
+        <a href="https://news.naver.com/main/read.naver?mode=LSD&mid=shm&sid1=100&oid=437&aid=0000275459" target="_blank">
+            與 지도부 "윤석열, 당장 수사 전환해야"…野 "정체불명 정치공작"</a>
+    </dd>
+
+    <dt>경제</dt>
+    <dd>
+        <a href="https://news.naver.com/main/read.naver?mode=LSD&mid=shm&sid1=101&oid=003&aid=0010704353" target="_blank">	
+            김 총리 "선물액 상향 시행령 개정 어려워…법을 바꿔야"</a>
+    </dd>
+    <dd>
+        <a href="https://news.naver.com/main/read.naver?mode=LSD&mid=shm&sid1=101&oid=057&aid=0001605510" target="_blank">
+            김부겸, 추석 앞두고 "김영란법 일시상향 어려워 법 바꿔야"</a>
+    </dd>
+
+    <dt>사회</dt>
+    <dd>
+        <a href="https://news.naver.com/main/read.naver?mode=LSD&mid=shm&sid1=102&oid=052&aid=0001636682" target="_blank">	
+            "윤석열 고발사주·가족 수사 정보수집 지시 의혹, 공수처 수사대상"[황</a>
+    </dd>
+    <dd>
+        <a href="https://news.naver.com/main/read.naver?mode=LSD&mid=shm&sid1=102&oid=009&aid=0004847801" target="_blank">
+            뉴스버스 보도 파장에 골머리 앓는 尹</a>
+    </dd>
+</dl>
+
+
+
 
         </main>
         <hr>

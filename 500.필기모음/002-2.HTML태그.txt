@@ -1,4 +1,5 @@
 [문자 데이터 관련 태그]
+
 1. h1~h6 : 제목
 2. p : 단락(내용구분)
         -> 블록태그임(주의: 다른블록요소 내부에 못씀 단락만!)
@@ -8,6 +9,10 @@
         (기본값은 _self 현재창)
 4. br : 줄바꿈 (break 줄을 깨다)
 5. hr : 가로구분선 (horizontal 수평선)
+
+
+[HTML 텍스트 서식]
+
 6. <b> - 굵은 텍스트 (bold 두꺼운체)
 7. <strong> - 중요한 텍스트 (의미-시멘틱)
 8. <i> - 기울임꼴 텍스트 (italic 기울임글꼴)
@@ -19,6 +24,54 @@
 14. <sub> - 아래 첨자 텍스트
 15. <sup> - 위 첨자 텍스트
 
+
+[인용구관련 태그]
+
+16. blockquote - 인용된 내용을 블록처리
+    - cite 속성 : 인용된 사이트 주소(출처) - 선택옵션
+17. q - 짧은 인용구(인라인) - quotation
+18. abbr - 약자(abbriviation의 줄임말)
+    - title 속성을 사용하여 원래의 뜻을 툴팁으로 띄워준다!
+    ->title은 abbr의 필수속성!
+    (title속성은 어떤 요소에나 모두 사용가능하고 툴팁을 띄움)
+19. address - 주소(시멘틱(유의미))
+    ->블록요소, 이탤릭 기본적용
+20. bdo - 글자진행방향 변경을 위한 요소(반대반향으로 쓰는 문자지원)
+    - dir="rtl' -> 오른쪽에서 왼쪽으로 출력
+
+
+[이미지관련 태그]
+
+21. figure - 사진,표, 도형 등을 담는 블록박스
+22. figcaption - figure요소의 하위 자식요소로 그림설명박스
+32. img - 이미지 표시요소
+    - src 속성: 이미지호출 경로
+    - alt 속성: 이미지 설명(웹 접근성-평등의원칙 필수!)
+
+
+    [그룹요소] : 모두 블럭요소들임(옆에 아무도못옴)
+
+    24. ul : 순서없는 리스트(unordered list)
+        ->블릿옵션
+         https://www.w3schools.com/cssref/playit.asp?filename=playcss_ul_list-style-type&preval=disc
+    25. ol : 순서있는 리스트(ordered list)
+        ->순서옵션
+         https://www.w3schools.com/cssref/playit.asp?filename=playcss_ol_list-style-type&preval=upper-roman
+    26. li : ul과 ol요소의 직계필수 자식요소!
+
+27. dl : 용어설명리스트 (Description Lists)
+28. dt : 용어 (Description term)
+29. dd : 용어설명 (Decoration describes)
+        ->dl 아래 자식으로 반드시 dt와 dd는 한개이상와야함!
+        ->dt와 dd는 형제요소임(같은레벨) 
+
+
+
+
+
+컨케이에스 키설정
 컨알케이 태그지우기
 컨알유 태그바꾸기
 컨쉬에이 랩핑하기
+자동줄바꿈 알트제트
+컨쉬케이 줄지우기
