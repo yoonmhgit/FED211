@@ -49,21 +49,37 @@
     - alt 속성: 이미지 설명(웹 접근성-평등의원칙 필수!)
 
 
-    [그룹요소] : 모두 블럭요소들임(옆에 아무도못옴)
+[그룹요소] : 모두 블럭요소들임(옆에 아무도못옴)
 
-    24. ul : 순서없는 리스트(unordered list)
-        ->블릿옵션
+24. ul : 순서없는 리스트(unordered list)
+    ->블릿옵션
          https://www.w3schools.com/cssref/playit.asp?filename=playcss_ul_list-style-type&preval=disc
-    25. ol : 순서있는 리스트(ordered list)
-        ->순서옵션
+25. ol : 순서있는 리스트(ordered list)
+    ->순서옵션
          https://www.w3schools.com/cssref/playit.asp?filename=playcss_ol_list-style-type&preval=upper-roman
-    26. li : ul과 ol요소의 직계필수 자식요소!
+26. li : ul과 ol요소의 직계필수 자식요소!
 
 27. dl : 용어설명리스트 (Description Lists)
-28. dt : 용어 (Description term)
-29. dd : 용어설명 (Decoration describes)
-        ->dl 아래 자식으로 반드시 dt와 dd는 한개이상와야함!
-        ->dt와 dd는 형제요소임(같은레벨) 
+28. dt : 용어 (defindes terms)
+29. dd : 용어설명 (defindes describes)
+    ->dl 아래 자식으로 반드시 dt와 dd는 한개이상와야함!
+    ->dt와 dd는 형제요소임
+
+
+[필요할때 사용하는 빈 블록/인라인요소]
+
+30. div : 내용을 구분할때 사용하는 요소들   
+    ->display:block 라는 설정외에 아무런 셋팅이 없다!!
+    ->자유롭게 블럭요소로 구조를 잡을때 사용함
+
+31. span : 인라인 내용요소나 문자데이터를 구분할때 사용하는 요소
+
+
+[가장 복잡한 그룹요소인 테이블 ! !]
+
+32. table : 테이블 전체 부모요소
+33. tr : 테이블 레코드행 (table row)
+34. td : 테이블 데이터요소/셀 (table data)
 
 
 

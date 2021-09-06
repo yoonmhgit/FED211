@@ -30,6 +30,14 @@
         figure img{
             width: 100%;
         }
+
+        /* "백신"글자만 빨간색 */
+        span{
+            color: red;
+        }
+
+
+
         /*  피겨설명박스(글자를 작게) */
         figcaption{
             font-size: 9px;
@@ -71,28 +79,31 @@
         <!-- hr요소: 가로구분선(CSS디자인시 사용안함) -->
         <!-- 3. 메인 컨텐츠 -->
         <main>
+            <!-- 언론사 정보영역 -->
+            <div>
+                <img src="images/at1-1.png" alt="연합뉴스로고">
+            </div>
             <!-- 1. 기사제목 -->
-            <h2>김총리, 삼성바이오 방문…"백신주권 확보 역할 당부"</h2>
+            <h2>김총리, 삼성바이오 방문…"<span>백신</span>주권 확보 역할 당부"</h2>
 
             <!-- 2. 기사 이미지 -->
             <figure>
                 <img src="images/at1-2.jpg" alt="정치기사사진">
                 <figcaption>
                     삼성바이오로직스<sup>①</sup> 둘러보는 김부겸 총리
-                    (인천=연합뉴스) 김승두 기자 = 김부겸 국무총리(앞줄 가운데)가 3일 오후 코로나19 백신 위탁생산 현장인 인천시 송도 삼성바이오로직스를 방문해 존림 대표이사(맨 오른쪽) 등과 함께 홍보관을
+                    (인천=연합뉴스) 김승두 기자 = 김부겸 국무총리(앞줄 가운데)가 3일 오후 코로나19 <span>백신</span> 위탁생산 현장인 인천시 송도 삼성바이오로직스를 방문해 존림 대표이사(맨 오른쪽) 등과 함께 홍보관을
                     둘러보고 있다. <br> 2021.9.3 kimsdoo@yna.co.kr
                 </figcaption>
             </figure>
+          
             <br>
 
             <!-- 3. 기사내용 -->
-            <p>(서울=연합뉴스) 조민정 기자 = 김부겸 국무총리는 3일 오후 인천 연수구 삼성바이오로직스 본사를 찾아 <b>백신·치료제 생산 현장을 둘러봤다.<abbr title="아주잘봄">아잘봄</abbr></b></p><br>
+            <p>(서울=연합뉴스) 조민정 기자 = 김부겸 국무총리는 3일 오후 인천 연수구 삼성바이오로직스 본사를 찾아 <b><span>백신</span>·치료제 생산 현장을 둘러봤다.<abbr title="아주잘봄">아잘봄</abbr></b></p><br>
 
-            <p>삼성바이오로직스는 <strong>한미 정상회담<sup>②</sup>을 계기로</strong> 모더나와 백신 <i>위탁생산 계약</i>을 체결한 바 있다.</p><br>
+            <p>삼성바이오로직스는 <strong>한미 정상회담<sup>②</sup>을 계기로</strong> 모더나와 <span>백신</span> <i>위탁생산 계약</i>을 체결한 바 있다.</p><br>
 
-            <p><mark>김 총리</mark>는 이 자리에서 <q>국민의 삶<sub>life</sub>을 보호하기 위해 <em><ins>코로나</ins>백신이 얼마나 중요한지</em> 절감하고 있다. 삼성바이오로직스가 우리나라의 백신 주권 확보를 위해 적극적인 역할을 해주시기를 바란다</q>고 말했다.<del>나도 참석하고 싶었다!</del></p><br>
-
-            chomj@yna.co.kr <br>
+            <p><mark>김 총리</mark>는 이 자리에서 <q>국민의 삶<sub>life</sub>을 보호하기 위해 <em><ins>코로나</ins><span>백신</span>이 얼마나 중요한지</em> 절감하고 있다. 삼성바이오로직스가 우리나라의 <span>백신</span> 주권 확보를 위해 적극적인 역할을 해주시기를 바란다</q>고 말했다.<del>나도 참석하고 싶었다!</del></p><br>
 
             조민정(chomj@yna.co.kr) <br>
             <br>
@@ -120,19 +131,19 @@
 <h3>연합뉴스 주요뉴스</h3>
 <!-- 순서 없는 리스트 -->
 
-<ui>
+<ul>
     <li>
         <a href="https://www.nocutnews.co.kr/news/5619462" target="_blank">제주 초등학생 4.8% 학폭 피해 "코로나19로 늘어"</a>
         
     </li>
 </ul>
-<ui>
+<ul>
     <li>
         <a href="https://www.nocutnews.co.kr/news/5619453" target="_blank">파주서 추석 앞두고 벌초하던 50대 남성 벌에 쏘여 숨져</a>
         
     </li>
 </ul>
-<ui>
+<ul>
     <li>
         <a href="https://www.nocutnews.co.kr/news/5619382" target="_blank">부산 100대 기업 '0'…전국 위상 '초라'</a>
         
@@ -192,6 +203,37 @@
     </dd>
 </dl>
 
+<hr>
+
+<h3>언론사별 가장 많이 본 뉴스</h3>
+<!-- 테이블요소 -->
+<table style="width: 300px;">
+    <tr> <!-- 1행 -->
+        <td>
+            <a href="https://news.naver.com/main/ranking/read.naver?mode=LSD&mid=shm&sid1=001&oid=437&aid=0000275463&rankingType=RANKING" target="_blank">마이크 발로 찬 강윤성, 이번엔 유치장 문 열린 틈타 경찰 …</a>
+        </td>
+        <td>
+            <a href="https://news.naver.com/main/ranking/read.naver?mode=LSD&mid=shm&sid1=001&oid=437&aid=0000275463&rankingType=RANKING" target="_blank"><img src="https://mimgnews.pstatic.net/image/origin/437/2021/09/06/275463.jpg?type=nf88_60" alt="기사사진" style="width: 88px;height: 60;"></a>
+        </td>
+    </tr>
+    <tr> <!-- 2행 -->
+        <td>
+<a href="https://news.naver.com/main/ranking/read.naver?mode=LSD&mid=shm&sid1=001&oid=055&aid=0000919320&rankingType=RANKING" target="_blank">지인 3살 아들 살해한 뒤 알몸 활보…필리핀 여성 체포    </a>
+        </td>
+        <td>
+<a href="https://news.naver.com/main/ranking/read.naver?mode=LSD&mid=shm&sid1=001&oid=055&aid=0000919320&rankingType=RANKING" target="_blank"><img src="https://mimgnews.pstatic.net/image/origin/055/2021/09/06/919320.jpg?type=nf88_60" width="88" height="60" alt="" onerror="this.src='https://ssl.pstatic.net/static.news/image/news/errorimage/noimage_88x60.png';"></a>
+        </td>
+    </tr>
+    <tr> <!-- 3행 -->
+        <td>
+            <a href="https://news.naver.com/main/ranking/read.naver?mode=LSD&mid=shm&sid1=001&oid=028&aid=0002559390&rankingType=RANKING" target="_blank">‘진짜 사나이’와는 전혀 다른, 섬뜩한 군생활 이야기 ‘디 …
+            </a>
+        </td>
+        <td>
+            <a href="https://news.naver.com/main/ranking/read.naver?mode=LSD&mid=shm&sid1=001&oid=028&aid=0002559390&rankingType=RANKING" target="_blank"><img src="https://mimgnews.pstatic.net/image/origin/028/2021/09/06/2559390.jpg?type=nf88_60" width="88" height="60" alt="기사사진" onerror="this.src='https://ssl.pstatic.net/static.news/image/news/errorimage/noimage_88x60.png';"></a>
+        </td>
+    </tr>
+</table>
 
 
 
