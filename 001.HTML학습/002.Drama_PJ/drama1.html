@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>최신드라마 - 월화드라마</title>
+        <style>
+            /* 
+            선택자 {
+                속성명 : 값;
+            }
+            */
+
+            /* 상단박스부분 */
+            #top{
+                /* 글자가운데 */
+                text-align: center;
+            }
+
+            /* 컨텐츠부분 - 테이블 */
+            .tbl{
+                /* 테두리 - bordrt: 두께 종류 색상*/
+                border: 5px solid #ccc;
+                /* 가로크기 - width */
+                width: 800px;
+                /* 마진을 이용한 가로박스중앙정렬: 양쪽 auto */
+                margin: 30px auto;
+            }
+                /* 테이블 데이터(td) */
+            .tbl td {
+                /* 글자크기: 기본글자크기 16px */
+                font-size: 16px;
+                /* 줄간격: 숫자는 글자크기기준 배수 */
+                line-height: 2em;
+                /* 안쪽여백 */
+                padding: 5px;
+            }
+
+
+            /* 드라마제목 */
+            .tbl a{
+                color: #000; /* 글자색 */
+                text-decoration: none; /* 밑줄없앰 */
+                font-weight: bold; /* 글자두껍게 */
+            }
+            /* 마우스 오버시 글자색, 밑줄 */
+            /* :hover는 가상클래스 */
+            .tbl a:hover{
+                color: #000; /* 글자색 */
+                text-decoration: underline; /* 밑줄 */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 1.상단부분 -->
+        <div id="top">
+            <!-- 1-1.제목 -->
+            <h1>최신드라마 - 월화드라마</h1>
+            <!-- 1-2.메뉴 -->
+            <h2>
+                <a href="drama1.html">
+                    월화드라마
+                </a> | 
+                <a href="drama2.html">
+                    수목드라마
+                </a>
+            </h2>
+        </div>
+
+            <!-- 2.컨텐츠 부분 -->
+            <div id="cont">
+            <!-- 드라마 테이블 : 2행 4열 -->
+            <table class="tbl">
+                <tr><!-- 첫번째행/줄 -->
+                    <td><!-- 이미지 -->
+                        <a href="#">
+                            <img src="./images/d1.jpg" alt="아모르파티">
+                        </a>
+                    </td>
+                    <td><!-- 정보 -->
+                        <a href="#">아모르 파티</a><br> 사랑하라, 지금  <br>
+                        SBS (월~금) 오전 08:35  <br>
+                        6.4% 닐슨코리아 (09.06.)  <br>
+                        <button>구독 6,444</button>
+                    </td>
+                    <td><!-- 이미지 -->
+                        <a href="#">
+                            <img src="./images/d2.jpg" alt="하이클래스">
+                        </a>
+                    </td>
+                    <td><!-- 정보 -->
+                        <a href="#">하이클래스</a> <br>
+                        tvN (월) 오후 10:30, (화) 오후 10:10 <br>
+                        3.2% 닐슨코리아 (09.06.) <br>
+                        <button>구독 2,329</button>
+                    </td>
+                </tr>
+
+                <tr><!-- 두번쨰줄 -->
+                    <td>
+                        <a href="#">
+                            <img src="./images/d3.jpg" alt="홍천기">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#">홍천기</a> <br>
+                        SBS (월, 화) 오후 10:00 <br>
+                        8.0% 닐슨코리아 (09.06.) <br>
+                        <button>구독 13,576</button>
+                    </td>
+                    <td>
+                        <a href="#">
+                            <img src="./images/d4.jpg" alt="경찰수업">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#">경찰수업</a> <br>
+                        KBS2 (월, 화) 오후 09:30 <br>
+                        6.1% 닐슨코리아 (09.06.) <br>
+                        <button>구독 10,224</button>
+                    </td>
+                </tr>
+            </table>
+            </div>
+    </body>
+</html>
