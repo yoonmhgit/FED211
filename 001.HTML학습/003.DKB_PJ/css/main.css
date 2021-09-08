@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* 도깨비 메인 CSS -main.css */
+
+/* 초기화 셋팅 */   
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* 보이는 화면 높이값 채우기 */
+}
+
+body{
+   /* 배경을 한번에 셋팅하기 */
+   /* background: 색 이미지 반복 고정 위치/크기;
+   background: 색이반고윙/크; */
+    background: url(../images/bg_mainvisual.jpg)
+    no-repeat fixed center/cover;
+}
+
+
+/* 1. 상단영역 */
+
+/* 로고 */
+.logo img{
+    margin-top: 45px;
+    margin-left: 70px;
+}
+
+/* 2. 메인영역 */
+
+/* 케릭터 박스 */
+#cbx{
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
+    /* 마영오! - 가로중앙정렬 */
+    outline:  5px dashed #999; /* 보더랑 아웃라인구분 */
+
+}
+
+/* 개별 캐릭터 박스 공통 */
+.cat{
+    width: 25%;/* 4등분 */
+    /* height: 100%; 
+    높이값이 없으면 auto이고 내용만큼 늘어남!!!*/
+    float: left;
+    /* 블록요소가 옆으로 흐르게함
+    left값을 주면 나는 왼쪽~다른요소는 오른쪽에 올 수 있게 함 */
+    outline: 2px dotted red;
+}
+/* 캐릭터 이미지 */
+.cat>img{
+    width: 100%;
+    /* 이미지의 height는 자동(비율유지) */
+}
