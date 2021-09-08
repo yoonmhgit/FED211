@@ -76,3 +76,9 @@
     text-decoration: underline;
     /* 밑줄 */
 }
+
+/* 드라마 포스터 */
+.tbl img{
+    /* 둥근테두리 */
+    border-radius: 10px;
+}
