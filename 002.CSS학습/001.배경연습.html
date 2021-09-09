@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>001.배경넣기 연습</title>
+    <style>
+        html,body{/* 두개를 하나로 일치시킴 */
+            margin: 0;
+            padding: 0;
+            height: 100%;
+             /* 보이는 화면에 높이값채우기 내용늘어나는 페이지는 필요없음 */
+            overflow: hidden;
+            /* 넘치는 자식요소 숨기기 설정 
+            why? 첫번째 블록요소의 마진top값이
+            부모요소 바깥으로 나가는 기본 설정을 막기위해
+            남치는 자식요소 숨기기를 하면 자식요소의
+            마진top이 부모요소에 포함된다*/
+            }
+            h1{
+                text-align: center;
+                /* 글자중앙 
+                - 박스내부의 인라인요소, 글자중앙 */
+            }
+
+            body{
+                /* 배경이미지 한번에 셋팅
+                backgrund: 색이반고윙/크
+                ->배경이미지를 한번에 셋팅하면 여러개의
+                이미지를 셋팅할수있다.
+                방법: 콤마로 각 셋팅을 구분함
+                ->배경이미지 크기 지정시 값을 하나만쓰면 가로크기만 지정됨
+                세로크기는 자동임 
+                
+                ->이미지 위치 순서는 첫번째 제일위! 순서대로!
+                색 이미지 반복 고정 위치/크기*/
+                background:
+                 url(imgs/dc1.png) no-repeat center/400px,
+                 url(imgs/dc2.png) no-repeat right top/350px,
+                 url(imgs/dc3.png) no-repeat left bottom/300px,
+                 url(imgs/dc4.png) no-repeat right bottom/450px,
+                 url(imgs/bg_logo_a_01.png) no-repeat 100px 200px,
+                 url(imgs/bg_mainvisual.jpg) no-repeat center 10%/50%;
+                 /* background-color: #fff;
+                    background-image: url();
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-position: 0 0; 
+                    background-size: 가로 세로;*/
+                 
+            }
+           
+        
+
+    </style>
+</head>
+<body>
+    <h1>001.배경넣기 연습</h1>
+    
+</body>
+</html>

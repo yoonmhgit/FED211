@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>002.블록과 인라인</title>
+    <style>
+        /* 
+            [css의 display 속성이란?]        
+            - 요소의 배치를 위한 표현방법
+            - 요소의 display는 크게 2가지다!
+
+
+        1. block 요소
+        - 표현법 : 
+            display: block; 
+            -기본적으로 block인 요소들
+            h1~h6, div, p, figure 등
+        -★특징 : 
+        1) 옆에 다른 요소가 올 수 없다!
+        2) 내용을 구분하는 박스요소다!
+        3) 모든 디자인 요소가 적용된다!
+        -> 박스모델을 구성하는 속성이 모두적용
+        : width, height, border, marjin, padding
+        4)위아래에 있는 블록요소간 마진은 중첩된다!
+            -큰마진값을 기준함
+        5)가로크기를 지정하지 않으면 부모박스 끝까지 간다★ ->width: auto;
+        6)세로크기를 지정하지 않으면 내용만큼만 늘어난다★ ->height: auto;
+        7)★박스의 지정된 크기는 패딩과 보더를 줄 경우 그 지정된 크기만큼 늘어난다!
+            -> 이런 박스를 컨텐트박스라고 한다!
+
+        ★보더와 패딩을 박스크기에 포함할지 말지에 대한 옵션을 변경하는 속성★
+        ->>>>>> box-sizing <<<<<<<-
+        1)border-box -> 패딩과 보더를 박스 내부에 포함(크기안커짐)
+        2)content-box(기본값) -> 패딩과 보더에 따라 박스가 커짐
+        _______________________________________________________________
+        
+        2. inline 요소
+        -표현법:
+            display: inline;
+        -기본적으로 inline인 요소들
+             a, img, spam, b, i, em, strong 등
+        -★특징:
+        1) block요소를 포함할 수 없다!
+        2) width, height 크기지정 안됨!
+        3) margin은 양쪽만 적용됨! 
+            ->위아래 마진은 줘도 안먹음!!!
+        출신지를 바꿀순있지만 시멘틱적으론 출신지가 중요하기 떄문에 막쓰면안됨
+        4)padding은 적용되나 다른 인라인요소와 줄바꿈시 영향을 줄 수 없다!
+        5)★특히 글자일 경우 위아래 간격은 줄간격(line-height)을 사용하여 조정해야한다!
+
+        [예외 인라인요소 -> img]
+        ->이미지 요소는 인라인요소지만 
+        width, height, marjin, padding이 모두 적용된다! (특별취급)
+
+        [원래 display출신을 바꿀 수 있나?]
+        ->변경가능!!! 
+        block과 inline등 다른것으로 변경할 수 있다!
+        -> 단, 원래 출신이 중요하므로 span을 block으로 변경했다고 div처럼 다른 블록요소를 
+           포함하는 코딩을 하지 않기바란다...................
+
+        __________________________________________________________________
+
+        3. inline-block 인라인블록 요소
+        -표현법:
+            display: inline-block;
+        -기본적으로 inline-block인 요소들
+            button, input
+        -특징:
+        1) 인라인처럼 한줄에 온다!
+        2)인라인처럼 위아래 마진은 적용되지 않음!
+        3)블록처럼 디자인이 적용된다!
+            -width, height, marjin, padding
+        4)★블록처럼 박스의 지정된 크기는 패딩과 보더를 줄 경우 그 지정된 크기만큼 늘어난다!
+
+        _____________________________________________________________________
+
+        [어떤 display든지 안보이게 하기는?]
+        display: none;
+
+        */
+
+
+
+
+
+        /* 타이틀 */
+        .tit{
+            text-align: center;
+            border: 5px dotted orange;
+        }
+        /* 모든 인라인과 블록요소에 디자인 적용하기 */
+        .ele *{ /* *은 모든 자손들 */
+            width: 200px;
+            height: 150px;
+            border: 10px solid blue;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="tit">002.블록과 인라인</h1><br><br>
+    
+    <h2 class="tit">★인라인 요소들</h2>
+    <div class="ele">
+        <a href="#">나는 a다!</a>
+        <img src="imgs/blogo.png" alt="로고" 
+        title="나는 img다!">
+        <span>나는 span이다!</span>
+        <b>나는 b다!</b>
+        <button>나는 button이다! 나는 인라인인가?</button>
+        <i>나는 i다!</i>
+        <em>나는 em이다!</em>
+        <strong>나는 strong이다!</strong>
+    </div>
+
+
+
+    <h2 class="tit">★블록 요소들</h2>
+    <div class="ele">
+        <h1>나는 h1이다!</h1>
+        <h4>나는 h4다!</h4>
+        <div>나는 div다!</div>
+        <p>나는 p다!</p>
+        <figure>나는 피겨다!</figure>
+    </div>
+
+</body>
+</html>

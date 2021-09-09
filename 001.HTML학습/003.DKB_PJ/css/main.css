@@ -29,14 +29,26 @@ body{
 
 /* 케릭터 박스 */
 #cbx{
-    width: 80%;
-    height: 300px;
+    width: 90%;
+    /* height: 300px; 
+        높이값이 없을때 자식요소 float때문에
+        자식요소를 인식하지 못함!
+        높이값이 없을때 높이값이 안나옴!
+    */
     margin: 0 auto;
+     margin-top: 50px;
     /* 마영오! - 가로중앙정렬 */
-    outline:  5px dashed #999; /* 보더랑 아웃라인구분 */
+    
+    /* outline:  5px dashed #999; */
+     /* 보더랑 아웃라인구분 */
 
 }
-
+/* 가상요소로 float해제 */
+.clb::after{
+    content: '';
+    display: block;
+    clear: both;
+}
 /* 개별 캐릭터 박스 공통 */
 .cat{
     width: 25%;/* 4등분 */
@@ -45,10 +57,68 @@ body{
     float: left;
     /* 블록요소가 옆으로 흐르게함
     left값을 주면 나는 왼쪽~다른요소는 오른쪽에 올 수 있게 함 */
-    outline: 2px dotted red;
+   
+   /* 안쪽여백 */
+   padding: 5px;
+
+   /* 마진, 패딩 포함하기 속성 */
+   box-sizing: border-box;
+   
+   
+    /* outline: 2px dotted red; */
+    /* 가이드라인 */
 }
 /* 캐릭터 이미지 */
-.cat>img{
+.ci>img{/* 직계자식 이미지만 ! */
     width: 100%;
     /* 이미지의 height는 자동(비율유지) */
+}
+/* 케릭터 이름 */
+.ci span{
+    display: block;/* 블록으로 출신변경 */
+    text-align: center;/* 가로중앙적용! */
+    margin-top: -22%; /* 비율로 이미지가 변경되므로 마진도 상대적으로 변경되게함 */
+}
+
+/* 캐릭터 이름 이미지 크기지정  */
+.ci span img {
+    width: 30%;
+}
+/* 캐릭터 이름 첫번째 이미지 숨기기 */
+/* display:none사용 */
+.ci span img:first-child{
+    display: none;
+}
+/* .cat박스에 마우스 오버시 */
+/* 캐릭터 이름 첫번째 이미지 보이기 */
+/* 원래 이미지는 display:inline */
+.cat:hover .ci span img:first-child {
+    display: inline;
+}
+/* .cat박스에 마우스 오버시 */
+/* 캐릭터 이름 마지막 이미지 숨기기 */
+.cat:hover .ci span img:last-child {
+    display: none;
+}
+
+/* 캐릭터 설명 박스 */
+.cd {
+    background: url(../images/eachBG.jpg) no-repeat center/cover;
+}
+
+/* 캐릭터 설명 타이틀 */
+.cd h3{
+    padding: 20px;
+}
+
+/* 캐릭터 설명 문단 */
+.cd p{
+    padding: 10px;
+    
+    font: 14px/2 '맑은 고딕', '돋움';
+    
+    /* font: 스타일 두께 크기/줄간격 글자체
+    font: 스 두 크/줄 체 */
+    
+    text-align: justify; /* 양쪽정렬 */
 }

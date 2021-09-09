@@ -10,6 +10,21 @@
 6. word-spacing : 단어와 단어사이 간격 (마이너스가능)
 7. text-align : 박스에서의 글자(인라인요소) 정렬
     left(기본값) | right | center | justify(양쪽정렬)
+8. font-size : 글자크기 (px,em,rem,%)
+9. line-height : 배수/px,em 등
+10. font 한번에쓰기
+        -> font: 스타일, 두께, 크기/줄간격, 글자체;
+        -> font: 스두크/줄체;
+             /* 스타일 */
+             font-style: italic;
+             /* 두께 */
+             font-weight: bold;
+             /* 크기 */
+             font-size: 18px;
+             /* 줄간격 */
+             line-height: 2em;
+             /* 체 */
+             font-family: '궁서';
 
 [박스모델관련]
 1. width : 가로크기
@@ -68,7 +83,7 @@ padding-top, padding-left, padding-right, padding-button
     
     background-position: center;
 
-6. 배경크기
+6. 배경크기(가로->세로)
         - 가로크기 : 수치(px,%), auto(비율유지)
         - 세로크기 : 수치(px,%), auto(비율유지)
         - cover : 비율에 맞춰서 화면채우기(빈틈없음)-자주씀
