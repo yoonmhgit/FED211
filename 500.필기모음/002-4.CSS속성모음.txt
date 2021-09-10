@@ -25,13 +25,14 @@
              line-height: 2em;
              /* 체 */
              font-family: '궁서';
+11. 글자그림자 text-shadow: x축 y축 블러 색;
 
 [박스모델관련]
 1. width : 가로크기
 2. height : 세로크기
 3. padding : 안쪽여백
 4. marging : 바깥여백
-5. border : 경계선
+5. border : 경계선(선)
         -> border: 두께 종류 색상; (두종색)
             -두께(border-width) : 보더의 두께 사이즈 지정 (px,em 등)
             -종류(border-style) : solid(선형), dotted(점선형), dashed(데쉬형) 등
