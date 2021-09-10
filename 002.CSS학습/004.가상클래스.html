@@ -2,109 +2,172 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>004. 가상클래스</title>
-</head>
-<body>
-    <h1>004. 가상클래스</h1>
+    <title>004.가상클래스</title>
     <style>
+        /*         
+        [ 가상클래스란? ]
+        - Pseudo-class 슈도클래스 라고도함
+        - 의미: 마치 클래스를 준것 처럼
+        선택하여 디자인을 변경할 수 있다
+        ___________________________________
 
-        h1,h2{/* ,콤마는 그룹선택자 */
-            text-align: center;/* 글중앙정렬 */
+        1. 자식선택 가상클래스
+        - 조건: 한 부모요소 아래에 같은 종류의
+        태그로 구성되어 있어야함!
+        예) ul>li 이와 같이 ul아래 li로만 구성됨
+            div>div 같은 종류의 직계자식으로만
+            구성되어야함
+        - 선택방법:
+            요소:first-child 첫번째자식
+            요소:last-child 마지막자식
+            요소:nth-child(n) n번째자식
+                            - n은 1부터
+
+        *******************************
+
+        2. 종류가 다른 자식선택 가상클래스
+        - 한 가지가 아닌 여러 종류의 자식요소
+        로 구성된 경우 자식을 선택하는 방법
+        - 선택방법:
+        요소:first-of-type
+            - 같은타입(요소)중 첫번째
+        요소:last-of-type
+            - 같은타입(요소)중 마지막
+        요소:nth-of-type(n)
+            - 같은타입(요소)중 n번째
+                            - n은 1부터
+
+        ********************************
+
+        3. 마우스 오버시 요소 변경 가상클래스
+        - 마우스가 요소에 오버되면 자기자신 또는
+        자손요손 요소의 디자인을 변경할 수 있다
+        - 선택방법:
+        요소:hover
+
+        ************************************
+
+        4. a요소 관련 가상클래스
+        - a:hover 오버시
+        - a:link 링크시
+        - a:visited 방문후 표시
+        - a:active 마우스를 누르고 있을때 
+
+        5. 포커스 가상클래스
+        - 요소명:focus{}
+        - 포커스란 어떤 요소가 마우스로 클릭되거나
+        터치되었을때 그요소에 촛점이 가게 되는데
+        이런 상태를 포커스상태라고 한다!
+        - 이 상태에 대한 디자인을 별도로 줄 수 있다
+        - 입력폼요소에 많이 사용된다!
+        - 오해하지말자! 클릭이벤트와 다르다!
+        클릭이벤트는 클릭한 순간 이벤트가 사라지지만
+        포커스는 요소가 클릭되어 활성화된 상태를 유지함
+        - 포커스를 없애고 싶으면 다른요소를 클릭하면 됨
+        - 포커스가 없어지는 상태를 blur(블러)라고함
+
+    */
+
+
+        h1,h2{
+            text-align: center;
         }
         /* a요소 가상클래스 주기 */
 
         /* :link 링크최초상태 */
-        k/* 지금은잘안씀 */h2 a:lin{
-            /* color: red;
-            text-decoration: none;밑줄없애기 */
-        }
-        /* :hover 마우스 오버상태 */
-        h2 a:hover {
-            color: pink;
-            text-decoration: overline;
-           
-            /* 글자그림자 text-shadow: x축 y축 블러 색; */
-        
-        /* 마우스로 눌려진상태(클!) */
-        /* h2 a:active{
-            color: blue; */
-        
-        /* :visited 링크 방문후(한번 클릭후) */
-        /* h2 a:visited{
-            color: mediumaquamarine; */
-        }
-        /* 요즘엔 마우스오버시 정도만 설정함  */
+        /* h2 a:link{
+            color: red;
+            text-decoration: none;
+        } */
+
         /* 일반적으로 a요소 자체 디자인을 잡는다! */
         h2 a{
             color: hotpink;
-            text-decoration: none;
-            text-shadow: 2px 2px blur #000;
+            text-decoration: none;/* 밑줄없앰 */
+            text-shadow: 2px 2px 2px #777;
+            /* 
+                글자그림자
+                text-shadow: x축 y축 블러 색;
+            */
         }
 
-        /* :focus 요소를 클릭하여 초점이 올때 */
-        h2 a:focus{
-            outline: 10px dotted orange;
+        /* :hover 마우스 오버상태 */
+        h2 a:hover {
+            color: red;
+            text-decoration: overline;
+        }
+        /* :active 마우스로 눌려진상태(클!) */
+        /* h2 a:active {
+            color: blue;
+        } */
+
+        /* :visited 링크 방문후(한번클릭후) */
+        /* h2 a:visited {
+            color: mediumseagreen;
+        } */
+
+        /* :focus 요소를 클릭하여 초점이 올때 */        
+        h2 a:focus {
+            outline: 10px dotted orangered;
         }
 
         /* 시인이름 */
         h3{
             width: 800px;
-            margin: 0 auto; /* 마영오 블록가로중앙 */
+            margin: 0 auto;
+            /* 마영오! - 블록가로중앙! */
             text-align: right;
             padding-right: 50px;
         }
 
         /* 첫번째 파트 */
-        /* 요소명.클래스명 -> 종속선택자
-        -> 종속선택자를 언제 쓰는가?
-        1)같은 클래스명인데 요소별로 다른 셋팅을 할때
-        2)클래스나 아이디의 요소명을 밝히고 싶을때 */
-
-        ul.part1{
-            /* ul기본 3가지 없애기(초기화) */
+        /* 
+        요소명.클래스명 -> 종속선택자
+            -> 종속선택자를 언제 쓰는가?
+            1) 같은 클래스명인데 요소별로 다른 셋팅을 할때
+            2) 클래스나 아이디의 요소명을 밝히고 싶을때
+        */
+        ul.part1 {
+            /* ul기본 3가지 없애기 */
             margin: 0;
             padding: 0;
-            list-style: none; /* 블릿없앰(글자앞에 땡땡땡) */
+            list-style: none;/* 블릿없앰 */
 
             width: 800px;
-            margin: 0 auto; /* 마영오 */
+            margin: 0 auto;/* 마영오! */
             margin-top: 20px;
-            border: 2px solid #ccc; /* 보더 */
-            border-radius: 20px; /* 상자모서리둥글게 */
+            border: 2px solid #ccc;/* 보더 */
+            border-radius: 20px;
             padding: 20px 0;
             text-align: center;
-
-        }    
+        }
 
         /* 1번 li */
-        ul.part1 li:first-child{
+        ul.part1 li:first-child {
             font-size: 40px;
-            font-family: 궁서;
+            font-family: "궁서";
             color: red;
         }
         /* 오버시 */
-        ul.part1 li:first-child:hover{
+        ul.part1 li:first-child:hover {
             font-size: 50px;
         }
 
         /* 2번째 li */
-        ul.part1 li:nth-child(2){
-            font-size: 50px;
-            color: tomato;
-            font-family: 굴림;
+        ul.part1 li:nth-child(2) {
+            font-size: 30px;
+            font-family: "굴림";
+            color: blueviolet;
             font-weight: bold;
-
         }
         /* 오버시 */
-        /* 두번째 차일드선택 */
-        ul.part1 li:nth-child(2):hover{
-            font-size: 70px;
-            color: rgb(123, 181, 17);
-            }
+        ul.part1 li:nth-child(2):hover {
+            color: skyblue;
+        }
 
-            /* 글자설정 */
         /* 3번째 li */
-        ul.part1 li:nth-child(3){
+        ul.part1 li:nth-child(3) {
+            /* 24px, 돋움, brown, bold, italic */
             font-size: 24px;
             font-family: "돋움";
             color: brown;
@@ -112,17 +175,17 @@
             font-style: italic;
         }
         /* 오버시 */
-        ul.part1 li:nth-child(3):hover{
+        ul.part1 li:nth-child(3):hover {
             font-style: normal;
         }
+
         /* 4번째 li */
-        ul.part1 li:nth-child(4){
+        ul.part1 li:nth-child(4) {
+            /* 50px, 궁서, dodgerblue */
             font-size: 50px;
             font-family: "궁서";
             color: dodgerblue;
         }
-
-
         /* 처음에 한글(b태그)숨기기 */
         ul.part1 li:nth-child(4) b{
             display: none;
@@ -141,24 +204,25 @@
 
         /* 4번 이후 모든 li 전부셋팅 */
         /* 틸드(~)를 사용한 다중형제 요소 선택 */
-
-        ul.part1 li:nth-child(4)~li{
+        ul.part1 li:nth-child(4)~li {
             font-size: 25px;
             font-family: "궁서";
             color: orangered;
         }
-
-        ul.part1 li:nth-child(4)~li:hover{
+        /* 오버시 */
+        ul.part1 li:nth-child(4)~li:hover {
             font-size: 28px;
             color: blue;
         }
 
         /* 마지막 li */
         /* 
-        틸드(~)를 사용한 CSS가 한단계 더 선택하여서 우선순위가 높으므로 
-        이것보다 우선순위를 높이는 가장 쉬운방법은 한단계위의 부모요소를 써주면된다!
-        여기서 한단계위의 부모는 body! */
-        
+            틸드(~)를 사용한 CSS가 한단계 더 선택하여서
+            우선 순위가 높으므로 이것보다 우선순위를 
+            높이는 가장쉬운 방법은 한단계위의 부모요소를
+            써준면 된다~!!!
+            -> 여기서 한단계 위의 부모는 body!
+        */
         body ul.part1 li:last-child {
             /* 40px, 맑은 고딕, coral */
             font-size: 40px;
@@ -166,16 +230,62 @@
             color: coral;
         }
 
+        /* 두번째 파트 */
+
+        /* 두번째 div */
+        div.part2 {
+            width: 800px;
+            margin: 0 auto;/* 마영오! */
+            margin-top: 20px;
+            border: 2px solid #ccc;/* 보더 */
+            border-radius: 20px;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+
+        /* 30px, 궁서, blueviolet */
+        div.part2 div:nth-of-type(2){
+            font-size: 30px;
+            font-family: "궁서";
+            color: blueviolet;
+        }
+
+        /* 첫번째 i */
+        /* 20px, bold, palevioletred */
+        div.part2 i:first-of-type {
+            font-size: 20px;
+            font-weight: bold;
+            color: palevioletred;
+        }
+
+        /* 3번째 div 이후 div형제요소 모두 */
+        /* red, 궁서 */
+        div.part2 div:nth-of-type(3)~div {
+            color: red;
+            font-family: "궁서";
+        }
+        /* 
+            div.part2 div:nth-of-type(3)~i
+            예컨데 마지막 선택을 i로 한다면
+            선택된 요소 이후의 모든 i요소를 선택함!
+        */
+
+
+
 
     </style>
+</head>
+<body>
+    <h1>004.가상클래스</h1>
+
     <h2>
         <a href="#">진달래꽃</a>
     </h2>
 
     <h3>김소월</h3>
 
-    <ul class="part1">
-
+    <ul class="part1">        
         <li>나 보기가 역겨워</li>
         <li>가실 때에는</li>
         <li>말없이 고이 보내 드리우리다</li>
@@ -187,11 +297,10 @@
         <li>사뿐히 즈려밟고 가시옵소서</li>
         <li>나 보기가 역겨워</li>
         <li>가실 때에는</li>
-        <li>죽어도 아니 눈물 흘리우리다 </li>
+        <li>죽어도 아니 눈물 흘리우리다</li>
     </ul>
 
-    <div class="part2">
-
+    <div class="part2">        
         <div>나 보기가 역겨워</div>
         <em>가실 때에는</em>
         <div>말없이 고이 보내 드리우리다</div>
@@ -203,11 +312,8 @@
         <div>사뿐히 즈려밟고 가시옵소서</div>
         <i>나 보기가 역겨워</i>
         <div>가실 때에는</div>
-        <span>죽어도 아니 눈물 흘리우리다 </span>
+        <span>죽어도 아니 눈물 흘리우리다</span>
     </div>
-
- 
-
 
 
 </body>
