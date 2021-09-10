@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>트랜지션</title>
+        <style>
+            h1{
+                text-align: center;
+            }
+            /* 트랙 */
+            div{
+                border: 5px dotted blue;
+                padding: 15px;
+            }
+            /* 원 */
+            span{
+                position: relative;
+                left: 0;/* 현재위치로 부터 이동 */
+                display: block;
+                width: 200px;
+                height: 200px;
+                border: 5px solid #000;
+                background-color: #ff0;
+                border-radius: 50%;/* 원 */
+            }
+
+            /* #tr1에 트랜지션 설정 */
+            #tr1 span{
+                transition: 2s;
+            }
+            #tr1:hover span{
+                left: 50%;
+                background-color: red;
+            }
+            /* #tr2에 트랜지션 설정 */
+            #tr2 span{
+                
+            }
+            #tr2:hover span{
+                left: 50%;
+                background-color: red;
+                transition: 2s;/* 오버시에 트랜지션설정 */
+            }
+            /* #tr3에 트랜지션 설정 */
+            #tr3 span{
+                transition: 5s;/* 원본에 트랜지션 */
+            }
+            #tr3:hover span{
+                left: 70%;
+                background-color: pink;
+                border-radius: 0;
+                transition: 1s;/* 오버시에 트랜지션설정 */
+            }
+            /* #tr4에 트랜지션 설정 */
+            /* 여러가지 속성을 별도로 트랜지션 주고자 할 경우
+            속시이지 순으로 셋팅하고 콤마로 구분한다! */
+            #tr4 span{
+                transition: left 5s,/* left 5초간 변경 */
+                background-color 2s 3s,/* 배경색 3초후 2초간변경 */
+                border-radius 1s 4s;/* 모서리둥글게 4초후 1초간변경 */
+                /* 원본에 트랜지션 */
+            }
+            #tr4:hover span{
+                left: 70%;
+                background-color: hotpink;
+                border-radius: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>트랜지션</h1>
+
+        <h2>1.원본에 트랜지션 주고 양방향이 동일함</h2>
+        <div id="tr1">
+            <span></span>
+        </div>
+
+        <h2>2.오버시에 트랜지션 주고 원본엔 없음</h2>
+        <div id="tr2">
+            <span></span>
+        </div>
+
+        <h2>3.원본과 오버시 트랜지션을 각각 잡아준다</h2>
+        <div id="tr3">
+            <span></span>
+        </div>
+
+        <h2>4.원본에 트랜지션을 각 속성별로 다르게 준다</h2>
+        <div id="tr4">
+            <span></span>
+        </div>
+    </body>
+</html>
