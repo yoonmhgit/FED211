@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>유형8.숨긴네비 고정전체창형</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        body{/* 코딩으로 그라데이션표현하기 */
+            height: 3000px;
+            background-image: 
+            linear-gradient(to bottom, #92e808, #e70ba5);
+            /*
+            linear-gradient(방향,색1,색2,.....) 선형그라데이션
+            */
+        }
+
+        /* 햄버거버튼 */
+        .ham{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+            width: 50px;
+            height: 50px;
+            font-size: 40px;
+
+            border: none;
+            background-color: transparent;/* 배경 투명으로 없애기 */
+            cursor: pointer;/* 손가락모양 */
+        }
+
+          /* ul,ol 초기화셋팅 */
+          ul,ol{
+            /* 3무 */
+            margin: 0;
+            padding: 0;
+            list-style: none;/* 앞에나오는 (블릿,숫자)땡땡땡제거 */
+        }
+        /* 가상요소 float해제 */
+        ul::after,
+        ol::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        li{
+            float: left;
+        }
+
+        /* gnb메뉴 */
+        .gnb{
+            position: fixed;
+            top: -100%;/* 화면만큼 위로 올라감! */
+            left: 0;
+            /* 보이는 화면기준!!! */
+            width: 100%;
+            height: 100%;
+            background-color: #464be8b1;
+
+            /* 트랜지션 : 속시이지 */
+            transition: top 1.2s ease-in-out;
+        }
+        .gnb>ul{
+            position: relative;
+            top: calc(50% - 125px);
+            /* 
+               [세로 중앙계산하기]
+               싸고있는 부모크기의 50%위치
+               -내 자신크기의 절반(높이값 250px/2)
+
+               [css로 계산하기 함수]
+               calc(숫자 - 숫자)
+               ->마이너스 앞뒤로 띄어쓰기 필수!
+               ->퍼센트에서 px값을 뺄때 많이씀!
+
+            */
+            width: 800px;
+            margin: 0 auto;
+        }
+        .gnb>ul>li{
+            width: 200px;
+            text-align: center;
+            outline: 2px dashed lime; /* 잘되는지 확인하는 가이드라인 */
+        }
+        /* a요소 - 글자색, 밑줄처리 */
+        .gnb>ul>li a{/* a는 .smenu의 a까지 모두 선택! */
+            width: 200px;
+            height: 50px;
+            display: block; /* 크기디자인때문 (블록전체가 잡히게) */
+
+
+            /* 글자색, 밑줄없앰 */
+            color: #fff;
+            text-decoration: none;
+
+            /* 글자세로 중앙은 줄간격을 사용
+            -> 높이값과 동일하면 그 높이의 중간에 옴! */
+            line-height: 50px;
+
+            font-weight: bold;/* 글자두껍게 */
+            font-size: 14px;
+
+            /* 트랜지션 : 속시이지 */
+            transition: .4s;
+        }
+        /* 상위메뉴에 마우스 오버시 글자색,배경색 변경 */
+        .gnb>ul>li:hover>a{
+            color: #a494ea;
+            background-color: #f0f0f0;
+        }
+
+        /* 서브메뉴 */
+        .smenu{
+            /* position: absolute; */
+            width: 200px;
+            background-color: #5e3bf9;
+
+            /* 트렌지션:속시이지 */
+            transition: height .4s ease-out;
+        }
+
+        /* 상위메뉴 오버시 하위메뉴 a 글자색,배경색 */
+        .smenu a:hover{
+            color: rgb(75, 18, 233);
+            background-color: rgb(219, 145, 234);
+        }
+
+
+    </style>
+    <!-- JS코딩구역 (인터널방식) -->
+    <script>
+        // JS주석
+        /* JS여러줄 주석 */
+        // 바로 실행되지 않고 호출시에만 실행되는
+        //코드구역----------> 함수!!!
+        //함수는 영어로 function
+        //함수형식 -> function 이름(){코드}
+        // function 이름(전달변수){코드}
+        //->전달할 값을 전달변수에 담는다!
+        function yogi(gab){ //넘어오는 값
+            //1. 호출확인
+            //alert("나야나!");
+
+            // 자바스크립트는 왜하나?
+            //html을 변경하려고!
+            //js에서 제일 중요한 것은 웹문서
+            //웹문서===document
+            document //전체문서소환!
+            .getElementsByClassName("gnb") //클래스요소선택
+            .item(0) //클래스중 첫번째
+            .style //스타일시트설정
+            .top // top값 설정
+            = gab; // 전달변수(파라미터)로 값을 셋팅한다!!!
+             //JS에서 이퀄은 오른쪽값이 왼쪽으로 들어감!(할당)
+
+
+
+        } /////////////////yogi 함수 //////////////////////////
+         /////////////////////////////////////////////////////
+
+         //함수는 호출시 : 함수명()
+    </script>
+</head>
+<body>
+    <!-- 전체메뉴버튼 -->
+<buttom class="ham" onclick="yogi('0')">≡</buttom>
+    <!-- 
+        on이벤트명="값"
+        ->이벤트연결 속성
+        ->값으로 JS코드만 사용가능!
+
+        예) onclick="함수호출"
+
+     -->
+
+    <!-- 전체 네비게이션박스 -->
+    <nav class="gnb">
+        <!-- 닫기버튼 -->
+        <buttom class="ham" onclick="yogi('-100%')">×</buttom>
+        <ul>
+            <li><a href="#">home</a></li>
+            <li>
+                <a href="#">웹개발</a>
+                <!-- 서브메뉴 -->
+                <ol class="smenu">
+                    <li>
+                        <a href="#">웹디자인</a>
+                    </li>
+                    <li>
+                        <a href="#">html5+css3</a>
+                    </li>
+                    <li>
+                        <a href="#">jQuery</a>
+                    </li>
+                    <li>
+                        <a href="#">웹+모바일</a>
+                    </li>
+                </ol>
+               </li>
+            <li>
+                <a href="#">게시판</a>
+               <ol class="smenu">
+                   <li>
+                       <a href="#">Q＆amp;A</a>
+                       <!-- &amp;는 &의 특수문자처리 -->
+                   </li>
+                   <li>
+                       <a href="#">방명록</a>
+                   </li>
+               </ol>
+               </li>
+            <li><a href="#">프로필</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html>
