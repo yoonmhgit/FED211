@@ -33,7 +33,7 @@ body{
 /* 1. 상단영역 */
 
 /* 로고 */
-.logo img{
+.logo img{ 
     margin-top: 45px;
     margin-left: 70px;
 }
