@@ -1,0 +1,18 @@
+[ 네비게이션 유형별 예시 ]
+
+1. 가로네비 서브별 드롭다운 세로형
+https://www.sajosfmall.co.kr/
+2. 가로네비 서브별 드롭다운 가로형
+https://web2002.co.kr/
+3. 가로네비 서브 전체 드롭다운 전체창
+https://www.cellreturn.com/KR/main/main.php
+4. 세로네비 서브별 드롭다운 세로형
+https://www.kari.re.kr/kor.do (서브메뉴에 있음)
+5. 세로네비 서브별 드롭다운 사이드형
+https://www.kari.re.kr/kor.do
+6. 가로네비 서브별 드롭다운 전체창
+https://chicor.com/main
+7. 가로네비 서브없는 디자인형
+https://www.apple.com/
+8. 숨긴네비 고정전체창형
+-> 최신사이트 대부분 (모바일이 많음)
