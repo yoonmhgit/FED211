@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>position - sticky</title>
+    <style>
+        body{
+            height: 4000px;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            border: 2px solid blue;
+            text-align: center;/* 글자중앙 */
+            font-size: 24px;/* 글자크기 */
+            font-weight: bold;/* 굵은글자 */
+            line-height: 100px;/* 글자세로중앙 */
+        }
+
+        #stk1{
+            position: sticky;
+            top: 0; /* 화면에서의 위치 */
+            width: 100%;
+            z-index: 99999;
+            background-color: yellow;
+        }
+
+        /* 
+            [sticky 포지션]
+            1.위치값 설정에 따라 보이는 화면에 고정되는 포지션
+            2.원리: 처음에는 relative하게(위치값적용됨)
+            가만히있다가 자신의 위치값이 스크롤 위치보다 위로 올라갈때(화면에서 사라질때)
+            설정된 top값보다 크면 fixed하게 고정된다!
+            -> 스크롤 위치고정 값은 top에 설정한다!
+            -> top값을 설정하지 않으면?
+            relative하게 그대로 있음
+        */
+
+        #f2{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #90ee90a8;
+            z-index: 100;
+        }
+
+        #a1{
+            position: absolute;
+            top: 0;
+            right: 0;
+           
+            background-color: orange;
+        }
+
+        #r1{
+            position: relative;
+            top: 50px;
+            left: 50px;
+
+            z-index: -1;
+            /* 1만줘도 올라감! */
+
+            background-color: red;
+        }
+
+        #r2{
+            position: relative;
+            /* bottom: 75px;
+            right: -86px; */
+
+            /* z-index: -1;스테틱보다 아래! 마이너스 값! */
+
+            background-color: skyblue;
+        }
+
+        #s2{
+            background-color: green;
+        }
+        #s3{
+            background-color: yellow;
+        }
+
+        /* 부모찾는 adsolute */
+        .bx{
+            width: auto;
+            height: auto;
+            padding: 50px;
+        }
+
+        .s5{/* 부모요소 확인하는곳! */
+            /* position: relative; */
+        }
+        .s6{
+            /* position: relative; */
+        }
+        .s7{
+            /* position: relative; */
+        }
+        .s8{
+            position: relative;
+        }
+      .a2{
+          position: absolute;
+          top: 0;
+          left: 0;
+          /* 나의 부모는 누구인가? */
+          background-color: red;
+
+          width: auto;
+          height: auto;
+          /* 가로, 세로 크기가 자동일경우 앱솔루트는 내용만큼만 크기를 가진다!(안에 텍스트만큼의 크기) */
+          line-height: normal;
+      }
+      .a3{
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          /* 나의 부모는 누구인가? */
+          background-color: pink;
+      }
+
+      /* span 앱솔루트 */
+      .sa{
+          position: absolute;
+          top: 0;
+          right: 0;
+      }
+
+    </style>
+</head>
+<body>
+    <div id="r1">r1</div>
+    <div id="s2">s2</div>
+    <div id="a1">a1</div>
+    <div id="r2">r2</div>
+    <div id="s3">s3</div>
+    <div id="stk1">stk1</div>
+    <div id="f2">f2</div>
+
+    <!-- 부모를 찾는 adsolute 요소 -->
+    <div class="bx s5">s5
+        <div class="bx s6">s6
+            <div class="bx s7">s7
+                <div class="bx s8">s8
+                    <div class="a2">a2</div>
+                    <div class="a3">a3</div>
+                    <span class="sa">나는 span앱솔루트!!!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

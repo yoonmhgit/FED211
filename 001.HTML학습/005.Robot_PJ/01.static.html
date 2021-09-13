@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>position - static</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 2px solid blue;
+            text-align: center;/* 글자중앙 */
+            font-size: 24px;/* 글자크기 */
+            font-weight: bold;/* 굵은글자 */
+            line-height: 100px;/* 글자세로중앙 */
+        }
+
+        #s1{
+            position: static;
+            /* 
+                [CSS의 포지션은 뭐지?]
+                - 위치를 배치하기 위한 효과적인 코딩법을 
+                제공하는 속성
+
+                [1. static 포지션]
+                - 설정하지 않아도 기본값
+                - 위치이동값(top,left,right,bottom) 속성이
+                적용되지 않는다
+                -위치이동을 하려면 marjin을 사용
+                :마진으로 위치를 이동 시키면 
+                아래또는 옆에 있는 요소가 영향을 받는다
+
+
+                [위치이동 속성]
+                -선택요소의 위치를 이동하기 위한 속성
+                -포지션에 따라 다르게 적용된다
+                -종류: 4가지
+                    top, bottom, left, right
+
+            */
+            top: 100px;
+            left: 100px;
+
+            /* marjin으로 위치이동 */
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="s1">s1</div>
+    <div id="s2">s2</div>
+    <div id="s3">s3</div>
+
+</body>
+</html>

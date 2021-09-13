@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>position - relative</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 2px solid blue;
+            text-align: center;/* 글자중앙 */
+            font-size: 24px;/* 글자크기 */
+            font-weight: bold;/* 굵은글자 */
+            line-height: 100px;/* 글자세로중앙 */
+        }
+
+        #r1{
+            position: relative;
+            /* 
+                [2. relative 포지션]
+                1. 위치이동속성이 적용된다!
+                2.위치이동의 기준은 원래 있던 위치임
+                    (그래서 상대적인 즉, relative 라는 단어사용)
+                3.이동시에 다른요소에 영향이없이 겹쳐질수있다!★
+                4.원래 자신이 있던 위치는 그대로 보존된다!!
+                (의미: 가존위치가 보존되기 때문에 위치를 이동시켜도
+                본래 디자인은 망가져 보이지 않는다!)
+
+                5. 위치값 설정시 2가지를 기준으로만 셋팅해야한다
+                -위아래 중 하나, 좌우 중 하나
+                1) top, left
+                2) top, right
+                3) bottom, right
+                4) bottom, left
+                -값 수치 양수는+ 내부방향 / 음수는- 외부방향
+                6. 마진은 그대로 적용된다!
+                (다른 static요소에 영향을 준다!)
+                -> 원래 위치에서 마진으로 밀고있는것과 같다
+
+                7. relative는 위치 이동값을 사용하지않으면 
+                    static과 똑같은 특성을 가진다!
+                
+                8. relative는 겹쳐질 수 있으므로 위아래 위치 관계가 성립된다
+                    기본적인 위아래 위치관계는 아래와 같다.
+                1)static보다 항상위
+                ->static보다 아래로 가는방법
+                 z-index를 음수로 준다!!
+                2)static이 아닌 포지션인 경우 나중에 그려진 요소가 위!
+                    (손놓고 손등때리기)
+                3)z-index 속성으로 숫자가 크면 위
+
+                [[z-index란?]]
+                -겹치는 포지션을 주는 경우 위치순서를 정하여
+                디스플레이를 변경하는 속성
+
+                -z는 화면방향의 z축을 의미하며 기본값은 0이다(같은 층에 있다는 의미!)
+
+                ->포지션이 static인 경우 즉 아무것도 포지션을 안준경우
+                z-index가 적용안된다!
+                왜?-스스로 겹쳐질 수 없으므로!
+
+                ->결론적으로 포지션이 있는 경우에만 사용할 수 있다!
+
+                - 사용법:
+                    z-index: 숫자
+                    -숫자의 의미는 단순 위치 비교개념
+                    -숫자가 높은 것이 위에 온다!
+                    -static요소는 무조건 밑에 깔린다!
+                    -마이너스 숫자를 주면 static보다 아래로!
+                    -z-index가 같을 경우 나중것이 위에옴!
+
+
+                ※유의사항
+                ->z-index비교시에 같은 형제레벨에 있어야 비교된다!!
+                만약 자손요소의 z-index를 아무리 높이줘도 부모요소의 다른 형제요소 z-index가
+                높으면 올라갈 수 없다.
+            _________________________________________________________________________________
+
+            9. 자식요소에 대한 다음의 중요한 특징이 있다
+            - 자식요소(혹은 자손요소)의 포지션이 앱솔루트일때 자기자신에게
+            아무런 포지션이 없는 상태라면........
+            자기가 부모역할을 해야할때 설정하는 포지션으로 relative가 많이 사용된다!
+            (이유: relative를 주고 나면 아무런 외형적 변화가 없가 때문에!!!)
+            
+
+                */
+                
+
+
+
+
+
+            top: 50px;
+            left: 50px;
+
+            z-index: -1;
+            /* 1만줘도 올라감! */
+
+            background-color: red;
+        }
+
+        #r2{
+            position: relative;
+            bottom: 75px;
+            right: -86px;
+
+            z-index: -1;/* 스테틱보다 아래! 마이너스 값! */
+
+            background-color: skyblue;
+        }
+
+        #s2{
+            background-color: green;
+        }
+        #s3{
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="r1">r1</div>
+    <div id="s2">s2</div>
+    <div id="r2">r2</div>
+    <div id="s3">s3</div>
+
+</body>
+</html>

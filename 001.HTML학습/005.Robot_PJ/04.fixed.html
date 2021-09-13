@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>position - fixed</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 2px solid blue;
+            text-align: center;/* 글자중앙 */
+            font-size: 24px;/* 글자크기 */
+            font-weight: bold;/* 굵은글자 */
+            line-height: 100px;/* 글자세로중앙 */
+        }
+
+        #f1{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            /* 
+                [fixed 포지션]
+                1.위치설정값을 쓰지 않을때
+                - 자신보다 위에있는 static한 요소 아래에
+                그대로 있다가 스크롤시 그 자리를 화면에서 지키고 움직이지 않는다!
+                ->젠틀앱솔루트와 유사! 젠틀픽스드!
+
+                2.위치이동값을 썼을때
+                -부모를 기준하여 위치를 잡는다!
+                부모가 누구? 보이는 화면! 즉 window화면!
+
+                -보이는 화면에서 사라지지않게 하고자 할때 사용하는 포지션!!!
+
+                ->부모를 제외한 모든 다른 특성은 앱솔루트와 거의 같다!!!
+
+                3.아무리 부모요소가 여러개일지라도 자식요소 중 fixed를 주면 
+                  화면을 기준함!
+
+                4.부모박스가 fixed이면 그 자식요소들은 모두 화면에 고정된다!!!
+
+                5.화면 바깥으로 숨겼다가 보이게할때 fixed를 이용한다!
+
+                6.z-index도 포지션이 있는경우 숫자로 비교!
+            */
+            background-color: yellow;
+        }
+
+        #f2{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #90ee90a8;
+            z-index: 100;
+        }
+
+        #a1{
+            position: absolute;
+            top: 0;
+            right: 0;
+           
+            background-color: orange;
+        }
+
+        #r1{
+            position: relative;
+            top: 50px;
+            left: 50px;
+
+            z-index: -1;
+            /* 1만줘도 올라감! */
+
+            background-color: red;
+        }
+
+        #r2{
+            position: relative;
+            /* bottom: 75px;
+            right: -86px; */
+
+            /* z-index: -1;스테틱보다 아래! 마이너스 값! */
+
+            background-color: skyblue;
+        }
+
+        #s2{
+            background-color: green;
+        }
+        #s3{
+            background-color: yellow;
+        }
+
+        /* 부모찾는 adsolute */
+        .bx{
+            width: auto;
+            height: auto;
+            padding: 50px;
+        }
+
+        .s5{/* 부모요소 확인하는곳! */
+            /* position: relative; */
+        }
+        .s6{
+            /* position: relative; */
+        }
+        .s7{
+            /* position: relative; */
+        }
+        .s8{
+            position: relative;
+        }
+      .a2{
+          position: absolute;
+          top: 0;
+          left: 0;
+          /* 나의 부모는 누구인가? */
+          background-color: red;
+
+          width: auto;
+          height: auto;
+          /* 가로, 세로 크기가 자동일경우 앱솔루트는 내용만큼만 크기를 가진다!(안에 텍스트만큼의 크기) */
+          line-height: normal;
+      }
+      .a3{
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          /* 나의 부모는 누구인가? */
+          background-color: pink;
+      }
+
+      /* span 앱솔루트 */
+      .sa{
+          position: absolute;
+          top: 0;
+          right: 0;
+      }
+
+    </style>
+</head>
+<body>
+    <div id="r1">r1</div>
+    <div id="s2">s2</div>
+    <div id="a1">a1</div>
+    <div id="r2">r2</div>
+    <div id="s3">s3</div>
+    <div id="f1">f1</div>
+    <div id="f2">f2</div>
+
+    <!-- 부모를 찾는 adsolute 요소 -->
+    <div class="bx s5">s5
+        <div class="bx s6">s6
+            <div class="bx s7">s7
+                <div class="bx s8">s8
+                    <div class="a2">a2</div>
+                    <div class="a3">a3</div>
+                    <span class="sa">나는 span앱솔루트!!!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

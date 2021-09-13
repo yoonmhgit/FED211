@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>position - adsolute</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 2px solid blue;
+            text-align: center;/* 글자중앙 */
+            font-size: 24px;/* 글자크기 */
+            font-weight: bold;/* 굵은글자 */
+            line-height: 100px;/* 글자세로중앙 */
+        }
+
+        #a1{
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* 
+            [adsolute 포지션]
+
+            1. adsolute 포지션은 위치 이동값을 
+            쓰기 전과 후로 나누어볼수있다!
+            
+            1)위치 이동값을 쓰지 않은 경우
+            -자기보다 위에있는 요소를 존중하여
+            그 아래에 위치한다(젠틀앱솔루트!)
+            -자기보다 아래쪽에 있는 요소는
+            앱솔루트를 인식하지 못하여 같은 자리에 올라옴!
+            -어떤 요소 내부에 있는 자식요소가 앱솔루트일 경우
+            그 부모박스 위치에 가만히 있는다(젠틀)
+            -앱솔루트 끼리는 서로 겹친다
+
+            2)위치 이동값을 사용한 경우
+            -위치이동값을 사용한 부분에 대하여서만!!!!!!!!!!!!
+            (레프트만 쓰면 레프트에 해당하는 부모요소만 찾음)
+            앱솔루트가 위치를 잡을때 부모요소는 ...?
+            static이 아닌 포지션을 가진요소가 부모다!!!
+            ->static이 아닌 포지션이랑?
+            relative / absolute / fixed
+
+            ->위치이동값을 사용하지않는 부분은 젠틀하다!
+
+            ->부모자격이 있는 부모요소들 중 가까운 것이 부모가 된다!
+
+            [만약 부모가 없으면 보이는 화면을 기준한다!]
+            ->보이는 화면은 body를 말하는 것이 아니다!!
+            보이는 브라우저 화면 즉, window화면이다!
+            (스크롤이 생겨도 스크롤위쪽화면을 말함!!!)
+
+
+            2. 앱솔루트의 가로,세로 크기를 주지 않은 경우 
+            일반적으로는 block이므로 auto로서 
+            부모요소의 끝까지 차지하지만 앱솔루트는 ...
+            내용만큼만 그 크기를 자동으로 설정한다!!!
+
+
+            3. 인라인요소에 앱솔루트를 준경우
+            자동으로 display가 block으로 설정됨!!!
+            ->일반적으로 앱솔루트는 block이다!!
+            (블럭요소는 아무곳이나 갈수있음?)
+
+
+            4. 앱솔루트에 마진을 설정할 경우 설정이 반영되는 경우는 
+            위치설정과 같은 방향의 마진이 적용된다!!!
+            예)
+                top을 적용했으면 marjin-top
+                left을 적용했으면 marjin-left
+                bottom을 적용했으면 marjin-bottom
+                right을 적용했으면 marjin-right
+
+                -> 앱솔루트의 마진은 위치이동후 미세조정을 
+                    개별요소가 필요로 할때 사용할 수 있음
+
+                -> 위치이동값이 설정되지 않았을 경우 
+                기본위치가 top,left이므로 
+                marjin-top, marjin-left만 적용된다!
+
+                5.위치이동값 초기화
+                -값으로 auto를 쓰면된다!
+                -top:auto, left:auto, right:auto, bottom:auto
+                -기존값을 해제할때도 auto를 쓴다!
+                예)기존에 left:50px로 잡았다가 right기준으로 값을 변경하려고 할때
+                그대로 right값만 설정하면 적용이 안되므로
+                left:auto로 초기화하고 right:50px로 변경
+
+            */
+            background-color: orange;
+        }
+
+        #r1{
+            position: relative;
+            top: 50px;
+            left: 50px;
+
+            z-index: -1;
+            /* 1만줘도 올라감! */
+
+            background-color: red;
+        }
+
+        #r2{
+            position: relative;
+            /* bottom: 75px;
+            right: -86px; */
+
+            /* z-index: -1;스테틱보다 아래! 마이너스 값! */
+
+            background-color: skyblue;
+        }
+
+        #s2{
+            background-color: green;
+        }
+        #s3{
+            background-color: yellow;
+        }
+
+        /* 부모찾는 adsolute */
+        .bx{
+            width: auto;
+            height: auto;
+            padding: 50px;
+        }
+
+        .s5{/* 부모요소 확인하는곳! */
+            /* position: relative; */
+        }
+        .s6{
+            /* position: relative; */
+        }
+        .s7{
+            /* position: relative; */
+        }
+        .s8{
+            position: relative;
+        }
+      .a2{
+          position: absolute;
+          top: 0;
+          left: 0;
+          /* 나의 부모는 누구인가? */
+          background-color: red;
+
+          width: auto;
+          height: auto;
+          /* 가로, 세로 크기가 자동일경우 앱솔루트는 내용만큼만 크기를 가진다!(안에 텍스트만큼의 크기) */
+          line-height: normal;
+      }
+      .a3{
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          /* 나의 부모는 누구인가? */
+          background-color: pink;
+      }
+
+      /* span 앱솔루트 */
+      .sa{
+          position: absolute;
+          top: 0;
+          right: 0;
+      }
+
+    </style>
+</head>
+<body>
+    <div id="r1">r1</div>
+    <div id="s2">s2</div>
+    <div id="a1">a1</div>
+    <div id="r2">r2</div>
+    <div id="s3">s3</div>
+
+    <!-- 부모를 찾는 adsolute 요소 -->
+    <div class="bx s5">s5
+        <div class="bx s6">s6
+            <div class="bx s7">s7
+                <div class="bx s8">s8
+                    <div class="a2">a2</div>
+                    <div class="a3">a3</div>
+                    <span class="sa">나는 span앱솔루트!!!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
