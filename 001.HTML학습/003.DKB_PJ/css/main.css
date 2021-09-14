@@ -12,8 +12,12 @@ body{
    /* 배경을 한번에 셋팅하기 */
    /* background: 색 이미지 반복 고정 위치/크기;
    background: 색이반고윙/크; */
-    background: url(../images/bg_mainvisual.jpg)
+    background: 
+    url(../images/bg_logo_a_01.png)
+    no-repeat fixed 10% 20%/10%/* 가로 세로 */,
+    url(../images/bg_mainvisual.jpg)
     no-repeat fixed center/cover;
+    /* 배경이미지를 여러개 사용할 경우 먼저 쓴것이 위에온다! */
 }
 
 /* 스크롤바 트랙 변경하기 클래스 */
@@ -30,13 +34,135 @@ body{
     border-radius: 5px;
 }
 
+
+
+/* 메뉴 공통초기화  */
+ul,ol{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /* 3무 */
+}
+/* 플롯해제 */
+ul::after, ol::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+/* 메뉴 옆으로 흐르게 */
+li{
+    float: left;
+}
+
+
+
 /* 1. 상단영역 */
+.top{
+    position: relative;
+    /* 부모자격 - .gnb>ul>li::after */
+    background-color: #ffffff5e;
+    padding-top: 20px;
+    border-bottom: 1px solid #ccc;/* 하단구분선 */
+  
+}
 
 /* 로고 */
-.logo img{ 
-    margin-top: 45px;
-    margin-left: 70px;
+h1.logo{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    /* 내부에 있는 인라인 컨텐츠 중앙정렬 */
 }
+h1.logo img{ 
+   width: 100px;
+}
+
+/* gnb메뉴 */
+.gnb{
+    width: 635px;/* 메뉴 가로길이 */
+    margin: 0 auto;
+    
+}
+.gnb>ul{
+
+}
+
+.gnb>ul>li{
+    padding: 0 17px;/* 양쪽을 동일하게 밀고 사이간격은 34px(17,17) */
+}
+.gnb>ul>li>a{
+    color: #000;
+    text-decoration: none;/* 밑줄없애기 */
+    font-size: 13px;
+    line-height: 54px;
+    height: 54px;/* 위아래 꽉채우기 */
+    display: block;/* 높이값 적용위해 */
+    box-sizing: border-box;/* 보더, 패딩 내부로 포함 */
+}
+
+/* 상위 메뉴에 오버시 보더 밑줄만들기 */
+.gnb>ul>li>a:hover{
+    border-bottom: 4px solid red;
+}
+
+
+
+/* 서브메뉴 */
+.smenu{
+    position: absolute;
+    /* background-color: #fff; */
+
+    /* 서브메뉴 숨기기 */
+    height: 0;
+    overflow: hidden;
+
+    /* 부모li 가상요소 앱솔루트 보다 위로! */
+    z-index: 1;
+
+    /* 트랜지션: 속시이지 */
+    transition: height .4s ease-out;
+}
+.smenu li{
+    float: none;/* 플롯없앰 */
+}
+.smenu a{
+    color: #000;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 30px;
+}
+/* 상위메뉴 마우스 오버시 서브메뉴 보이기  */
+.gnb>ul>li:first-child:hover .smenu{
+    height: 90px;}
+.gnb>ul>li:first-child:hover::after{
+    height: 100px;
+    border-bottom: 2px solid red;
+}
+.gnb>ul>li:nth-child(3):hover .smenu{
+    height: 120px;
+}
+.gnb>ul>li:nth-child(4):hover .smenu{
+    height: 60px;
+}
+
+/* JS없이 가상요소로 서브메뉴 전체 배경 깔아주기  */
+/* top값없이 젠틀하게 하려고 ::after를 사용함! */
+.gnb>ul>li::after{
+    content: '';
+    display: block;/* 명시적 block코딩 */
+    position: absolute;/* 앱솔루트는 자동block */
+    left: 0;/* 나의 부모는? .top */
+    width: 100%; /* 부모요소를 꽉 채움 */
+    height: 0px; /* 처음에 안보임! */
+
+    background-color: #fff;
+
+    /* 부모요소 .top의 하단 보더 보아게 하기위해 마진탑사용 */
+    margin-top: 1px;
+     /* 트랜지션: 속시이지 - .smenu와 동일! */
+     transition: height .4s ease-out;
+}
+
 
 /* 2. 메인영역 */
 
