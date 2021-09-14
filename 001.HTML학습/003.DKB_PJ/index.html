@@ -3,8 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 모바일 뷰포트 필수!!!
+    뷰포트란? 모바일폰의 물리적 크기의 실제 픽셀을 맞춰 보여주는것!
+    content 속성값의 뜻
+    width=device-width 화면의 가로크기를 디바이스의(기기)의 물리적 가로크기에 맞춰라!
+    initial-scale=1.0 처음 로딩시 화면 픽셀크기를 디바이스 크기와 같은(1.0) 크기로 시작한다.
+    -->
     <title>쓸쓸하고 찬란하신(神) 도깨비</title>
     <link rel="stylesheet" href="./css/main.css">
+    <!-- 미디어쿼리는 본CSS아래에 불러온다! -->
+    <link rel="stylesheet" href="./css/media.css">
 </head>
 
 <body class="scbar">
@@ -77,6 +86,8 @@
                 </li>
             </ul>
         </nav>
+            <!-- 전체메뉴버튼 -->
+        <buttom class="ham" onclick="yogi('0')">≡</buttom>
     </header>
     <section class="wrap">
 

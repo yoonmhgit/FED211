@@ -6,6 +6,9 @@ html, body {
     margin: 0;
     padding: 0;
     /* height: 100%; 보이는 화면 높이값 채우기 */
+    overflow-x: hidden;
+    /* 뷰포트 적용시 내용이 넘쳐서 x축 스크롤공간이 비어보일경우
+    이 코드를 설정한다 */
 }
 
 /* 스크롤바 트랙 변경하기 클래스 */
@@ -54,6 +57,24 @@ li{
   
 }
 
+      /* 햄버거버튼 */
+      .ham{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        width: 50px;
+        height: 70px;
+        font-size: 40px;
+
+        border: none;
+        background-color: transparent;/* 배경 투명으로 없애기 */
+        cursor: pointer;/* 손가락모양 */
+
+        display: none;/* 처음에 안보임 */
+    }
+
+
 /* 로고 */
 h1.logo{
     margin: 0;
@@ -67,7 +88,9 @@ h1.logo img{
 
 /* gnb메뉴 */
 .gnb{
-    width: 635px;/* 메뉴 가로길이 */
+    max-width: 635px;/* 메뉴 가로길이 */
+    /* 최대크기 635px을 유지하다가 화면이
+    635px보다 작아지면 width:auto적용! */
     margin: 0 auto;
     
 }

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot PJ</title>
+      <style>
+        body{
+            /* 배경: 색이반고윙/크 */
+            background: url(./images/bg.jpg)
+            no-repeat fixed top/cover;
+        }
+        body>*{
+            outline: 5px dashed lime;
+        }
+
+        /* 로봇머리 */
+        #head{
+            position: relative;
+            /* 부모자격 */
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            /* 마영오 */
+            margin-top: 100px;
+            background: url(./images/metal01.jpg)
+            no-repeat center/cover;
+        }
+        /* 눈1 */
+        #eye1{
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            /* 앱솔 : 나의 부모는? -렐러티브 */
+            width: 50px;
+            height: 50px;
+            background: url(./images/e1.jpg)
+            no-repeat 0/100% 100%;
+        }
+        /* 눈2 */
+        #eye2{
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            /* 앱솔 : 나의 부모는? -렐러티브 */
+            width: 50px;
+            height: 50px;
+            background: url(./images/e2.jpg)
+            no-repeat 0/100% 100%;
+        }
+        /* 코 */
+        #nose {
+            position: absolute;
+            top: 108px;
+            left: 100px;
+            /* 나의부모는? #head */
+            width: 50px;
+            height: 70px;
+            background: url(images/nose.jpg) no-repeat 0/110% 100%;
+        }
+                /* 입 */
+                #mouth {
+            position: absolute;
+            bottom: 9px;
+            left: 74px;
+            /* 나의부모는? #head */
+            width: 100px;
+            height: 50px;
+            background: url(images/mouth.png) no-repeat 0/100% 100%;
+        }
+                /* 귀 공통 */
+                .ear {
+            position: absolute;
+            top: 80px;
+            /* 나의 부모는? #head */
+            width: 50px;
+            height: 80px;
+            background: url(images/metal02.jpg) no-repeat 0/100% 100%;
+        }
+
+        /* 왼귀 */
+        #ear1 {
+            left: -50px;
+        }
+
+        /* 오른귀 */
+        #ear2 {
+            right: -50px;
+        }
+     
+        /* 로봇몸통 */
+        #body{
+            position: relative;
+            /* 부모자격 */
+            width: 250px;
+            height: 300px;
+            margin: 0 auto;
+            margin-top: 50px;
+            background: url(./images/metal01.jpg)
+            no-repeat center/cover;
+        }
+        /* 목 */
+        #neck{
+            position: absolute;
+            top: ;
+            left: ;
+            /* 부모는? #body */
+            width: 50px;
+            height: 50px;
+            background: url(./images/metal02.jpg)
+            no-repeat 0/100% 100%;
+        }
+    </style>
+</head>
+<body>
+  <!-- 로봇머리 -->
+  <div id="head">
+      <!-- 눈1 -->
+      <div id="eye1"></div>
+      <!-- 눈2 -->
+      <div id="eye2"></div>
+      <!-- 코 -->
+      <div id="nose"></div>
+      <!-- 귀1 -->
+      <div id="ear1" class="ear"></div>
+      <!-- 귀2 -->
+      <div id="ear2" class="ear"></div>
+      <!-- 입 -->
+      <div id="mouth"></div>
+  </div>
+
+  <!-- 로봇몸통 -->
+  <!-- #body>#neck+#arm1.part+#arm2.part+#leg1.part+leg2.part -->
+    <div id="body">
+        <div id="neck"></div>
+        <div id="arm1" class="part"></div>
+        <div id="arm2" class="part"></div>
+        <div id="leg1" class="part"></div>
+        <leg2 class="part"></leg2>
+    </div>
+</body>
+</html>
