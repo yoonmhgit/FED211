@@ -5,19 +5,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%; /* 보이는 화면 높이값 채우기 */
-}
-
-body{
-   /* 배경을 한번에 셋팅하기 */
-   /* background: 색 이미지 반복 고정 위치/크기;
-   background: 색이반고윙/크; */
-    background: 
-    url(../images/bg_logo_a_01.png)
-    no-repeat fixed 10% 20%/10%/* 가로 세로 */,
-    url(../images/bg_mainvisual.jpg)
-    no-repeat fixed center/cover;
-    /* 배경이미지를 여러개 사용할 경우 먼저 쓴것이 위에온다! */
+    /* height: 100%; 보이는 화면 높이값 채우기 */
 }
 
 /* 스크롤바 트랙 변경하기 클래스 */
@@ -131,6 +119,7 @@ h1.logo img{
     font-size: 13px;
     line-height: 30px;
 }
+
 /* 상위메뉴 마우스 오버시 서브메뉴 보이기  */
 .gnb>ul>li:first-child:hover .smenu{
     height: 90px;}
@@ -141,8 +130,16 @@ h1.logo img{
 .gnb>ul>li:nth-child(3):hover .smenu{
     height: 120px;
 }
+.gnb>ul>li:nth-child(3):hover::after{
+    height: 130px;
+    border-bottom: 2px solid red;
+}
 .gnb>ul>li:nth-child(4):hover .smenu{
     height: 60px;
+}
+.gnb>ul>li:nth-child(4):hover::after{
+    height: 70px;
+    border-bottom: 2px solid red;
 }
 
 /* JS없이 가상요소로 서브메뉴 전체 배경 깔아주기  */
@@ -163,21 +160,39 @@ h1.logo img{
      transition: height .4s ease-out;
 }
 
+/* 메인,하단 랩핑박스 */
+.wrap{
+       /* 배경을 한번에 셋팅하기 */
+   /* background: 색 이미지 반복 고정 위치/크기;
+   background: 색이반고윙/크; */
+   background: 
+   url(../images/bg_logo_a_01.png)
+   no-repeat fixed 10% 25%/10%,
+   url(../images/bg_mainvisual.jpg)
+   no-repeat fixed center/cover;
+   /* 배경이미지를 여러개 사용할 경우 먼저 쓴것이 위에온다! */
+}
+/* 가로 세로 */
 
 /* 2. 메인영역 */
+.cont{
+    min-height: 800px;
+    /* 최소높이 800유지~! */
+}
 
 /* 케릭터 박스 */
 #cbx{
+    position: relative;
+    top: 400px;/* 원래위치에서 아래로 400px이동 */
     width: 90%;
-    height: 450px;
     /* height: 300px; 
         높이값이 없을때 자식요소 float때문에
         자식요소를 인식하지 못함!
         높이값이 없을때 높이값이 안나옴!
     */
     margin: 0 auto;
-     margin-top: 50px;
-    /* 마영오! - 가로중앙정렬 */
+     /* margin-top: 50px; */
+    /* 마영오! - 가로중앙정렬(relative일때도 적용됨!) */
     
     /* outline:  5px dashed #999; */
      /* 보더랑 아웃라인구분 */
@@ -209,14 +224,14 @@ h1.logo img{
     /* 가이드라인 */
     
     /* 트랜지션: 속시이지 */
-    transition: margin-top .8s ease-in-out;
+    transition: margin-top .6s ease-in-out;
 }
 
 
 
 /* 캐릭터 개별박스(.cat)에 마우스오버시 마진top올라가기 */
 .cat:hover{
-    margin-top: -50px;
+    margin-top: -200px;
 }
 /* 캐릭터 이미지 */
 .ci>img{/* 직계자식 이미지만 ! */
@@ -294,7 +309,7 @@ h1.logo img{
         ->>>>> 마우스 오버시 이징설정시 양방향을 모두 같은 설정으로 하고자 할때는 over에
                 설정말고 원본에 설정한다 -> over아닌곳에 설정함!!!
 */      
-transition: height .8s ease-in-out;  
+transition: height .6s ease-in-out;  
     
    }
    
