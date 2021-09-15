@@ -4,7 +4,17 @@
 <head>
     <meta charset="utf-8">
     <title>웹폰트 CDN방식으로 적용하기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Finger+Paint&display=swap" rel="stylesheet">
+    <!-- 
+        font-family: 'Anton', sans-serif;
+        font-family: 'Finger Paint', cursive;
+     -->
+     <!-- 
+        font-family: 'Grand Hotel', cursive;
+        font-family: 'Pompiere', cursive;
+      -->
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Pompiere&display=swap');/* 꼭 상단에 쓰기 */
         /* 
             [ CDN 방식으로 웹폰트 불러오기 ]
             - Content Delivery Network
@@ -28,6 +38,12 @@
             2. link태그 방식 / @import방식 중 선택하여
             소스에 붙여 넣는다
             3. 지정된 CDN 웹폰트 이름으로 적용한다
+
+            [link 방식과 @import 방식 중 어떤것을 더 많이 쓰나?]
+            -외부 CSS를 사용한다면 그 파일에서 @import하여
+            하나의 파일로 만든 후 html파일에서 한번만
+            link방식으로 호출하면 효율성이 더 좋아지므로 
+            @import방식을 더 많이 쓴다~!
             
              */
         /* import방식 CDN 웹폰트 */
@@ -37,18 +53,22 @@
         /* CDN 웹폰트 적용하기 */
         .cdn1 {
             color: darkviolet;
+            font-family: 'Anton', sans-serif;
         }
 
         .cdn2 {
             color: darkgreen;
+            font-family: 'Finger Paint', cursive;
         }
 
         .cdn3 {
             color: darkred;
+            font-family: 'Grand Hotel', cursive;
         }
 
         .cdn4 {
             color: darkcyan;
+            font-family: 'Pompiere', cursive;
         }
     </style>
 </head>

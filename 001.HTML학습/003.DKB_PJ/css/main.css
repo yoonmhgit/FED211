@@ -1,4 +1,20 @@
 @charset "utf-8";
+
+/* 글씨체 */
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Kirang+Haerang&display=swap'); 
+/* 
+font-family: 'Jua', sans-serif;
+font-family: 'Kirang Haerang', cursive;
+*/
+.gnb{
+    font-family: 'Jua', sans-serif;
+}
+.cd h3{
+    font-family: 'Kirang Haerang', cursive;
+}
+.cd p{
+    font-family: 'Jua', sans-serif;
+}
 /* 도깨비 메인 CSS -main.css */
 
 /* 초기화 셋팅 */   
