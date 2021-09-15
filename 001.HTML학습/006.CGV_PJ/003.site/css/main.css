@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* cgvpj 메인 css - main.css */
+
+/* 외부css파일 합치기(merging) */
+@import url(./reset.css);
+@import url(./core.css);
+
+/* 외부파일 합치는 @import는 하나의 CSS외부파일에서
+다른 외부CSS파일을 하나의 문서로 합치는 기능을 한다.
+html에서 link방식의 요철을 최소화 할 수 있어서 렌더링 효율성을 높여준다! */
+
+body{
+    background-color: #000;
+    /* 전체 검정색 배경 */
+}
+
+/* 레이아웃 공통 클래스 */
+.part{
+    width: 1200px;
+    margin: 0 auto;/* 가로중앙 */
+    outline: 3px dotted yellow;/* 가이드라인 */
+}
+
+/* 1. 상단영역 */
+#top{
+    height: 80px;
+}
+
+/* 2. 메인영역 */
+#cont{
+    height: 788px;
+    background: url(../images/bg.jpg) no-repeat;/* 사이즈가 딱 맞기 때문에 하나만 적음 */
+}
+
+/* 3. 하단영역 */
+#info{
+    height: 100px;
+}

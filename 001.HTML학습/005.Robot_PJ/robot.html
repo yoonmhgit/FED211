@@ -9,24 +9,26 @@
         html,body{
             margin: 0;
             padding: 0;
-            overflow-x: hidden;/* 가로스크롤 숨기기 */
-
+            overflow-x: hidden;
+            /* 가로스크롤 숨기기 */
         }
+
         body {
             /* 배경: 색이반고윙/크 */
             background: url(./images/bg.jpg) no-repeat fixed top/cover;
         }
 
-        body>* {
-            /* outline: 5px dashed lime; */
-        }
-
+        /* body>*{
+            outline: 5px dashed lime;
+        } */
+  
         /* 로봇 페이지 로고 */
         h1#logo {
             position: fixed;
-            top: 50px;
-            left: 50px;
-            /* 픽스드는 무조건 화면기준 */
+            top: calc(50% - 100px);
+            left: calc(50% - 100px);
+            /* calc(%값 - px값) 정중앙셋팅 */
+            /* 무조건 화면기준! */
             width: 200px;
             height: 200px;
             border: 2px solid #ccc;
@@ -35,18 +37,19 @@
             box-sizing: border-box;
             /* 패딩,보더포함-크기유지 */
 
-            /* 글자 중앙 */
+            /* 글자중앙 */
             text-align: center;
             color: #fff;
             line-height: 196px;
             /* 보더가 4px이므로 뺌 */
-            font-family: "Vladimir script";
+            font-family: "Vladimir Script";
             font-size: 60px;
             text-shadow: 2px 2px 2px #000;
             /* 글자그림자 */
-            box-shadow: 0 0 40px 10px pink;
-            /* 박스그림자 */
-            /* box-shadow: x축 y축  블러 스프레드(퍼짐) 색; */
+
+            box-shadow: 0 0 20px 5px pink,
+                inset 0 0 20px 5px #000;
+
             /* [ 박스 그림자 ] - 밝은색을 쓰면 glow효과임!
             box-shadow: inset x축 y축  blur spread 색;
             blur 그림자 경계선 흐림 
@@ -54,7 +57,6 @@
             inset을 쓰면 내부그림자로 전환됨(생략하면 일반그림자)
             -> 콤마로 셋팅하면 여러개의 그림자 효과를 줄 수 있다!
             */
-
 
             background: pink url(./images/robot_03.png) no-repeat;
             background-position: center 10px;
@@ -64,27 +66,58 @@
 
             margin: 0;
             padding: 0;
+
+            /* 애니메이션: 이시이지반방마 */
+            animation: logoAni 2s ease-in-out 1s forwards;
+            /* 1초후에 2초간 처음과 마지막에 천천히 
+            애니후 끝상태유지(기본값은 1번만 실행!) */
         }
 
-        /* 로봇머리 */
+        /* 애니메이션 키프레임 */
+        @keyframes logoAni {
+            /* 시작설정 - 처음값이 CSS원본과 같으면 생략! */
+            /* from{
+                top: calc(50% - 100px);
+                left: calc(50% - 100px);
+            } */
+            /* 끝설정 */
+            to{
+                top: 50px;
+                left: 50px;
+            }
+        }/* 키프레임 */
+
+
+
+        /* 로봇 머리 */
         #head {
             position: relative;
             /* 부모자격 */
-            left: 100%;/* 화면오른쪽에 나가있음 */
+            left: 100%;/* 화면오른쪽 바깥에 나가있음! */
             width: 250px;
             height: 250px;
             margin: 0 auto;
-            /* 마영오 */
+            /* 마영오! */
             margin-top: 100px;
             background: url(./images/metal01.jpg) no-repeat center/cover;
+
+            /* animation: 이시이지반방마 */
+            animation: RAni .6s ease-out 3s forwards;
         }
+
+        /* 애니메이션 키프레임 - 머리와 몸 공통 애니키프레임 */
+        @keyframes RAni {
+            to{
+                left: 0;
+            }
+        }/* 키프레임 */
 
         /* 눈1 */
         #eye1 {
             position: absolute;
             top: 50px;
             left: 50px;
-            /* 앱솔 : 나의 부모는? -렐러티브 */
+            /* 나의 부모는? */
             width: 50px;
             height: 50px;
             background: url(./images/e1.jpg) no-repeat 0/100% 100%;
@@ -95,7 +128,7 @@
             position: absolute;
             top: 50px;
             right: 50px;
-            /* 앱솔 : 나의 부모는? -렐러티브 */
+            /* 나의 부모는? */
             width: 50px;
             height: 50px;
             background: url(./images/e2.jpg) no-repeat 0/100% 100%;
@@ -143,45 +176,49 @@
             right: -50px;
         }
 
-        /* 로봇몸통 */
+        /* 로봇 몸통 */
         #body {
             position: relative;
             /* 부모자격 */
-            left: -100%;/* 왼쪽에 나가있음 */
+            left: -100%;/* 화면왼쪽에 나가있음! */
             width: 250px;
             height: 300px;
             margin: 0 auto;
+            /* 마영오! */
             margin-top: 50px;
             background: url(./images/metal01.jpg) no-repeat center/cover;
+
+            /* animation: 이시이지반방마 */
+            animation: RAni .6s ease-out 3s forwards;
         }
 
         /* 목 */
         #neck {
             position: absolute;
             top: -50px;
-            left: 105px;
+            left: 100px;
             /* 부모는? #body */
             width: 50px;
             height: 50px;
             background: url(./images/metal02.jpg) no-repeat 0/100% 100%;
         }
 
-        /* 팔다리공통 */
+        /* 팔,다리 공통 */
         .part {
             position: absolute;
             /* 위치이동시 나의부모? #body */
             width: 50px;
             height: 250px;
-            background: url(./images/metal02.jpg) repeat-y 0/100% 100%;
+            background: url(./images/metal02.jpg) repeat-y 0/100%;
         }
 
         /* 왼팔 */
-        #arm2 {
+        #arm1 {
             left: -50px;
         }
 
         /* 오른팔 */
-        #arm1 {
+        #arm2 {
             right: -50px;
         }
 
@@ -210,13 +247,13 @@
         #screen {
             position: absolute;
             top: 17px;
-            left: 12px;
+            left: 13px;
             /* 나의 부모는? #tv */
-            width: 141px;
-            height: 104px;
-            background-color: rgb(0, 0, 0);
+            width: 138px;
+            height: 105px;
+            background-color: #000;
             border-radius: 21px;
-            /* 모서리 둥글게 */
+            /* 모서리둥글게 */
             overflow: hidden;
             /* 넘치는 자식요소 숨기기 */
         }
@@ -226,11 +263,11 @@
             position: absolute;
             top: -16px;
             left: -76px;
+            /* 부모는? #screen */
             width: 213%;
             height: 128%;
             border: none;
             /* 0도 됨 */
-
         }
 
         /* 로봇설명박스 */
@@ -241,15 +278,16 @@
             border: 3px solid #fff;
             border-radius: 20px;
             padding: 15px 30px;
+            /* 패딩 : 위아래 양쪽 */
 
             color: #fff;
             /* 글자색 */
             text-shadow: 1px 1px 1px #000;
             /* 글자그림자: x y 블러 색 */
-            background-color: rgba(0, 0, 0, 0.455);
+            background-color: rgba(0, 0, 0, 0.527);
             /* 반투명 배경색 */
             box-shadow: inset 0 0 60px cyan;
-            /* 박스 내부 그림자 글로우효과~!~!~! */
+            /* 박스 내부그림자 글로우효과 */
         }
         /* 로봇설명제목 */
         #rdesc h2{
@@ -258,107 +296,110 @@
             font-size: 35px;
             /* 글자크기 */
             text-align: center;
-            /* 글자중앙 */
+            /* 글자정렬중앙 */
         }
         /* 설명출처 */
-        #rdesc small{
-            text-align: center;/* 글자중앙적용 */
-            display: block;/* 원래 inline을 변경함 */
-            color: #ff0;
-        }
-
-        /* 설명문단 */
-        #rdesc p{
-            font-size: 15px;
-            /* 글자크기 */
-            line-height: 25px;
-            /* 줄간격 */
-            letter-spacing: 1px;
-            /* 자간 */
-            word-spacing: 2px;
-            /* 단어간격 */
-
-            /* 가독성을 위한 다단설정 */
-            /* 다단표기(다중열속성)(단나누기) */
-            column-count: 3;
-            /* 단갯수 */
-            column-rule: 5px dotted lime;
-            /* 단구분선 - 값설정은 보더와같다(두께 종류 색상) */
-            column-gap: 50px;
-            /* 단사이 간격 */
-            text-align: justify;/* 양쪽정렬 */
-            word-break: break-all;
-            /* 양쪽정렬로 이상하게 되어있는 문장을 단어깨기를 해서 자연스럽게만든다 */
-            text-indent: 20px;
-            /* 첫줄 들여쓰기(마이너스는 반대방향) */
-        }
-     /* 첫글자 크게하기 -> ::first-letter */
-     #rdesc p::first-letter{
-         font-size: 30px;
-         font-weight: bold;
-         color: lightsalmon;
-     }
-
-     /* CSS로 애니메이션 하기! */
-
-     /* 시간에따라 CSS설정을 변경하여 애니메이션을 하도록 키프레임설정하고
-     이것을 의도된 연출을 구현하는것이 CSS애니메이션이다!
-     
-     [애니메이션 키프레임 만들기]
-
-     1.두장면 키프레임
-     @keyframes 키프레임이름{
-     from{시작CSS설정}
-     to{끝나는CSS설정}
-     }
-
-     또는 
-     @keyframes 키프레임이름{
-     0%{시작CSS설정}
-     100%{끝나는CSS설정}
-     }
-
-     -> 만약 from설정과 초기설정이 같다면 from은 생략가능!
-
-     2. 여러장면 키프레임
-    @keyframes 키프레임이름{
-     0%{CSS설정}
-     10%{CSS설정}
-     20%{CSS설정}
-     ....
-     90%{CSS설정}
-     100%{CSS설정}
+    #rdesc small{
+        display: block;/* 원래 inline을 변경함 */
+        text-align: center;/* 글자중앙적용! */
+        color: #ff0;
     }
 
-    -장면 시간계산은 ? 전체시간 * %소수점변경수치(50% -> 0.5%)
-    -전체시간은 호출시 설정
+    /* 설명문단 */
+    #rdesc p{
+        font-size: 15px;
+        /* 글자크기 */
+        line-height: 25px;
+        /* 줄간격 */
+        letter-spacing: 1px;
+        /* 자간 */
+        word-spacing: 2px;
+        /* 단어간격 */
 
-    [설정된 키프레임 호출하는 방법]
-    
+        /* 가독성을 위한 다단설정 */
+        /* 다단표기(다중열속성) */
+        column-count: 3;
+        /* 다중열 개수 */
+        column-rule: 5px dotted lime;
+        /* 다중열 구분선 - 값설정은 보더와 같음(두께 종류 색상) */
+        column-gap: 50px;
+        /* 다중열 사이간격 - 구분선 오른쪽 간격조정 */
 
+        text-align: justify;
+        /* 양쪽정렬 */
+        word-break: break-all;
+        /* 단어깨기-다깨! 단어단위로 붙어있는 것을 철자하나씩깸*/
+        text-indent: 20px;
+        /* 첫줄 들여쓰기(마이너스는 반대방향) */
+    }
+    /* 첫글자 크게하기!!! -> 가상요소::first-letter */
+    #rdesc p::first-letter {
+        font-size: 30px;
+        font-weight: bold;
+        color: lightsalmon;
+    }
 
+    /* 
+        [ CSS로 애니메이션 하기! ]
 
+        - 시간에 따라 CSS설정을 변경하여 애니메이션을 하도록
+        키프레임을 설정하고 이것을 호출함으로 의도된 연출을
+        구현하는 것이 CSS 애니메이션이다!
 
-    
-    animation: 이시이지반방마;
-    (이름 시간 이징 지연 반복 방향 마지막상태)
+        [ 애니메이션 키프레임 만들기 ]
 
-    1)이름(animation-name) : keyframe 이름
-    2)시간(animation-duration) : 애니메이션 동작이산(단위:s)
-    3)이징(animation-timing-function) : easing 가속도
-    4)지연(animation-delay) : 애니메이션 지연시간(s단위)
-    5)반복여부(animation-iteration-count) : 애니메이션 반복횟수
-                - 기본값 1, 숫자를 쓰면 반복횟수
-                - 영원히는 infinite(인피니트)
-    6)방향(animation-direction) : 시작 -> 끝
-                - 대체경로 설정하기 : alternate
-                                시작->끝, 끝->시작
-                - 대체경로는 반복횟수가 2이상 또는 infinite 
-    7)마지막상태(animation-fill-mode) : 애니메이션이 끝났을때
-                -처음으로 돌아가는 것이 기본!
-                -마지막상태를 유지하고 싶을때 forwards (앞쪽에...즉, 애니 끝장면)
-     */
+        1. 두장면 키프레임
+        @keyframes 키프레임이름 {
+            from{시작CSS설정}
+            to{끝나는CSS설정}
+        }
+        또는
+        @keyframes 키프레임이름 {
+            0%{시작CSS설정}
+            100%{끝나는CSS설정}
+        }
 
+        -> 만약 from설정과 초기설정이 같다면 from은 생략가능!
+
+        2. 여러장면 키프레임
+        @keyframes 키프레임이름 {
+            0%{CSS설정}
+            10%{CSS설정}
+            20%{CSS설정}
+            ....
+            90%{CSS설정}
+            100%{CSS설정}
+        }
+
+        - 장면에 대한 시간 계산은? 
+            -> 전체시간 * %소수점변경수치
+        - 전체시간은 호출시 설정함!
+        - %소수점변경수치는 몇%/100 
+            -> 예) 50%는 0.5 (소수점2자리이동!)
+
+        [ 설정된 키프레임 호출하는 방법 ]
+
+        animation: 이시이지반방마;
+        (이름 시간 이징 지연 반복 방향 마지막상태)
+
+        1) 이름(animation-name) : keyframe 이름
+        2) 시간(animation-duration) : 
+                    애니메이션 동작시간(초단위:s)
+        3) 이징(animation-timing-function) : easing 가속도
+        4) 지연(animation-delay) : 애니메이션 지연시간(s단위)
+        5) 반복여부(animation-iteration-count) :
+                    애니메이션 반복횟수
+                    - 기본값 1, 숫자를 쓰면 반복횟수
+                    - 영원히는 infinite(인피니트)
+        6) 방향(animation-direction) : 시작 -> 끝
+            - 대체경로 설정하기 : 
+                alternate 시작->끝, 끝->시작
+            - 대체경로는 반복횟수가 2이상 또는 infinite
+        7) 마지막상태(animation-fill-mode) : 애니메이션이 끝났을때
+            - 처음으로 돌아가는 것이 기본!
+            - 마지막상태를 유지하고 싶을때 
+            forwards (앞쪽에... 즉, 애니끝장면)
+    */
 
 
 
@@ -367,9 +408,9 @@
 
 <body>
     <!-- 로봇 페이지 로고 -->
-    <h1 id="logo">r2d2</h1>
+    <h1 id="logo">R2D2</h1>
 
-    <!-- 로봇머리 -->
+    <!-- 로봇 머리 -->
     <div id="head">
         <!-- 눈1 -->
         <div id="eye1"></div>
@@ -385,8 +426,7 @@
         <div id="mouth"></div>
     </div>
 
-    <!-- 로봇몸통 -->
-    <!-- #body>#neck+#arm1.part+#arm2.part+#leg1.part+leg2.part -->
+    <!-- 로봇 몸통 -->
     <div id="body">
         <div id="neck"></div>
         <div id="arm1" class="part"></div>
@@ -396,13 +436,14 @@
         <!-- tv -->
         <div id="tv">
             <div id="screen">
-                <iframe src="https://www.youtube.com/embed/24iEAmpWn-0"></iframe>
+                <iframe src="https://www.youtube.com/embed/RMD91n01DuA"></iframe>
                 <!-- 
                     iframe 요소 (inline frame)
-                    -다른 url의 외부 페이지를 호출하여
+                    - 다른 url의 외부 페이지를 호출하여
                     한 페이지안에 보여줄때 사용하는 요소
-                    -src 속성 : 실제 불러올 페이지 경로
-                    -스타일시트에서 width, height, border:0; 등 설정을 해준다!(기본 보더가 있음)
+                    - src 속성 : 실제 불러올 페이지 경로
+                    - 스타일 시트에서 width, height, border:0;
+                        등 설정을 해준다!(기본보더가 있음)
                  -->
             </div>
         </div>
@@ -416,15 +457,6 @@
         <small>From Wikipedia, the free encyclopedia</small>
         <!-- 내용단락 -->
         <p>
-            This article is about mechanical robots. For software agents, see Bot. For other uses of the term, see Robot
-            (disambiguation).
-
-            ASIMO (2000) at the Expo 2005
-
-            Articulated welding robots used in a factory are a type of industrial robot
-
-            The quadrupedal military robot Cheetah, an evolution of BigDog (pictured), was clocked as the world's
-            fastest legged robot in 2012, beating the record set by an MIT bipedal robot in 1989.[1]
             A robot is a machine—especially one programmable by a computer—capable of carrying out a complex series of
             actions automatically.[2] A robot can be guided by an external control device, or the control may be
             embedded within. Robots may be constructed to evoke human form, but most robots are task-performing
@@ -440,6 +472,7 @@
             <br><br>
             The branch of technology that deals with the design, construction, operation, and application of robots,[5]
             as well as computer systems for their control, sensory feedback, and information processing is robotics.
+            <br><br>
             These technologies deal with automated machines that can take the place of humans in dangerous environments
             or manufacturing processes, or resemble humans in appearance, behavior, or cognition. Many of today's robots
             are inspired by nature contributing to the field of bio-inspired robotics. These robots have also created a
@@ -459,7 +492,7 @@
             commercial, digital and programmable robot was built by George Devol in 1954 and was named the Unimate. It
             was sold to General Motors in 1961 where it was used to lift pieces of hot metal from die casting machines
             at the Inland Fisher Guide Plant in the West Trenton section of Ewing Township, New Jersey.[9]
-            <br><br>
+<br><br>
             Robots have replaced humans[10] in performing repetitive and dangerous tasks which humans prefer not to do,
             or are unable to do because of size limitations, or which take place in extreme environments such as outer
             space or the bottom of the sea. There are concerns about the increasing use of robots and their role in
