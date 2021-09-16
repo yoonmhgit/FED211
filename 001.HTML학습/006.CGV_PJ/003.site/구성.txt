@@ -1,0 +1,17 @@
+----------------3단구성------------------------
+
+
+    <!-- 1. 상단영역 -->
+    <header id="top" class="part">
+
+
+    </header>
+    <!-- 2. 메인영역 -->
+    <main id="cont" class="part">
+
+
+    </main>
+    <!-- 3. 하단영역 -->
+    <footer id="info" class="part">
+
+        1. 레이아웃 잡기
