@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>스타벅스 연습</title>
+        <style>
+            body{
+                background: #000 url(starbucks_img/reserve_bg.jpg) no-repeat top/100%;
+            }
+
+            /* 
+                10. 앞뒤로 있는 이미지 뒤집기
+                - 셋팅: 한박스 안에 이미지가 2장 있으므로 겹쳐지게 하기위해 이미지
+                포지션을 absolute로 준다!
+                - 앱솔루트 끼리는 서로 겹쳐진다
+                - 순서는 나중에 그려진요소가 위에 온다
+               */
+
+                #trans10 {
+                    width: 334px;
+                    height: 334px;
+                    margin: 100px auto;
+                }
+
+               /* 2개의 이미지를 겹치게한다 */
+               #trans10 img{
+                   position: absolute;
+                   /* width: 200px; */
+                   /* 가로크기가 100%이므로 변경 */
+                   /* 
+                        앱솔루트는 
+                        위치이동값(top,left등)을
+                        잡거나
+                        크기를 잡으면 부모요소를 
+                        찾아서 그 기준에 맞춘다!
+
+                        반면!!!!!!!!
+                        위치값을 안주면 젠틀하다!!!
+                        젠틀하다는 의미는....
+                        앱솔루트 위의 스테틱요소를
+                        존중하여 그 아래에 위치하거나
+                        어떤 박스안에 있다면 
+                        그 박스안에 그대로 있는 것!
+
+                        -> 여기서는 위치값을
+                        쓰지말고 젠틀하게 쓰자!
+                    */
+               }
+
+               /* 1. 보거미 처음상태(돌아옴) */
+               /* Y축 0도로 돌아옴 - 0.4초 기다림 */
+               #trans10 img:last-child{
+                    transform: rotateY(0deg);
+                   /* 트랜지션: 속시이지 */
+                   transition: transform .4s ease-out .4s;
+               }
+               /* 2. 보거미 오버상태 */
+               /* Y축 90도회전 - 회전후 안보임*/
+               #trans10:hover img:last-child{
+                   transform: rotateY(90deg);
+                   /* 트랜지션: 속시이지 */
+                   transition: transform .4s ease-in;
+               }
+               /* 3. 유정이 처음상태(돌아옴) */
+               /* 처음에 이미 Y축 90도 회전상태 - 안보임 */
+               #trans10 img:first-child{
+                   transform: rotateY(90deg);
+                   /* 트랜지션: 속시이지 */
+                   transition: transform .4s ease-in;
+                }
+               /* 4. 유정이 오버상태 */
+               /* Y축 0도로 회전 
+               - 보거미 0.4초 돌동안 기다렸가 0.4초돌기 */
+               #trans10:hover img:first-child{
+                   transform: rotateY(0deg);
+                   /* 트랜지션: 속시이지 */
+                   transition: transform .4s ease-out .4s;
+                }
+            
+        </style>
+    </head>
+    <body>
+        <div id="trans10">
+            <img src="starbucks_img/reserve_medal02.png" alt="매장안내">
+            <img src="starbucks_img/reserve_medal01.png" alt="스타벅스별">
+        </div>
+    </body>
+</html>
