@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robot PJ</title>
     <style>
+        html{
+            scroll-behavior: smooth;
+            /* a요소 #위치 이동시 스크롤 애니메이션필수!  */
+        }
+
         html,body{
             margin: 0;
             padding: 0;
@@ -69,9 +74,10 @@
 
             /* 애니메이션: 이시이지반방마 */
             animation: logoAni 2s ease-in-out 1s forwards,
-                    logoAni2 1s ease-in-out 3s infinite alternate;
             /* 1초후에 2초간 처음과 마지막에 천천히 
             애니후 끝상태유지(기본값은 1번만 실행!) */
+                    logoAni2 1s ease-in-out 3s infinite alternate;
+                    /* 앞의 애니시간을 기다려 3초후 한번동작을 1초간 하도록 영원히 시작-끝-시작 반복설정 */
         }
 
         /* 애니메이션 키프레임 */
@@ -231,7 +237,26 @@
         /* 오른팔 */
         #arm2 {
             right: -50px;
+            transform-origin: top;
+            /* 팔상단으로 기준점 변경 */
+
+            /* 애니메이션:이시이지반방마 */
+            animation: armAni1 .8s ease-in-out 4s forwards, armAni2 .3s ease-in-out 4.8s infinite alternate;
+
         }
+        /* 처음에 팔올리기 키프레임 */
+        @keyframes armAni1 {
+            to{
+                transform: rotate(-140deg);
+            }
+        }
+        /* 빠이빠이프레임 */
+        @keyframes armAni2 {
+            from{/* 값이 중간에 변경되어서 from필요함 */
+                transform: rotate(-140deg);
+            }
+            to{transform: rotate(-170deg);}
+        }/* 키프레임 */
 
         /* 왼다리 */
         #leg1 {
@@ -412,14 +437,60 @@
             forwards (앞쪽에... 즉, 애니끝장면)
     */
 
+        /* 글박스 유도링크 */
+        .link{
+            position: absolute;
+            top: 100px;
+            right: 50px;
+            font-size: 40px;
+            text-shadow: 2px 2px 2px #000;
+        }
 
-
+        .link a{
+            color: #fff;
+            text-decoration: none;
+        } 
+        .link a:hover{
+            color: red;
+            text-decoration: overline;
+        }
+        /* 위로가기버튼 */
+        .btnTop{
+            position: fixed; /* 부모는 보이는 화면 */
+            bottom: 50px;
+            right: 50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            background-color: #ccc;
+            color: blue;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .btnTop:hover{
+            background-color: #ff0;
+            color: red;
+        }
     </style>
 </head>
 
 <body>
     <!-- 로봇 페이지 로고 -->
     <h1 id="logo">R2D2</h1>
+
+    <!-- 내용보기 링크 타이틀 -->
+    <h2 class="link">
+        <a href="#rdesc">what is Robot?</a>
+        <!-- 
+            a요소에 href속성으로 "#아이디명"을 사용하면
+            같은 페이지 안에있는 아이디 요소박스의 상단라인으로
+            스크롤이 이동된다! (아이디만 됨)
+            ->기본기능임
+         -->
+    </h2>
 
     <!-- 로봇 머리 -->
     <div id="head">
@@ -514,6 +585,9 @@
         </p>
     </div>
 
+    <!-- 위로 이동버튼 -->
+    <a href="#" class="btnTop">TOP</a>
+    <!-- href값으로 "#"은 맨위로 이동! -->
 </body>
 
 </html>

@@ -1,28 +1,125 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGV PJ</title>
     <link rel="stylesheet" href="./css/main.css">
+    <!-- JS 코딩구역 -->
+    <script>
+
+        // 코드를 저장하여 호출시에만 실행하는 것은?
+        // -> 함수다! -> 영어로 function
+        // 형식 : function 함수명(전달변수){코드}
+        // 함수는 전화받는 사람!
+        // function은 키워드로 반드시 써야함!
+        function gogo(yo){ 
+            // yo 전달변수(이름은 개발자창작)
+            // 전달 변수는 함수호출시 보내는 값을 
+            // 담아놓는 메모리 공간의 이름!
+            // 이 이름은 따옴표로 싸면 안됨!""
+
+            //1. 함수호출확인 + 전달값확인
+            // alert(yo);
+
+            //2. 변경요구사항: 전달된 동영상 아이디값을
+            //              아이프레임의 src속성값으로 넣어준다!
+            // 기대되는 변경사항 -> 동영상이 바꿔서 play!
+            //원하는 대상: 아이프레임 -> #tg 
+            // DOM으로 JS선택하기!
+            // Document Object Model -> 돔!
+            // -> html의 구조를 따라 요소를 선택하는 방법(기술)
+            // -> 웹 페이지 지도 또는 네비게이션!
+            // 돔의 아버지는 ->>>> document
+            //document는 웹문서의 최상위 객체!
+            //접근법->>우주.우리은하.태양계.지구.대한민국.서울.강남구.테헤란로119번지
+            //점........은 하위구성요소로 들어가는 문이다!
+            //이퀄=은 같다는 뜻이 아니고 오른쪽값이 왼쪽으로 들어가는 뜻(할당)
+            //JS 명령문은 끝날때 세미콜론해준다!
+            //사실 브라우저는 ASI(auto semicolon insertion:자동 세미콜론넣기)를 해주지만 문제가 발생할 수 있으므로
+            //개발자가 직접해주는 것이 정석이다!
+            document.getElementById("tg").src = 
+            "https://www.youtube.com/embed/"+
+            yo+
+            "?autoplay=1&loop=1&playlist="+
+            yo;
+            //기존값에 yo라는 변수에 담긴 동영상아이디값을 
+            //합쳐서 src값에 할당한다!!!
+
+
+
+        } //////////////////////gogo함수////////////////
+         //////////////////////////////////////////////
+
+         
+        /* 
+            함수의 호출은 요소(태그)의 이벤트 속성과 연결하여 가능하다!
+            각 이벤트가 발생할때를 알려주는 특성이 있음
+            이벤트 속성은 on+이벤트명으로 이름지어짐
+            예)
+            onclick, ondblclick, onmouseover, onkeypress, onload 등
+
+            [이벤트 속성 구분법]
+            구성: <태그명 이벤트속성="값">
+            ->값에서 JS코드를 사용할 수 있다!
+            ->값에서 함수호출을 할 수 있다!
+            ->이벤트속성 셋팅은 JS코딩구역 에서만 할 수도 있다~!(나중엔 이렇게함-소수분리-유지보수!)
+         */
+
+
+
+
+    </script>
 </head>
+
 <body>
 
     <!-- 1. 상단영역 -->
     <header id="top" class="part">
-
+        <!-- 1-1. 페이지 타이틀 -->
+        <h1 class="tit">CGV 예고편 상영관</h1>
 
     </header>
     <!-- 2. 메인영역 -->
     <main id="cont" class="part">
-
+        <!-- 2-1. 스크린박스 -->
+        <div id="screen">
+            <iframe id="tg" src="https://www.youtube.com/embed/2hnkUpo_2yg?autoplay=1&loop=1&playlist=2hnkUpo_2yg"
+                allow="autoplay;"></iframe>
+        </div>
+        <!-- 2-2. 예고편선택메뉴 -->
+        <nav class="mlist">
+            <ul>
+                <li>
+                    <!-- 함수 호출시 보내는 문자값은 반드시 반드시 따옴표로 싼다! 그래야 문자값이다! -->
+                    <a href="#" onclick="gogo('4Aqs-ojuE_Y')"><img src="images/m1.jpg" alt="비와 당신의 이야기"></a>
+                </li>
+                <li>
+                    <a href="#" onclick="gogo('UjYC04RBOp8')"><img src="images/m2.jpg" alt="서복"></a>
+                </li>
+                <li>
+                    <a href="#" onclick="gogo('KQ0gFidlro8')"><img src="images/m3.jpg" alt="미나리"></a>
+                </li>
+                <li>
+                    <a href="#" onclick="gogo('Qh4bQK_PY90')"><img src="images/m4.jpg" alt="더 스파이"></a>
+                </li>
+                <li>
+                    <a href="#" onclick="gogo('tfmRVC_GADw')"><img src="images/m5.jpg" alt="노메드랜드"></a>
+                </li>
+                <li>
+                    <a href="#" onclick="gogo('Pj7CadRf82k')"><img src="images/m6.jpg" alt="샹치와텐 링즈의 전설"></a>
+                </li>
+            </ul>
+        </nav>
 
     </main>
     <!-- 3. 하단영역 -->
     <footer id="info" class="part">
 
-        
+
     </footer>
-    
+
 </body>
+
 </html>
