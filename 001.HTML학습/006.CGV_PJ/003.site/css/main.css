@@ -1,53 +1,248 @@
 @charset "utf-8";
-/* cgvpj 메인 css - main.css */
+/* CGV PJ 메인 CSS - main.css */
 
-/* 외부css파일 합치기(merging) */
-@import url(./reset.css);
-@import url(./core.css);
+/* 외부CSS파일 합치기(머징:merging) */
+@import url(reset.css);
+@import url(core.css);
 
-/* 외부파일 합치는 @import는 하나의 CSS외부파일에서
-다른 외부CSS파일을 하나의 문서로 합치는 기능을 한다.
-html에서 link방식의 요철을 최소화 할 수 있어서 렌더링 효율성을 높여준다! */
+/* 외부파일 합치는 @import는 하나의 CSS외부파일
+에서 다른 외부CSS파일을 하나의 문서로 합치는 기능을
+한다. html에서 link방식의 요청을 최소화 할 수 있어서
+랜더링 효율성을 높여준다! */
 
-body{
+body {
     background-color: #000;
     /* 전체 검정색 배경 */
 }
 
 /* 레이아웃 공통 클래스 */
-.part{
+.part {
     width: 1200px;
-    margin: 0 auto;/* 가로중앙 */
-    outline: 3px dotted yellow;/* 가이드라인 */
+    margin: 0 auto;
+    /* 가로중앙 */
+    /* outline: 3px dotted yellow; */
 }
 
-/* 1. 상단영역 */
-#top{
+/************** 1. 상단영역 *******************/
+#top {
+    position: relative;
+    /* 부모자격! - .gnb */
     height: 80px;
     background: url(../images/curtain.jpg) repeat-x;
+    z-index: 999;
 }
 
 /* 1-1. 페이지 타이틀 */
-.tit{
+.tit {
     color: aquamarine;
     font-size: 40px;
     line-height: 80px;
-    text-align: center;/* 글자 가운데 */
+    text-align: center;
     font-family: 'Jua', sans-serif;
 
-/* 그림자를 이용한 glow효과 */
-    text-shadow: 0 0 15px aquamarine;
+    /* 그림자를 이용한 Glow효과 */
+    text-shadow: 0 0 10px aquamarine;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: titAni 1s 0.3s ease-in-out infinite alternate;
 }
 
-/* 2. 메인영역 */
-#cont{
+/* 타이틀 글로우효과 애니메이션 키프레임 */
+@keyframes titAni{
+    to{
+        text-shadow: 0 0 5px aqua;
+    }
+}
+
+/* 1-2. 전체메뉴(GNB) */
+.gnb {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    /* 나의부모는? #top */
+}
+
+/* GNB ul 리스트 박스 */
+.glist{
+    position: relative;
+    z-index: 1;
+    /* 다음형제 요소인 #cam 앱솔박스보다 위!
+    -> 마우스 오버가 안되니까~~! */
+}
+
+/* GNB li리스트 */
+.gnb li {
+    position: relative;
+    /* 부모자격 - .smenu */
+    padding: 0 10px;
+    padding-bottom: 5px;
+    /* 하위메뉴 마진탑부분과 겹치게함! */
+    font-family: 'Jua', sans-serif;
+    /* 글자크기 미지정시 16px임! */
+    font-size: 20px;
+}
+
+/* GNB 서브메뉴 */
+.smenu {
+    position: absolute;
+    /* left와 transform을 이용한 가로 중앙정렬법! */
+    left: 50%;
+    /* 부모가로크기의 절반만큼 밀어준다! */
+    transform: translateX(-50%);
+    /* 자기자신크기의 절반을 왼쪽으로 이동! */
+    margin-top: 5px;
+    /* 상단밀기 위치조정 */
+
+    width: 150px;
+    /* 특정크기를 주지 않고 auto일 경우 부모크기로 한정됨!
+    따라서 특정크기를 줘야하는 케이스임! */
+    background: url(../images/bg_smenu.png) no-repeat center/cover;
+
+    padding: 3px;
+    /* 패딩 */
+    border-radius: 5px;
+    /* 둥근모서리 */
+    box-shadow: 0 0 5px #fff;
+    /* 박스글로우 : x y blur (spread) 색 */
+
+    display: none;
+    /* 처음에 안보임! */
+}
+
+/* 상위메뉴 오버시 서브메뉴 보이기 */
+.gnb>ul>li:hover .smenu{
+    display: block;
+}
+
+/* 가상요소로 삼각형모양 만들기 */
+.smenu::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    /* 부모는? .smenu */
+    transform: translateX(-50%);
+
+    /* 삼각형 만들기 */
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #353535;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    /* 역삼각형은 border-bottom대신 border-top을 사용! */
+    /* transparent는 투명색 - 다른표현은 rgba(0,0,0,0) */
+}
+
+.smenu ol {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.smenu li {
+    float: none;
+    /* float해제 */
+    font-size: 16px;
+    line-height: 2;
+}
+
+/* 서브메뉴 a요소 오버시 */
+.smenu a:hover {
+    color: red;
+}
+
+/* 서브메뉴 a요소 오버시 가상요소로 손가락모양 */
+.smenu a:hover::after {
+    content: '☞';
+    /* 손가락모양 */
+    float: right;
+    /* 인라인요소 오른쪽끝! */
+    font-weight: bold;
+}
+
+/* 탑 보더 클래스 */
+.tbar {
+    border-top: 1px solid #ccc;
+}
+
+/* 영사기 박스 */
+#cam{
+    position: absolute;
+    bottom: -19px;
+    right: -50px;
+    /* 부모는? .gnb */
+}
+/* 영사기 이미지 */
+#cam img{
+    position: relative;
+    /* z-index적용위해 */
+    z-index: 1;
+    /* 빔박스보다 위! */
+    width: 50px;
+    /* 트랜스폼 회전 */
+    transform: rotate(20deg);
+    /* 트랜지션: 속시이지 */
+    transition: transform .5s .3s;
+}
+/* .gnb에 마우스 오버시 회전원상복귀 */
+.gnb:hover #cam img{
+    transform: rotate(0deg);
+    transition-delay: 0;
+    /* 오버시엔 지연없이 바로실행! */
+}
+
+
+/* 빔박스 */
+.bim{
+    position: absolute;
+    top: -17px;
+    right: 9px;
+    width: 0px;
+    /* width: 200px로 트랜지션 변경할것! */
+    height: 71px;
+    background: url(../images/bim.png) no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+
+    /* 트랜지션: 속시이지 */
+    transition: width .3s linear;
+    /* linear 등속도 */
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: bimAni .04s infinite alternate;
+}
+/* .gnb에 마우스 오버시 빔등장! */
+.gnb:hover .bim{
+    width: 200px;
+    transition-delay: .5s;
+    /* 오버시 빔만 .5초 기다림(카메라 도는시간) */
+}
+
+/* 빔이 너울너울 거리도록 애니메이션 키프레임 */
+@keyframes bimAni{
+    from{
+        opacity: 0.7;
+    }
+    to{
+        opacity: 0.5;
+    }
+}/* 키프레임 */
+/* 
+    opacity 속성
+    -투명도를 주는속성
+    -0은 완전투명, 1은보임, 0.1~0.9 중간 투명도
+*/
+
+/*************** 2. 메인영역 ****************/
+#cont {
     position: relative;
     /* 부모자격 */
     height: 788px;
-    background: url(../images/bg.jpg) no-repeat;/* 사이즈가 딱 맞기 때문에 하나만 적음 */
+    background: url(../images/bg.jpg) no-repeat;
 }
-/* 2-1. 스크린박스 */
-#screen{
+
+/* 2-1.스크린박스 */
+#screen {
     position: absolute;
     top: 135px;
     left: 257px;
@@ -57,32 +252,100 @@ body{
     background-color: #000;
 
 }
+
 /* 스크린 아이프레임 */
-#screen iframe{
+#screen iframe {
     width: 100%;
     height: 100%;
     border: none;
 }
 
-/* 2-2. 예고편 선택메뉴 */
-.mlist{
+/* 2-2. 예고편선택메뉴 */
+.mlist {
     position: absolute;
-    bottom: 57px;
-    left: 251px;
+    bottom: 56px;
+    left: 252px;
+    overflow: hidden;
+    /* 넘치는 자식요소 숨기기
+    -> .movtxt요소의 부모에 줘야 적용된다! */
 }
+
 /* li디자인 */
-.mlist ul>li{
+.mlist ul>li {
     margin: 0 10px;
     /* li 바깥쪽 양쪽밀기 */
 }
+
 /* 포스터 이미지 */
-.mlist img{
+.mlist img {
     width: 99px;
     height: 140px;
 }
 
+/* 영화정보박스 */
+.movtxt {
+    position: absolute;
+    top: 100%;
+    /* 아래쪽에 나가있음! */
+    /* 나의 부모는? .mlist */
+    /* left값은 셋팅하지 않으므로 젠틀하다! 
+    그래서 모두 li안에 그대로 있음! */
 
-/* 3. 하단영역 */
-#info{
+    width: 99px;
+    height: 140px;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    /* 글자셋팅 */
+    font-family: 'Cute Font', cursive;
+    font-size: 14px;
+    line-height: 25px;
+    color: #fff;
+    text-align: center;
+
+    /* 트랜지션: 속시이지 */
+    transition: top .4s ease-out;
+}
+
+/* 영화정보 li */
+.movtxt li {
+    float: none;
+    /* float해제 */
+}
+
+/* 첫번째 li는 영화제목임 */
+.movtxt li:first-child {
+    color: aqua;
+    font-size: 17px;
+    letter-spacing: -1px;
+    /* 자간 */
+    margin-top: 30px;
+    /* 상단밀기-아래li도 같이밀림! */
+}
+
+/* 포스터 리스트에 마우스 오버시 영화정보 올라오기 */
+.mlist>ul>li:hover .movtxt {
+    top: 0;
+}
+
+/************** 3. 하단영역 *******************/
+#info {
     height: 100px;
+}
+/* 3-1. 회사정보박스 */
+#info address{
+    color: #616161;
+    font-style: normal;/* 기본설정 이탤릭해제 */
+    font-family: 'Cute Font', cursive;
+    font-size: 18px;
+    line-height: 20px;
+
+    /* 안쪽여백 */
+    padding-top: 20px;
+    padding-left: 20px;
+}
+/* 하단로고 이미지 */
+#info img{
+    float: left;
+    /* 이미지는 왼쪽에 글자는 오른쪽으로 흐르게 */
+    margin-right: 20px;/* 오른쪽여백 */
 }
