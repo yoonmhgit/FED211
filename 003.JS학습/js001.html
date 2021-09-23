@@ -3,9 +3,429 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>001.자바스크립트 기본+DOM선택법</title>
+    <title>001.자바스크립트 기본 + DOM선택법</title>
+    <!-- 자바스크립트 코딩구역 - 인터널방식 -->
+    <script>
+        // 한줄주석
+        /* 여러줄주석 */
+
+        /* 
+            [ 자바스크립트란? ]
+            - 고정적인 HTML구조와 CSS로 디자인된 웹문서의
+            디자인 혹은 기능적으로 구현된 것을 변경하기 위해
+            개발된 브라우저 전용 프로그래밍 언어다!
+
+            - 자바스크립트와 자바언어는 다르다!
+            (자바스트립트를 줄여서 "자바"라고 하지말자!
+            그냥 JS라고 하자!)
+
+            [ JS의 코딩구역 ]
+            1. 인터널방식(internal)
+            - html의 script 요소 내부에 데이터로 코딩함
+
+            2. 익스터널방식(external)
+            - JS외부파일로 확장자가 .js임
+            - html 페이지에서는 script 요소에 src속성의 값으로
+            파일위치를 지정하여 호출함
+
+            예) script src="파일경로/이름.js" <- 태그내부속성
+
+            3. 이벤트 속성에 인라인코딩
+            - html 요소의 이벤트속성 값으로 JS코드를 작성함
+            예) onclick="값" / onmouseover="값"
+
+            [ JS의 역할 ]
+            1. HTML을 변경한다.
+            2. CSS의 디자인요소를 재정의한다.
+
+            [ 각 언어별 역할 비유 ]
+            1. HTML(구조) - 건물의 콘크리트 구조물
+            2. CSS(디자인) - 건물의 인테리어, 익스테리어
+            3. JS(프로그래밍) - 건물의 전기, 수도, 엘리베이터 등
+
+            [ JS의 화면출력 ]
+            1. document.write(내용) - html문서 상단에 출력
+            2. alert(내용) - 팝업형식의 경고창이 출력됨
+            3. console.log(내용) - 콘솔창에 출력됨 ->개발시 많이씀
+            (콘솔은 브라우저 엔진에서 관할하는 내부출력모드)
+         */
+
+        // 출력확인1
+        // document.write("<h1>나는 프론트엔드 개발자다!</h1>");
+
+        // 출력확인2
+        // alert("그러냐? 개발자냐?");
+        // html태그를 브라우저 화면에 랜더링하기 전에 먼저 작동함!
+
+        // 출력확인3
+        // console.log("추카드립니다! 짝짝짝!!!");
+        // 콘솔로그는 콘솔창에서 확인한다(F12개발자모드에 있음)
+
+        /* 
+            -> JS는 명령어 실행코드를 만나는 즉시 실행됨
+            그래서 내가 원하는 시점에 원하는 이벤트에 명령어
+            코드를 실행하려면 함수가 필요하다!
+
+            [ JS의 함수 ]
+            - 정의: 특정실행코드를 특정이벤트에 실행하도록
+            호출시에만 코드를 실행하는 코드저장공간
+            - 형식: function 함수명(변수){코드구역}
+            - 호출: 함수명(값) - 값은 함수의 변수개수만큼 보냄
+
+            [ JS의 이벤트란? ]
+            - 브라우저에서 실행되는 입력관련 시점을 구분하여
+            알려주는 요소
+
+            - 이벤트 종류:
+            1) 마우스관련 이벤트
+            - click, dblclick, mouseover, mouseout, ...
+            2) 키보드관련 이벤트
+            - keydown, keyup, keypress, ...
+            3) 기타이벤트
+            - load, focus, blur, ...
+            
+            - 이벤트 발생 시점에 함수를 호출하여 의도한
+            html,css변경을 실행함
+
+            - 이벤트와 함수를 연결하려면 html 요소 속성에
+            이벤트속성이 이미 만들어져 있다!!!
+            이 속성값으로 함수를 호출한다!
+
+            [ HTML 이벤트 속성 ]
+            - on+이벤트명 = 값
+            예) onmouseover="" / onkeypress="" / onload=""
+
+            [ JS에서 따옴표의 의미! ]
+            - 값을 의미!(string:문자값)
+            - 따옴표를 쓰지 않은 문자는 일반적으로 변수/객체이름이다!
+
+            [ JS에서 이퀄의 의미! ]
+            - 이퀄은 오른쪽의 값이 왼쪽에 할당됨을 의미(들어감!)
+
+            [ JS에서 점(.)의 의미! ]
+            - 객체의 하위 메서드나 속성으로 들어감을 의미
+            - 하위 메서드나 속성을 선택 후 다시 점을 찍으면
+            그 하위에 있는 속성이나 메서드로 들어감
+            - 객체란 프로그래밍을 할 수 있도록 미리 만들어 놓은
+            코드 집합체(여러가지 함수나 속성들이 셋팅되어 있음)
+            - 메서드는 객체에 만들어진 함수를 메서드라고 부른다!
+
+            예)
+            우주.은하계.태양계.지구.대한민국.서울.강남구.테헤란로
+
+            [ JS의 코드마무리는 세미콜론;;;;;;; ]
+            - JS의 코드 끝에는 세미콜론으로 마무리한다!
+            - 세미콜론이 안붙는 경우: 함수끝, 제어문끝
+
+            (참고: 자동세미콜론삽입
+                    ASI(Automatic Semicolon Insertion)
+                - 브라우저가 세미콜론을 필요한 부분에 구문분석을
+                하여 자동으로 세미콜론을 실행전에 넣어주는 기능
+                - 주의사항: 편리할 수 있지만 자동 구문분석시
+                오류분석이 있을 수 있으므로 개발자가 직접 세미콜론을
+                넣어주는게 좋다!
+            )
+
+            [ JS에서 요소를 선택하는 방법! ]
+
+            - document 객체 : html문서 전체를 담고 있는 DOM객체
+            - DOM(Document Object Model)
+            : 문서에 있는 각 요소로 접근할 수 있는 방법론을
+            가지는 모델링
+
+            - 기본 요소 선택법:
+            1. 아이디요소 선택법 - getElementById() 메서드
+            document.getElementById(아이디명)
+            - html요소 중 아이디요소는 유일하므로 한번에 선택가능
+
+            - 메서드이름 분석
+            -> get 가져와라
+            -> Element 요소 하나를
+            -> By Id 아이디에 의한 것으로
+
+            2. 클래스요소 선택법 - getElementsByClassName() 메서드
+            document.getElementsByClassName(클래스명)
+            - html요소 중 클래스요소는 여러개 올 수 있기 때문에
+            컬렉션집합을 만들어서 관리하므로 순번으로 선택해야함!
+            - .item(순번) 또는 [순번]
+            - 순번은 0부터!
+
+            - 메서드이름분석
+            -> get 가져와라
+            -> Elements 요소들을
+            -> By Class Name 클래명에 의한 것으로
+
+            예) 해당클래스명을 가진 요소 중 첫번째 것 선택
+            document.getElementsByClassName(클래스명).item(0)
+            또는
+            document.getElementsByClassName(클래스명)[0]
+
+            -> 주의사항: 클래스를 단 하나만 썼어도 순번선택 필수!
+
+            3. 태그요소 선택법 - getElementsByTagName() 메서드
+            document.getElementsByTagName(태그명)
+            - html요소 중 태그요소는 여러개 올 수 있기 때문에
+            컬렉션집합을 만들어서 관리하므로 순번으로 선택해야함!
+            - .item(순번) 또는 [순번]
+            - 순번은 0부터!
+
+            - 메서드이름분석
+            -> get 가져와라
+            -> Elements 요소들을
+            -> By Tag Name 태그명에 의한 것으로
+
+            예) 해당클래스명을 가진 요소 중 첫번째 것 선택
+            document.getElementsByTagName(태그명).item(0)
+            또는
+            document.getElementsByTagName(태그명)[0]
+
+            -> 주의사항: 태그를 단 하나만 썼어도 순번선택 필수!
+
+            _______________________________________________
+
+            4. CSS선택자를 그대로 사용하는 선택법!
+
+            (1) 하나의 요소를 선택하는법
+            document.querySelector(CSS선택자)
+            -> 무조건 선택요소가 여러개여도 처음 만나는 것 하나만 선택!
+            예)
+            document.querySelector("#my") 
+            -> 아이디가 my인 요소
+            document.querySelector(".say") 
+            -> 클래스가 say인 요소 중 첫번째것
+            document.querySelector("ul>li")
+            -> li요소 중 첫번째 요소
+
+            -> 매서드명 분석
+            - query 쿼리 -> 질의(기술적인질문)
+            - Selector 선택자 -> CSS선택자
+             -> 브라우저에게 CSS선택자로 질의한다!요소를 선택한다!
+
+            (2) 여러개의 요소를 선택하는 방법!
+            document.querySelectorAll(CSS선택자)
+            -> 선택시 컬렉션 집합에 결과를 담는다!
+            -> 따라서 요소가 하나일지라도 순번으로 선택한다!
+            방법: .item(순번) 또는 [순번]
+                -> 순번은 0부터~!
+            -> 컬렉션 개수는 .length 로 구해온다.
+            (위의 방법은 
+            getElementsByClassName,
+            getElementsByTagName과 동일함!)
+
+            예) 
+            document.querySelectorAll("#my>li").item(3)
+            -> 아이디가 my인 요소 아래 li중 4번째 요소 선택
+            동일한 표현법은
+            document.querySelectorAll("#my>li")[3]
+
+            _______________________________________________
+
+
+            [ JS에서 요소 선택 후 html 변경하기 ]
+            선택요소.innerHTML = html코드
+            -> 선택요소 내부 자식으로 html코드를 집어 넣는다!
+
+            [ JS에서 요소 선택 후 텍스트 변경하기 ]
+            선택요소.innerText = 글자
+            -> 선택요소 내부의 글자 데이터를 집어 넣는다!
+
+            [ JS에서 요소 선택 후 CSS 변경하기 ]
+            선택요소.style.스타일시트속성명 = 속성값
+            - 선택요소의 CSS 특정속성의 값을 변경함!
+            - 스타일시트 속성명은 모두 변수형으로 만들어져 있다!
+            예) "font-size" -> fontSize
+            - 이음절 이상 속성명은 데쉬(-)를 빼고 첫단어 대문자처리함!
+            -> JS에서 CSS를 변경하면 요소태그 내부에 style속성으로
+            인라인 코딩되어 들어간다!(최우선 순위로 적용됨!)
+
+
+            [ JS에서 코드를 재사용하는 방법 ]
+            - 선택요소를 변수에 넣기!
+            - 변수는 어떤 값이나 객체를 저장하는 공간,(입주민처럼 호출하면 내용이 나온다, tg뒤에 내용이 불러짐)
+            - 변수명은 그 저장된 공간의 주소명이다!
+            - 변수사용법: var 변수명 = 값
+            -> 변수는 따옴표로 싸지 않는 문자다!!!!
+
+        */
+
+        /*//////////////////////////////////////////
+            함수명: showMe
+            기능: .pbox의 디자인을 변경한다
+        *///////////////////////////////////////////
+        function showMe(){
+
+            // 1.함수호출확인
+            console.log("나 불렀수?");
+
+            // 2. 내용 변경하기
+
+            // (1) html내용 넣기
+            // 대상선정: span#name
+            // 변경내용: html 이미지 태그 넣기 -> innerHTML 사용!
+            document.getElementById("name").innerHTML =
+            '<img src="images/kim.png" alt="김비서가 왜그럴까?">';
+
+            /// CSS 변경하기 ///////
+            // 대상선정: .pbox
+            // 대상을 변수에 담아서 재사용한다!
+            var tg = document.getElementsByClassName("pbox").item(0);
+            // var는 variable(변수)에서 나온말. 선언시 사용한다!
+
+            // (2) 글자색 변경하기
+            // 변경내용: 글자색 라임색            
+            tg.style.color = "lime";
+
+            // (3) 글자크기 변경하기
+            // 변경내용: 글자크기 50px
+            tg.style.fontSize = "50px";
+
+            // (4) 트랜지션주기(2초)
+            tg.style.transition = "2s";
+
+            // (5) 배경이미지 넣기
+            tg.style.background = 
+            "url(./images/kimbs.jpg) no-repeat top/cover";
+
+            // (6) 원모양만들기
+            tg.style.borderRadius = "50%";
+
+            // (7) 글자중앙정렬
+            tg.style.textAlign = "center";
+
+            // (8) 줄간격 변경
+            tg.style.lineHeight = "300px";
+
+            // (9) 회전,축소하기 - transform:rotate() scale()
+            // + 트랜스폼 중앙이동 -> translate(-50%,-50%)
+            tg.style.transform = 
+            "translate(-50%,-50%) rotate(360deg) scale(.7)";
+            // 트랜스레이트를 먼저 써야 중앙이동이 잘적용됨!
+
+            // (10) 정중앙 보내기 위한 top,left변경
+            tg.style.top = "50%";
+            tg.style.left = "50%";
+
+            // (11) 전체배경색 변경하기
+            // 대상: body
+            // JS에서 body 특별히 취급하여
+            // document.body 라고 선택함
+            // 선택대상을 변수에 담는다!
+            var bd = document.body;
+
+            bd.style.backgroundColor = "orange";
+            bd.style.transition = "5s";
+
+
+        } //////////// showMe 함수 //////////////////
+        /////////////////////////////////////////////
+
+        /*/////////////////////////////////////////
+            함수명: circle
+            기능: 선택요소 중앙으로 보내기!
+        *//////////////////////////////////////////
+        function circle(num){ // num 순번전달변수
+            // 1. 함수호출확인 및 전달값확인
+            console.log(num+"나야나!")
+            // 2. 대상선정 : .circle
+            var cc = document.querySelectorAll(".circle");
+            // 3. 변경내용 : 트랜지션으로 화면중앙으로 이동하기!
+            console.log("개수:"+cc.length);
+            // 트랜지션
+            cc.item(num).style.transition = "1s ease-out";
+            // 화면중앙이동
+            cc.item(num).style.top = "50%";
+            cc.item(num).style.right = "50%";
+            cc.item(num).style.transform = "translate(50%,-50%)"
+
+        } //////////// circle 함수 /////////////////
+        ////////////////////////////////////////////
+
+        /*///////////////////////////////////////////////////
+            함수명: rect
+            기능: 오른쪽 상단으로 이동하여 사각형으로 전체채우기
+        *////////////////////////////////////////////////////
+        function rect(){
+            // 1. 함수호출확인
+            console.log("사각사각!");
+            // 2. 대상선정: #rect
+            var rt = document.querySelector("#rect");
+            // 3. 변경내용: top, 트랜지션, width, height
+            rt.style.top = "0";
+            rt.style.borderRadius = "0";
+            rt.style.width = "100%";
+            rt.style.height = "100%";
+            rt.style.transition = "3s 1s,top 1s 0s";
+            // 트랜지션 top값만 1초, 나머지는 1초후 3초간 변경
+            
+            //4.추가변경: 글자넣기
+            rt.innerText = "축하합니다~!!!";
+
+        } //////// rect 함수 ///////////////////////////////
+        ////////////////////////////////////////////////////
+
+
+
+    </script>
+    <style>
+        .pbox{
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;/* p태그 마진,패딩0 */
+            font-size: 24px;
+            width: 700px;
+            height: 600px;
+            border: 4px solid purple;
+            color: #ff0;
+            text-shadow: 1px 1px 1px #000;
+            /* background: url(./images/kimbs.jpg) no-repeat top/cover; */
+        }
+
+        .circle, #rect{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .circle:first-of-type {
+            background-image: url(./images/01.png);
+        }
+        .circle:nth-of-type(2) {
+            background-image: url(./images/02.png);
+        }
+        .circle:nth-of-type(3) {
+            background-image: url(./images/03.png);
+        }
+        #rect{
+            top: 40%;
+            background-image: url(./images/04.png);
+            font-size: 40px;
+            text-align: center;
+            color: red;
+            line-height: 200px;
+            white-space: nowrap;/* 줄바꿈방지! */
+        }
+    </style>
 </head>
 <body>
+    <p class="pbox" onclick="showMe()" title="여기를 클릭하세요!">
+        나는 요즘 매일 생각한다! <br>
+        도대체 <span id="name"></span>
+    </p>
+
+
+    <div class="circle" onclick="circle(0)"></div>
+    <div class="circle" onclick="circle(1)"></div>
+    <div class="circle" onclick="circle(2)"></div>
+
+    <div id="rect" onclick="rect()"></div>
+    
+
     
 </body>
 </html>

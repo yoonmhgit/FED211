@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS심화 - Sprites, IR</title>
+    <style>
+        /* 
+                [ 스프라이츠(Sprites) 기법 ]
+                - 하나의 이미지로 배경 이미지 처리하여
+                배경 이미지의 위치값을 변경함으로 각각의
+                이미지를 표현하는 기법
+                - 이점:
+                    1) 이미지 용량을 줄임
+                    2) http Request(웹요청)가 줄어들어
+                        웹 페이지의 랜더링 속도가 빨라진다!
+                - 대부분 모바일에서 용량 및 속도 이슈가 있으므로
+                스프라이츠 기법을 사용함!
+                - 요즘은 DT(데이스탑)에서도 많이 사용되고 있다
+            */
+            .icons{
+                /* 3無 */
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                overflow: hidden;
+                /* float된 자식요소 높이값 인식 */
+                outline: 1px solid red;
+            }
+            .icons li{
+                width: 128px;
+                height: 128px;
+                float: left;
+
+                /* 배경이미지 넣기 
+                - 이미지요청 단 한번만 해도됨! */
+                background: url(./images/icons.png) no-repeat;
+                /* sns이미지 6개가 한꺼번에 저장된 
+                배경이미지임(한개당 가로,세로 128px) */
+
+                outline: 1px solid red;
+            }
+            /* 트위터 */
+            .icons li:nth-child(1){
+            }
+            /* 트위터 오버시 */
+            .icons li:nth-child(1):hover{
+            }
+            /* 인스타 */
+            .icons li:nth-child(2){
+            }
+            /* 인스타 오버시 */
+            .icons li:nth-child(2):hover{
+            }
+            /* 페북 */
+            .icons li:nth-child(3){
+            }
+            /* 페북 오버시 */
+            .icons li:nth-child(3):hover{
+            }
+
+            /* a요소 확장하기 */
+            .icons a{
+                display: block;
+                /* 크기 디자인 적용위해 */
+                width: 100%;
+                height: 100%;
+            }
+
+            /* 
+                [ 이미지를 사용할때 웹접근성 이슈 ]
+                - 이미지 태그를 사용하여 코딩시 
+                alt속성을 이용하여 이미지에 대한 설명을
+                제공한다(필수사항! 법제화되어 있음) 
+                - 배경이미지로 표현할 경우 설명은
+                어디에 써서 접근성이슈를 해결할 것인가?
+                
+                - 웹접근성 참고(웹접근성 연구소)
+                https://www.wah.or.kr:444/Participation/technique.asp
+
+                [ IR(Image Replacement) 기법 ]
+                - 이미지를 배경처리하였을때 이미지에 대한
+                설명(alt)을 넣을 수 없는데 이는 접근성에
+                위배된다. 따라서 span태그를 쓰고 이미지
+                설명을 표시한 후 이를 숨겨서 설명을 제공
+                하는 것이 IR기법이다!
+
+                - 웹접근성은 웹에서 정보제공에 대한 평등성을 말한다!
+                - Sprites 기법을 사용할때 IR기법을 같이 사용한다!
+
+                [ 크롬 브라우저 스크린 리더기를 확장프로그램에서 설치한다! ]
+                ChromeVox Classic Extension
+            
+            */
+            /* IR 숨기기 class */
+            /* display:none으로 숨기면 리더기가 못읽음! */
+            
+
+    </style>
+</head>
+
+<body>
+    <ul class="icons">
+        <li>
+            <a href="#">
+                <span class="bld">트위터 바로가기</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="bld">인스타그램 바로가기</span>
+            </a>
+            </li>
+        <li>
+            <a href="#">
+                <span class="bld">페이스북 바로가기</span>
+            </a>
+        </li>
+    </ul>
+</body>
+
+</html>
