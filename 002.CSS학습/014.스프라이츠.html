@@ -34,7 +34,7 @@
 
                 /* 배경이미지 넣기 
                 - 이미지요청 단 한번만 해도됨! */
-                background: url(./images/icons.png) no-repeat;
+                background: url(./학습이미지/icons.png) no-repeat;
                 /* sns이미지 6개가 한꺼번에 저장된 
                 배경이미지임(한개당 가로,세로 128px) */
 
@@ -42,21 +42,27 @@
             }
             /* 트위터 */
             .icons li:nth-child(1){
+                background-position: 0 0;
             }
             /* 트위터 오버시 */
             .icons li:nth-child(1):hover{
+                background-position: 0 -128px;
             }
             /* 인스타 */
             .icons li:nth-child(2){
+                background-position: -128px 0;
             }
             /* 인스타 오버시 */
             .icons li:nth-child(2):hover{
+                background-position: -128px -128px;
             }
             /* 페북 */
             .icons li:nth-child(3){
+                background-position: -256px 0;
             }
             /* 페북 오버시 */
             .icons li:nth-child(3):hover{
+                background-position: -256px -128px;
             }
 
             /* a요소 확장하기 */
@@ -94,6 +100,12 @@
             */
             /* IR 숨기기 class */
             /* display:none으로 숨기면 리더기가 못읽음! */
+            .bld{
+                display: block;
+                width: 0;
+                height: 0;
+                overflow: hidden;
+            }
             
 
     </style>

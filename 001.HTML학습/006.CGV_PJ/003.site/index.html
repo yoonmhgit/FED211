@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,12 @@
     <link rel="stylesheet" href="./css/main.css">
     <!-- JS코딩구역 -->
     <script>
-
         // 코드를 저장하여 호출시에만 실행하는 것은?
         // -> 함수다! -> 영어로 function
         // 형식: function 함수명(전달변수){코드}
         // 함수는 전화받는 사람!
         // function은 키워드로 반드시 써야함!
-        function gogo(yo){ 
+        function gogo(yo) {
             // yo 전달변수(이름은 개발자창작)
             // 전달변수는 함수호출시 보내는 값을
             // 담아놓는 메모리 공간의 이름!
@@ -37,11 +37,11 @@
             // 이퀄(=)은 같다는 뜻이 아니고 오른쪽값이 왼쪽으로 들어감!(할당!)
             // JS 명령문은 끝날때 세미콜론해준다!
             // 사실 브라우저는 ASI(Auto Semicolon Insertion:자동 세미콜론 넣기)를 해주지만 문제가 발생할 수 있으므로 개발자가 직접해주는 것이 정석이다!!!
-            document.getElementById("tg").src = 
-            "https://www.youtube.com/embed/"+
-            yo+
-            "?autoplay=1&loop=1&playlist="+
-            yo;
+            document.getElementById("tg").src =
+                "https://www.youtube.com/embed/" +
+                yo +
+                "?autoplay=1&loop=1&playlist=" +
+                yo;
             // 기존값에 yo라는 변수에 담긴 동영상아이디값을
             // 합쳐서 src값에 할당한다!!!
 
@@ -64,10 +64,9 @@
             -> 값에서 함수호출을 할 수 있다!
             -> 이벤트속성 셋팅을 JS코딩구역에서만 할 수도 있다~!(나중엔 이렇게함!!!-소스분리)
         */
-
-
     </script>
 </head>
+
 <body>
 
     <!-- 1. 상단영역 -->
@@ -159,7 +158,8 @@
     <main id="cont" class="part">
         <!-- 2-1.스크린박스 -->
         <div id="screen">
-            <iframe id="tg" src="https://www.youtube.com/embed/2hnkUpo_2yg?autoplay=1&loop=1&playlist=2hnkUpo_2yg" allow="autoplay"></iframe>
+            <iframe id="tg" src="https://www.youtube.com/embed/2hnkUpo_2yg?autoplay=1&loop=1&playlist=2hnkUpo_2yg"
+                allow="autoplay"></iframe>
         </div>
         <!-- 2-2.예고편선택메뉴 -->
         <nav class="mlist">
@@ -201,7 +201,7 @@
                             <li>한예리,윤여정</li>
                             <li>드라마</li>
                         </ol>
-                    </a>                    
+                    </a>
                 </li>
                 <li>
                     <a href="#" onclick="gogo('Qh4bQK_PY90');return false;">
@@ -251,7 +251,24 @@
             대표이사 : 최병환사업자등록번호 : 104-81-45690통신판매업신고번호 : 2017-서울용산-0662 <br>
             개인정보보호 책임자 : 정종민대표이메일 : cjcgvmaster@cj.netCGV고객센터 : 1544-1122
         </address>
+        <!-- 3-2.sns버튼 -->
+        <!-- ul.sns>il*3>a>span.bld -->
+        <ul class="sns">
+            <li><a href="https://www.facebook.com/CJCGV" target="_blank" title="페이스북 바로가기">
+                <span class="bld">페이스북바로가기</span>
+                </a>
+            </li>
+            <li><a href="https://twitter.com/cj_cgv" target="_blank" title="트위터 바로가기">
+                <span class="bld">트위터바로가기</span>
+                </a>
+            </li>
+            <li><a href="https://www.instagram.com/cgv_korea/" target="_blank" title="인스타그램 바로가기">
+                <span class="bld">인스타그램바로가기</span>
+                </a>
+            </li>
+        </ul>
     </footer>
-    
+
 </body>
+
 </html>
