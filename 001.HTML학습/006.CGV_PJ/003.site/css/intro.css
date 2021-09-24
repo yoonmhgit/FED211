@@ -5,3 +5,87 @@
 @import url(reset.css);
 @import url(core.css);
 
+/* 전체화면 높이값 채우기 */
+html,body{
+    height: 100%;
+    /* 보이는화면에 높이값채움! */
+    
+}
+
+/* 비디오 */
+#myvid{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 
+        [object-fit 속성 : img,video 요소에 사용하는 맞춤속성]
+        -부모요소의 크기에 채우는 방식을 결정함
+        1. cover : 비율에맞게 이미지나 동영상 비율을 유지하면서 부모박스를 채운다
+        2. fill : 이미지나 동영상비율을 깨고 모두 보이게 채움
+        3. contain : 이미지나 비디오가 모두 보이며 비율유지 하도록함
+            (위나 아래에 빈공간이 생길 수 있다 -> 기본값)
+    */
+
+
+}
+
+/* 가상요소로 비디오 오버레이 효과만들기 */
+/* 
+    밝은 커버는 트렌스페런트 효과(transparent effect)
+    어두운 커버는 오버레이 효과(overlay effect)
+*/
+body::after{
+    content: '';
+    display: block;
+    /* div와 비슷! */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 부모는 보이는 화면(window) */
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5; /* 투명도(0~1) */
+}
+
+/* 들어가기 버튼박스 */
+#enter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 부모는? 화면 */
+    transform: translate(-50%, -50%);
+    /* 박스크기의 절반씩 왼쪽과 위쪽으로 이동(정중앙이동) */
+
+    /* outline: 10px dotted lime; */
+    z-index: 1;/* body::after 가상요소보다 위! */
+
+    /* h1요소의 리셋은 reset.css에서 함! */
+}
+
+/* click here 글자박스 */
+#enter span{
+    display: block;
+    /* 옆에 마우도 못오고 width 끝까지 간다! */
+    text-align: center;/* 글자중앙 */
+    font: bold 34px/40px 'Audiowide';
+    /* font: 스두크/줄체; */
+    transition: transform .4s ease-out .2s;
+    /* 트랜지션 지연시간 0.2초 설정(양방향) */
+}
+/* 박스에 오버시 span 변형하기 */
+#enter:hover span{
+    transform: scale(2);
+    color: chartreuse;
+}
+
+
+/* 로고 이미지 */
+#enter img{
+    transition: transform .4s ease-out;
+    /* 트랜지션 : 속시이지 */
+}
+/* 박스에 마우스 오버시 로고이미지 변형하기 */
+#enter:hover img{
+    transform: rotate(-15deg) scale(1.5);
+}
