@@ -1,0 +1,239 @@
+ <!DOCTYPE html>
+ <html lang="ko">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JS 제어문 - if문, switch case문, for문, while문</title>
+     <script>
+         // 함수는 호출시에만 실행되는 코드 저장소!
+         /*//////////////////////////////////////////
+            함수명: jumsu
+            기능: 평가점수를 평가결과로 환산하여 출력함
+         *///////////////////////////////////////////
+         function jumsu(){
+
+            // 1. 함수호출확인!
+            console.log("점수환산!");
+            // 브라우저 F12 콘솔창에서 확인한다!
+
+            // 2. 대상선정
+            // 2-1. 점수가져올 대상: #jumsu
+            var jum = document.getElementById("jumsu");
+
+            // 2-2. 입력된 숫자읽어오기
+            var score = jum.value;
+            // value는 값을 읽어오는 속성
+            console.log("입력값:"+score);
+
+            //2-3. 출력대상:
+            var jexp=document.querySelector("#jexp");
+
+            //2-4. 칭찬스티커대상:
+            var jshow=document.querySelector("#jshow");
+
+
+            //2.5 입력값 걸러내기
+            //2.5-1 숫자 아니면 나가!
+            // is Not a Number? 숫자가 아니니?
+            //숫자가 아니면 true
+            //js숫자여부 판별 내장함수 -> isNaN()
+            //사용법: isNaN(값) -> 숫자아니면 true
+            console.log("숫자가 아니니?"+isNaN(score));
+            if(isNaN(score)){/* 숫자가 아닐때 */
+
+                //1. 메시지 출력
+                jexp.innerText="숫자를 입력하세요!";
+                
+                //2.글자색검정(바꿔있을수 있으므로)
+                jexp.style.color="#000";
+
+                //3.칭찬스티커 원위치
+                jshow.style.backgroundPosition="322px 0";
+
+                //4. 입력창 내용지우기(초기화)
+                jum.value="";
+
+                //5.입력창에 포커스주기
+                jum.focus();
+                // focus() - 선택요소에 포커스를 주는 js내장함수
+
+                //if문에 들어왔다면 여기서 
+                //함수실행을 끝나야함(아래까지 못읽게 장치)
+                //여기서 끝낼때 쓰는 키워드는?
+                //돌아가! -> return
+                return;
+                //return 키워드
+                //뒤에 값을 쓰면 호출곳으로
+                //값을 가지고 나간다~! 함수편에서 자세히!
+            }/////////////////if///////////////
+
+            // 3. 점수환산하기
+            // 기준:
+            // 90점이상 - "매우잘함", 80점이상 - "잘함"
+            // 70점이상 - "보통", 60점이상 - "노력요함"
+            // 60점미만 - "재시험"
+
+            // 결과변수 - 선언만 하고 할당은 if문에서~!
+            var res;
+
+            //색상변수
+            var fc;
+
+            //스티커위치변수
+            var bgp;
+
+            // console.log(score>=90);
+
+            if(score>=90){ // 90점이상
+                res = "매우잘함";
+                fc="blue";
+                bgp="0 0";
+            } /// if ////
+            else if(score>=80){ // 80점이상
+                res = "잘함";
+                fc="yellow";
+                bgp="-322px 0";
+            } /// else if ////
+            else if(score>=70){ // 70점이상
+                res = "보통";
+                fc="orange";
+                bgp="-322px -322px";
+            } /// else if ////
+            else if(score>=60){ // 60점이상
+                res = "노력요함";
+                fc="purple";
+                bgp="-644px -644px";
+            } /// else if ////
+            else{ // 위의 모든 조건에 해당없을때
+                res = "재시험";
+                fc="red";
+                bgp="-322px -644px";
+            } //// else /////
+
+            // 결과확인
+            console.log("결과:"+res);
+
+            //4. 결과 메시지를 화면에 출력하기
+
+            //4-1. 결과 내용 글자 넣기
+            jexp.innerText="평과결과는"+res;
+            //innerText는 선택요소 내부에 글자데이터를 
+            //넣어주는 JS내장속성
+            //비교) innerHTML는 HTML태그코드 넣기속성
+
+            //4-2. 결과에 따른 글자색 변경하기
+            jexp.style.color=fc;
+
+            //4-3. 결과에 따른 칭찬스티커 변경하기
+            jshow.style.backgroundPosition=bgp;
+
+         } ////////// jumsu 함수 ////////////////////
+         ////////////////////////////////////////////
+
+         /* 
+            [ if문 ]
+            - 조건문을 검사하여 true이면
+            중괄호 안의 코드를 실행하는 제어문
+
+            - 조건문이란 결과가 true / false 로 나오는 구문을 말한다!
+            - 보통 비교연산자나 논리연산자가 사용된다!
+
+            - 구문 : 
+            _________________________________________
+
+            if(조건문){
+                실행코드
+            }
+            else if(조건문){
+                실행코드
+            }
+            ...
+            else{
+                실행코드
+            }
+            _______________________________________
+
+            (구문해석)
+            1. if문은 단독으로 사용가능
+            2. else if문을 쓰면 한 조건에 들어가면
+            다른 if문은 검사하지 않는다!
+            3. else문은 조건에 모두 맞지 않을 경우 들어가는
+            코드구역임
+                - else가 필요할때만 사용함
+                - if문 없이 else만 단독으로 사용못함
+
+         */
+
+     </script>
+     <style>
+
+        /* 칭찬스티커 */
+        #jshow{
+            position: absolute;
+            top: -13px;
+            left: 100px;
+            /* 부모는 보이는화면 */
+            width: 322px;
+            height: 322px;
+            background: url(./images/ifshow.jpg) no-repeat;
+            transform: scale(.3);/* .3은 30%의 크기 */
+            background-position: 322px 0;
+            /* 처음에 안보임 - 하나당 322px단위임! */
+
+            /* 트랜지션 속시이지 */
+            transition: all .4s ease-out;
+        }
+
+        /* IR(배경이미지 설명) */
+        #jshow span{
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+
+
+     </style>
+ </head>
+ <body>
+     <h1>JS 제어문</h1>
+
+     <hr>
+
+     <!-- if문 연습 -->
+     <h2>if문 연습</h2>
+     <h3 id="jexp">평가출력</h3>
+     <label for="jumsu">점수입력 : </label>
+     <input type="text" id="jumsu">점
+     <button class="sbtn" onclick="jumsu()">평가하기</button>
+
+
+    <!-- 점수에 따른 칭찬스티커 -->
+    <div id="jshow">
+        <span>칭찬스티커</span>
+    </div>
+
+
+
+
+     <!-- 
+         모든 요소에는 이벤트 속성을 사용할 수 있다!
+         이벤트 속성은 on+이벤트명
+         클릭 이벤트는 onclick="자바스크립트 영역"
+         - 따옴표안은 JS영역이다!
+         - 함수호출은 함수명() -> 소괄호가 매우 중요하다!!!
+         - 함수명은 대소문자를 철저히 구분한다!
+      -->
+
+     <!-- 
+         input 요소 : 입력양식 요소
+                    (텍스트,라디오버튼,체크박스 등)
+        - type="text" 텍스트 입력양식
+
+        label 요소 : 입력양식 설명요소
+        - for 속성은 연결된 input의 아이디명을 써줌
+            (라벨클릭시 해당요소로 포커스이동!)
+      -->
+ </body>
+ </html>
