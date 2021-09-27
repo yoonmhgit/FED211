@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>유형2.가로네비 서브별 드롭다운 가로형</title>
+    <style>
+        /* ul,ol 초기화셋팅 */
+        ul,ol{
+            /* 3무 */
+            margin: 0;
+            padding: 0;
+            list-style: none;/* 앞에나오는 (블릿,숫자)땡땡땡제거 */
+        }
+        /* 가상요소 float해제 */
+        ul::after,
+        ol::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        li{
+            float: left;
+        }
+
+        /* gnb메뉴 */
+        .gnb{
+            background-color: #464be8b1;
+        }
+        .gnb>ul{
+            position: relative;
+            /* 변경1. 부모자격 - .smenu */
+            width: 800px;
+            margin: 0 auto;
+        }
+        .gnb>ul>li{
+            width: 200px;
+            text-align: center;
+            outline: 2px dashed lime; /* 잘되는지 확인하는 가이드라인 */
+        }
+        /* a요소 - 글자색, 밑줄처리 */
+        .gnb>ul>li a{/* a는 .smenu의 a까지 모두 선택! */
+            width: 200px;
+            height: 50px;
+            display: block; /* 크기디자인때문 (블록전체가 잡히게) */
+
+
+            /* 글자색, 밑줄없앰 */
+            color: #fff;
+            text-decoration: none;
+
+            /* 글자세로 중앙은 줄간격을 사용
+            -> 높이값과 동일하면 그 높이의 중간에 옴! */
+            line-height: 50px;
+
+            font-weight: bold;/* 글자두껍게 */
+            font-size: 14px;
+
+            /* 트랜지션 : 속시이지 */
+            transition: .4s;
+        }
+        /* 상위메뉴에 마우스 오버시 글자색,배경색 변경 */
+        .gnb>ul>li:hover>a{
+            color: #a494ea;
+            background-color: #f0f0f0;
+        }
+        .gnb>ul>li:hover>a,
+        .gnb>ul>li:hover>a.on{
+            color: #5e3bf9;
+            text-decoration: overline;
+        }
+
+        /* 서브메뉴 */
+        .smenu{
+            position: absolute;
+            left: 0;/* 변경2. 부모는? .gnb>ul */
+            width: 800px;/* 변경3. 부모박스 크기만큼 설정 */
+            background-color: #5e3bf9;
+            overflow: hidden;
+            height: 0;
+
+            /* 트렌지션:속시이지 */
+            transition: height .4s ease-out;
+        }
+        /* 상위메뉴 li에 마우스 오버시 하위메뉴 보이기 */
+        /* 변경4. 서브메뉴사이즈통일!  */
+        .gnb>ul>li:hover .smenu{
+            height: 50px;
+        }
+        /* 두번째 메뉴 */
+        /* .gnb>ul>li:nth-child(2):hover .smenu{
+            height: 50px;
+        } */
+
+        /* 세번째 메뉴 */
+        /* .gnb>ul>li:nth-child(3):hover .smenu{
+            height: 50px;
+        } */
+
+        /* 상위메뉴 오버시 하위메뉴 a 글자색,배경색 */
+        .smenu a:hover{
+            color: rgb(75, 18, 233);
+            background-color: rgb(219, 145, 234);
+        }
+
+        /* 변경5
+            -a요소가 기존변경 block에서 inline으로 변경 
+            -이유가 width, height 디자인 미적용을 위함
+            -기존 적용된 선택자와 같은 레벨의 부모를 써서 
+             적용우선순위를 높여준다!(상위부모. gnb를 써준다)
+        */
+        .gnb .smenu a{
+            display: inline;
+            padding: 2px 10px; /* 양쪽패딩 */
+            margin: 0 10px; /* 양쪽마진 */
+
+        }
+        /* 변경6- 서브메뉴 시작위치 변경을 위한 클래스~! */
+        /* 두번째 메뉴 왼쪽마진 */
+        .ml2{
+            margin-left: 200px;
+        }
+        /* 세번째 메뉴 왼쪽마진 */
+        .ml3{
+            margin-left: 400px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>유형2.가로네비 서브별 드롭다운 가로형</h1>
+  
+     <nav class="gnb">
+         <ul>
+             <li><a href="#">home</a></li>
+             <li>
+                 <a href="#">웹개발</a>
+                 <!-- 서브메뉴 -->
+                 <ol class="smenu">
+                     <li class="ml2">
+                         <a href="#">웹디자인</a>
+                     </li>
+                     <li>
+                         <a href="#">html5+css3</a>
+                     </li>
+                     <li>
+                         <a href="#">jQuery</a>
+                     </li>
+                     <li>
+                         <a href="#">웹+모바일</a>
+                     </li>
+                 </ol>
+                </li>
+             <li>
+                 <a href="#">게시판</a>
+                <ol class="smenu">
+                    <li class="ml3">
+                        <a href="#">Q＆amp;A</a>
+                        <!-- &amp;는 &의 특수문자처리 -->
+                    </li>
+                    <li>
+                        <a href="#">방명록</a>
+                    </li>
+                </ol>
+                </li>
+             <li><a href="#">프로필</a></li>
+         </ul>
+     </nav>
+       <!-- 
+        [네비게이션 구현의 일반원칙]
+        1.네비게이션은 nav태그에 넣는것을 추천
+            nav요소는 네비게이션을 넣는 시멘틱 태그다!
+        2. 네비게이션은 사이트의 흐름을 한번에 제공하는 역할을 하므로 하나로 묶어서
+            보여줘야 하므로 ul>li / ol>li / dl>dt+dd 과 같은 그룹요소를 사용하여 표현한다!
+        3. 메뉴는 접근성 원칙에 따라 스크린리더기가 읽을수 있도록 a요소로 구성해야만 한다!
+            또한 메뉴는 tab버튼을 눌러서 선택이동을 할 수 있어야 하므로
+            a요소는 필수다!
+        참고)
+            메인메뉴가 gnb 라고 이름지어지는 이유는?
+            gnb는 global navigation bar의 약자임
+            전역 네비게이션 바 라는 의미로써
+            사이트의 어느 페이지에서도 항상 보이기 떄문
+
+        ->lnb 라는 이름도 많이쓰임
+            lnb는 local navigation bar의 약자로서
+            지역 네비게이션 바 라는 의미로 
+            서브페이지에서만 나오는 메뉴에 사용한다
+
+     -->
+</body>
+</html>
