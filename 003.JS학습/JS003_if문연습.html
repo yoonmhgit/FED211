@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if문 연습</title>
+    <!-- 웹폰트 CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Audiowide&amp;display=swap" rel="stylesheet">
+    <style>
+        /* 타이틀 */
+        .tit {
+            text-align: center;
+            font: bold 72px/100px 'Audiowide';
+        }
+
+        /* 스틸컷장면박스 */
+        .photo {
+            text-align: center;
+            /* 인라인요소 가로중앙정렬 */
+            background-color: skyblue;
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+
+        /* 메인이미지 */
+        #scene {
+            height: 290px;
+            /* width는 비율에 맞게 자동임! */
+        }
+
+        /* 선택버튼박스 */
+        .btnbx {
+            text-align: center;
+            /* 버튼요소는 인라인블록이지만 
+            인라인특성이 있으므로 글자중앙정렬적용됨! */
+        }
+
+        /* 버튼공통 */
+        .btns {
+            font-size: 42px;
+        }
+    </style>
+    <script>
+        // 함수는 코드 저장소다!
+        /*/////////////////////////////////////////
+            함수명: chgImg
+            기능: 버튼 클릭시 해당 이미지변경하기
+        */ /////////////////////////////////////////
+        function chgImg(U) { 
+            // U - 버튼자신을 보낸값을 받는 전달변수
+            // 함수호출시 chgImg(this)의 this는 함수와
+            // 연결된 요소 자신을 말한다!
+
+            // 1. 버튼 텍스트 읽어오기
+            var txt = U.innerText;
+            // innerText는 선택요소의 내부글자데이터를 읽어옴
+            // innerText를 이퀄 왼쪽에 쓰면 할당, 오른쪽에 쓰면 읽어오기
+
+            // 2. 값확인!호출여부확인!
+            console.log(txt);
+
+            // 3. 변경대상선정: #scene
+            var tg = document.querySelector("#scene");
+
+            // 4. 변경내용: 버튼에 따라 포스터 이미지를 변경함
+            // 분기문(if문)을 이용함!
+
+            // 새로운 이미지 경로변수
+            var isrc; //선언만, 할당은 if문에서!
+
+            if(txt==="포스터"){
+                isrc = "./images/ala1.jpg";
+            } //// if /////////
+            else if(txt==="장면1"){
+                isrc = "./images/ala2.jpg";
+            } /// else if ////////
+            else if(txt==="장면2"){
+                isrc = "./images/ala3.jpg";
+            } /// else if ////////
+            else if(txt==="장면3"){
+                isrc = "./images/ala4.jpg";
+            } /// else if ////////
+
+            // 할당된 isrc값 확인
+            console.log(isrc);
+
+            // 5. 타겟 이미지에 src값 변경하기!
+
+            // 속성에 직접 접근하여 값 변경하기
+            // tg.src = isrc;
+            // 선택요소의 속성중 src 속성에 값을 할당한다!
+
+            // 속성을 넣는 다른방법: JS내장함수 이용하기!
+            // -> setAttribute(속성명,속성값)
+            tg.setAttribute("src",isrc);
+
+            // 속성 읽어오기 JS내장함수는
+            // getAttribute(속성명)
+
+
+
+        } //////// chgImg 함수 /////////////////////
+        ////////////////////////////////////////////
+
+        // 함수 소괄호에 변수를 하나쓰면
+        // 하나의 전달값을 받는다는 의미!
+        // 만약 chgImg(a,b,c,d) -> 변수개수만큼!
+        // 전달값 변수는 var 로 선언 안한다!
+        // 여러개를 쓸때는 콤마로 구분
+        // 전달변수 === 파라미터변수 로 부른다!
+
+        /* 
+            [ 키워드란? ]
+            브라우저에 미리 등록되어 있는 기능어
+            예) 
+            var - 변수선언
+            function - 함수구역 
+            this - 요소자신
+
+            [ JS내장함수 === JS내장메서드 ]
+            - 브라우저에서 기능 구현된 함수
+            예) setAttribute()
+
+            [ JS내장속성 ]
+            - 브라우저에서 값을 설정하거나 읽어올 수 있는 속성
+            예) innerHTML, innerText
+
+        */
+    </script>
+</head>
+
+<body>
+    <!-- 전체 타이틀 -->
+    <h1 class="tit">All New Aladin</h1>
+
+    <!-- 스틸컷장면박스 -->
+    <div class="photo">
+        <img id="scene" src="./images/ala1.jpg" alt="알라딘스틸컷">
+    </div>
+
+    <!-- 선택버튼박스 -->
+    <div class="btnbx">
+        <button class="btns" onclick="chgImg(this)">포스터</button>
+        <!-- 
+            [ this 키워드 ]
+            따옴표로 안싸고 this를 보내면
+            버튼 자신을 보낸다는 의미!
+            보낸 요소의 정보를 함수에서 알아낼 수 있다!
+            요소의 정보란? 속성의 값, 데이터 등
+         -->
+        <button class="btns" onclick="chgImg(this)">장면1</button>
+        <button class="btns" onclick="chgImg(this)">장면2</button>
+        <button class="btns" onclick="chgImg(this)">장면3</button>
+    </div>
+
+</body>
+
+</html>
