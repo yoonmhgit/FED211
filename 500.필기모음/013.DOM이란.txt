@@ -50,7 +50,7 @@ DOM은 프로그램 및 스크립트 문서의 내용, 구조 및 스타일을
         item(순번) / [순번]
     - 선택된 요소의 개수 얻기 -> length
 
-※ 위의 5가지 선택법 중 다중요소 선택일 경우 컬렉션이 생성되어
+※★★★★★ 위의 5가지 선택법 중 다중요소 선택일 경우 컬렉션이 생성되어
 선택방법이 세분화된다!
 - document.getElementsByClassName(클래스명)
 - document.getElementsByTagName(태그명)
