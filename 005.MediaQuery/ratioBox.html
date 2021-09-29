@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비율유지박스(Ratio Box)</title>
+    <style>
+
+        .rbx{
+            position: relative;
+            /* 비율유지 속박스의 부모자격! */
+            width: 50%;
+            /* height: 400px; */
+            /* padding-top: 50%; */
+            /* 
+                [비율유지박스의 원리]
+                1.height값을 주지않는 블록박스에 패딩값을 top에 주면 높이값이 생긴다!
+                2.패딩탑값을 %로 주면 가로크기에 대한 일정비율로 높이값이 생긴다!
+                3.정확한 비율이 나오려면 자식요소의 패딩탑값으로 %를 주면된다
+                4.가상요소를 이용하여 비율을 만들어준다!
+            */
+
+            background: url(./images/mobum.jpg) no-repeat center/cover;
+            margin: 0 auto;
+        }
+        /* 가상요소로 비율만들기! */
+        .rbx::before{
+            content: '';
+            display: block;
+            padding-top: 56.25%;
+            /* 100%는 부모의 가로크기와 같다는 의미 1:1비율 */
+            /* 
+            
+                비율 계산하기!
+            
+                1:1비율이면 100%
+            
+                만약 16:9 비율로 만들려면?
+                16:9 = 100:x
+                100*9=16*x
+                x=100*9/16 = 56.25%
+            
+            
+            */
+        }
+        /* 가상요소 패딩으로 속박스 필수! */
+        .rbxIn{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            /* 앱솔루트 사방으로 채우기! */
+            /* 부모는 반드시 .rbx여야함! */
+        }
+
+
+
+        /* 내용셋팅 */
+        .cat{
+            position: absolute;
+            bottom: 22%;
+            left: 5%;
+            /* 부모는? .rbxIn */
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-size: 1.2vmax;
+            font-weight: bold;
+            line-height: 2;
+            text-shadow: 2px 2px 2px #000;
+        }
+
+        /* 
+            [비율유지 박스를 위해 필요한것들]
+        1. 가로크기가 유동적인 높이값없는 블록박스
+        2. 1번박스의 가상요소 before로 padding-top값 %지정(비율)
+        3. 1번박스의 속박스 앱솔루트 밀착박스 설정(1번박스가 부모)
+
+            [비율유지박스를 위한 클래스]
+        1. .rbx 비율유지박스 (width %)
+        2. .rbx::before 비율설정 (padding-top %)
+        3. .rbxIn 비율유지속박스 (absolute)
+        
+        
+        */
+    </style>
+</head>
+
+<body>
+    <div class="rbx">
+        <div class="rbxIn">
+            <dl class="cat">
+                <dt>출연진</dt>
+                <dd>이제훈(김도기역)</dd>
+                <dd>이솜(강하나역)</dd>
+                <dd>김의성(장성철역)</dd>
+            </dl>
+        </div>
+    </div>
+
+</body>
+
+</html>
