@@ -3,18 +3,9 @@
 
 /* 외부 css 합치기 */
 @import url(reset.css);
+@import url(core.css);
 
-/* 공통 class */
 
-/* 속박스 */
-.ibx{
-    max-width: 1300px;
-    margin: 0 auto;
-    /* 1300px 보다 크면 중앙정렬
-    , 작으면 auto로 width를 유지함! */
-    outline: 3px dotted blue;
-    
-}
 /* _________________________________________1.상단영역___________________________________________ */
 .top{
     height: 206px;
@@ -25,13 +16,79 @@
 .cont>div{
     outline: 2px dashed red;
 }
+
+
+
+
+
+
+
+/* 1번 컨텐츠 */
+.bg1{
+    background-image: url(../images/cont1a.jpg);
+}
+/* 2번 3등분 컨텐츠 */
+.bg2{
+    background-image: url(../images/cont2-1.jpg);
+}
+.bg3{
+    background-image: url(../images/cont2-2.jpeg);
+}
+.bg4{
+    background-image: url(../images/cont2-3.jpg);
+}
+/* 3번 컨텐츠 */
+.bg5{
+    background-image: url(../images/cont3a.jpg);
+}
+/* 4번 3등분 컨텐츠 */
+.bg6{
+    background-image: url(../images/cont4-1.jpg);
+}
+.bg7{
+    background-image: url(../images/cont4-2.jpg);
+}
+.bg8{
+    background-image: url(../images/cont4-3.jpg);
+}
+/* 5번 컨텐츠 */
+.bg9{
+    background-image: url(../images/cont5a.jpg);
+}
+/* 6~8번 3등분 컨텐츠 */
+.bg10{
+    background-image: url(../images/cont6-1.png);
+}
+.bg11{
+    background-image: url(../images/cont6-2.jpg);
+}
+.bg12{
+    background-image: url(../images/cont6-3.png);
+}
+/* 4번 3등분 컨텐츠 */
+.bg13{
+    background-image: url(../images/cont7-1.jpg);
+}
+.bg14{
+    background-image: url(../images/cont7-2.jpg);
+}
+.bg15{
+    background-image: url(../images/cont7-3.jpg);
+}
+
+
+
+
+
+
 /* 파트타입1 - 이미지1개 */
 .pt1{
-    height: 724px;
+    /* height: 724px; */
+    /* 비율유지를 따로 주기때문에 주석처리함 */
 }
 /* 파트타입2 - 이미지3개 */
 .pt2{
-    height: 650px;
+    /* height: 650px; */
 }
 
 

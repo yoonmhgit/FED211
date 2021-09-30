@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* VOGUE PJ 공통 클래스, 웹폰트 - core.css */
+
+/* 공통 class */
+
+/* 속박스 */
+.ibx{
+    max-width: 1300px;
+    margin: 0 auto;
+    /* 1300px 보다 크면 중앙정렬
+    , 작으면 auto로 width를 유지함! */
+    outline: 3px dotted blue;
+}
+/* 비율유지박스 */
+.rbx{   
+    position: relative;
+    /* 부모자격 - .rbxIn */
+    outline: 2px dotted orange;
+}
+/* 비율 밀기 가상요소 */
+.rbx::before{
+    content: '';
+    display: block;
+    /* padding-top 비율은 각 클래스와 연결한다! */
+}
+/* 스타일 별 비율밀기 */
+/* 이미지 하나짜리 */
+.pt1.rbx::before{
+    padding-top: 55.69%;
+    /* 
+        비율계산(박스의 비율유지를 위해서)
+        1300px : 724px(소수점은 반올림이나 반내림) = 100%(일때 몇퍼센트로 할것인가) : ?%
+        ?% = 724px * 100% / 1300px
+        ?% = 55.69%
+    */
+}
+/* 이미지 3개짜리 */
+.pt2.rbx::before{
+    padding-top: 50%;
+    /* 부모 가로크기의 60% */
+        /* 
+        비율계산
+        1300px : 650px(소수점은 반올림이나 반내림) = 100%(일때 몇퍼센트로 할것인가) : ?%
+        ?% = 650px * 100% / 1300px
+        ?% = 50%
+    */
+}
+/* 비율박스 속박스 */
+.rbxIn{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* 부모박스에 딱 달라붙는 비율박스(패딩을만들었으니까?) */
+}
+
+/* 컨텐츠 박스 - 실제 내용이 들어가는 박스 */
+.cbx{
+    height: 100%;
+    /* 부모박스를 채움 */
+    /* width는 설정안하면 오토이기때문에 굳이 안함 */
+
+}
+/* .pt2 아래 .cbx만 float:left(플로팅)와 3등분적용! */
+.pt2 .cbx{
+    float: left;
+    width: 33.33%;
+}
+
+/* ************배경이미지 공통************ */
+.bgi{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
