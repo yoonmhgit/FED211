@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow function 화살표함수</title>
+    <script>
+
+        /* 
+        [ES6에서 등장한 JS 함수 축약법!]
+        1. function키워드, return키워드, 중괄호를 모두 생략!
+        2. 익명함수에 해당!
+        3. 기본형:
+            function(){}
+        4. 축약형:
+            ()=>{}
+        5. 확장형:
+            ()=>{코드} 
+                매개변수가 없을 경우
+            x=>{코드} 
+                매개변수(여기선 x)가 하나일 경우 소괄호 생략
+            (x,y)=>{코드}
+                매개변수가 여러개일 경우 소괄호 필수!
+            _______________________________________________________
+            x=>{return x*x}
+                일반적인 축약형 return
+            x=>x*x;
+                하나의 연결된 값으로 리턴할때 return 키워드, 중괄호 모두생략
+
+            ()=>{return {a:1};}
+                객체리턴시 일반축약형
+            ()=>({a:1})
+                객체리턴시 return키워드 생략가능! 단, 소괄호로 싸줘야함!
+            ________________________________________________________
+            아래와 같이 여러 실행문이 있으면 중괄호필수!
+            ()=>{
+                const x=10;
+                return x*x;
+            }
+            
+        */
+
+
+        // 일반적인 할당형 변수
+        // var x = function(a,b){
+        //     return a*b;
+        // };//////////함수/////////
+
+        /////축약형/////
+        // const x = (a,b) => {return a*b;};
+        const x = (a,b) => a*b;
+
+        //함수호출하기
+        console.log("x(100,20)함수호출:"+x(100,20));
+
+
+
+
+
+        // 일반적인 함수할당
+        // let my = function(x){
+        //     console.log("나는 "+x+"다!");
+        //}////////함수////////////
+
+        //축약형
+        let my = x => console.log("나는 "+x+"다!");
+
+        //함수호출하기
+        my("프론트앤드 개발자");
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
