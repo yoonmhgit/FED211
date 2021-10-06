@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* VOGUE PJ 공통 기능 디자인 - common.css */
+/* 
+    공통기능: 상단영역(로고,메뉴,GNB)
+             하단영역(하단로고,회사정보)
+*/
+
+/* 공사중 외곽선 */
+body * {
+    outline: 1px dashed rgb(99, 99, 99);
+}
+
+/* 1-1. 상단메뉴 */
+.tmenu{
+    display: flex;
+    /* 플렉스박스 */
+    max-width: 970px;
+    /* 최대970이고 이것보다 작아지면 auto  */
+    height: 45px;
+    margin: 0 auto;
+}
+/* 상단메뉴 하위 박스 등분할 */
+.tmenu>div{
+    flex: 1;
+    /* flex등분할시 높이값은 자동채우기됨!
+    height:100%를 안해도됨! */
+}
+
+/* 1-1-1. sns박스 */
+/* sns박스 a */
+.sns a{
+    display: inline-block;
+    /* 디자인 적용위해 */
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    /* 안줘도 html상속된 사이즈는 16px이다 */
+    text-align: center;
+    /* 박스내의 인라인요소 가로중앙정렬 */
+    vertical-align: top;
+    /* 인라인 요소간 세로정렬(top-윗줄정렬) 
+    클래스안먹었던 마지막a가 올라옴 */
+    line-height: 16px;
+    /* 글자가 박스 세로 중앙에 오도록 설정 */
+
+    /* 위치조정 */
+    margin-top: 13px;
+    margin-right: 16px;
+
+    /* 트랜지션 속시이지! */
+    transition: opacity .2s;
+}
+/* a요소 마우스 오버시  */
+.sns a:hover{
+    opacity: 0.8;
+}
+
+/* 트위터 아이콘박스 */
+.sns a.fi-twitter{
+    font-size: 13px;
+}
+/* 유튜브 아이콘박스 */
+.sns a.fi-youtube-play{
+    font-size: 11px;
+}
+/* sns마지막 a요소의 카스이미지넣기 */
+.sns a:last-child{
+    background: url(../images/sns_kakao.png) center/auto 100%;
+}
+
+/* 1-1-2. 사이드메뉴 */
+.sideMenu{
+    position: relative;
+    /* 부모자격 */
+}
+/* 사이드메뉴 내용박스 */
+.smbx{
+    position: absolute;
+    right: 0;
+    /* 부모는? .sideMenu */
+    display: flex;
+    /* 플렉스박스 */
+}
+.smbx>li{
+}
+/* a요소 */
+.smbx>li>a{
+    display: block;
+    padding: 0 13px;
+    line-height: 44px;
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #747474;
+}
