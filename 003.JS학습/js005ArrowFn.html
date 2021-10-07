@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arrow function 화살표함수</title>
     <script>
-
         /* 
         [ES6에서 등장한 JS 함수 축약법!]
         1. function키워드, return키워드, 중괄호를 모두 생략!
@@ -48,10 +48,10 @@
 
         /////축약형/////
         // const x = (a,b) => {return a*b;};
-        const x = (a,b) => a*b;
+        const x = (a, b) => a * b;
 
         //함수호출하기
-        console.log("x(100,20)함수호출:"+x(100,20));
+        console.log("x(100,20)함수호출:" + x(100, 20));
 
 
 
@@ -63,15 +63,39 @@
         //}////////함수////////////
 
         //축약형
-        let my = x => console.log("나는 "+x+"다!");
+        let my = x => console.log("나는 " + x + "다!");
 
         //함수호출하기
         my("프론트앤드 개발자");
 
+        /* 
+            [화살표 함수를 쓸때 내부에 this키워드 의미]
+            
+            기존 익명함수 사용시엔 this키워드가 이벤트 속성에 할당된 함수내부에서 요소자신을 가리킨다!
 
+            예)
+            요소.oneclick = function(){
+                let txt = this.innerText;
+            }
+
+            그 러 나 !
+            화살표함수를 사용할 경우엔 this키워드는 window객체를 가리킨다!
+            따라서 this 키워드 대신 event.currentTarget을 사용해야만 기존의
+            this 키워드와 같은 요소 자신을 표현할 수 있다! (꼭 알아둘것!)
+
+            예)
+            요소.oneclick = function(){
+                let txt = event.currentTarget.innerText;
+                       //____________________★
+            
+
+
+        */
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

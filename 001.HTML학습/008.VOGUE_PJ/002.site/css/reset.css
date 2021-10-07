@@ -14,7 +14,9 @@ a{
     color: #000;
     text-decoration: none;
 }
+/* 박스의 이미지 하단각극 없애기(약 4px) */
 img{
+    vertical-align: bottom;
+    /* 이미지 링크시 서버에서 볼때 파란색 자동보더 없애기 */
     border: none;
 }
-

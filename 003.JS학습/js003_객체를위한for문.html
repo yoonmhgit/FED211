@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체를 위한 for문</title>
+    <style>
+        .minfo {
+            display: flex;
+            /* 자식요소 박스 옆으로 흐르게! */
+        }
+
+        .photo img {
+            height: 200px;
+            margin-right: 20px;
+        }
+
+        /* 영화한마디 글자박스 */
+        .showtit {
+            display: none;
+        }
+
+        .show span {
+            display: inline-block;
+            /* 가로,세로 등 디자인 적용+한줄에 나옴 */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            /* 원 */
+            border: 5px solid #d30000;
+            background-color: #00f;
+            font-size: 30px;
+            color: #fff;
+
+            /* 동그라미 박스 정중앙 */
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        /// 영화정보 객체 ////
+        let mvi = {
+            "조제": { //속성,콜론,값 / 객체(속성,콜론,값)안에 객체로 구성되있음
+                "포스터": "https://movie-phinf.pstatic.net/20201116_276/1605491658399poUOC_JPEG/movie_image.jpg?type=m99_141_2",
+                "제목": "조제",
+                "개요": "멜로/로맨스, 드라마",
+                "감독": "김종관",
+                "출연": "한지민, 남주혁",
+                "문구": "조제 보러 오세요"
+            },
+            "이웃사촌": {
+                "포스터": "https://movie-phinf.pstatic.net/20201111_193/1605056611896fc6Ef_JPEG/movie_image.jpg?type=m99_141_2",
+                "제목": "이웃사촌",
+                "개요": "드라마, 코미디",
+                "감독": "이환경",
+                "출연": "정우, 김희원",
+                "문구": "이웃을 사랑합시다"
+            },
+            "도굴": {
+                "포스터": "https://movie-phinf.pstatic.net/20201104_45/160445535053439akc_JPEG/movie_image.jpg?type=m99_141_2",
+                "제목": "도굴",
+                "개요": "범죄",
+                "감독": "박정배",
+                "출연": "이제훈, 조우진, 신혜선, 임원희",
+                "문구": "도굴은 범죄예요"
+            }
+        }; ///////////////// mvi 객체 //////////////////////
+
+//________________________________________________________________________________________________________
+        //////////////////////////////////////로드구역/////////////////////////////////////////
+        window.addEventListener("load",()=>{
+
+            console.log("로딩완료");
+
+
+            //////////////////////////구현내용//////////////////////////////
+            // 구현내용 
+            // 버튼을 클릭하면 영화의 정보를 화면에 보여준다!
+            // 이벤트 대상 : button
+            // 이벤트 종류 : click
+            // 이벤트 대상 구분 : 클릭된 버튼의 글자데이터
+            // 변경대상 : .tit, .sum, .dir, .act
+            // 변경내용 : 대상의 각 내용에 맞게 객체로 부터 정보를 셋팅함
+            ////////////////////////////////////////////////////////////////
+
+
+            // 대상 변수 할당하기!
+            // 이벤트 대상 : button
+            let btn = document.querySelectorAll("button");
+            // console.log("버튼개수"+btn.length);
+
+            // 버튼 개수만큼 for of문으로 click이벤트 함수 만들기!
+            for(let x of btn){ //x는 개별 버튼요소
+
+                // let으로 선언된 x변수는 for문 내부의 익명함수 안으로 변수를 전달할 수 있다!(var는 불가)
+
+                x.onclick = ()=>{
+                    
+                    // 1. 버튼 텍스트 읽어오기
+                    let txt = x.innerText;
+                    // console.log(txt);
+
+                    // 2. 버튼 텍스트에 해당하는 객체 할당하기
+                    let seti = mvi[txt]
+                    // console.log(seti);
+
+                    // 3. 해당 요소의 객체의 데이터를 넣어주기
+                    for(let x in seti){
+                        // console.log("x는 속성명:"+x);
+                        // console.log("속성값: "+ seti[x]);
+
+                        // 각속성명에 해당하는 작업분리하기
+                        switch (x) {
+
+                            // 1. 포스터넣기
+                            case "포스터":
+                                document.querySelector(".photo")
+                                    .innerHTML =
+                                    '<img src="' + seti[x] +
+                                    '" alt="포스터">';
+                                    break;
+                            // 2. 제목넣기
+                            case "제목":
+                                document.querySelector(".tit")
+                                .innerText = "제목: " +seti[x];
+                                break;
+                            // 3. 개요넣기
+                            case "개요":
+                                document.querySelector(".sum")
+                                .innerText = "장르: " +seti[x];
+                                break;
+                            // 4. 감독넣기
+                            case "감독":
+                                document.querySelector(".dir")
+                                .innerText = "감독: " +seti[x];
+                                break;
+                            // 5. 출연진넣기
+                            case "출연":
+                                document.querySelector(".act")
+                                .innerText = "배우: " +seti[x];
+                                break;
+
+                        }//////swich case문//////
+
+/* 
+        [객체를 위한 for in문 (3번)]
+
+        -구문: for(변수 in 객체){구현코드}
+
+        -작동원리: 객체의 개수만큼 순서대로 속성명과 속성값을 가져옴
+
+        -변수는 객체의 속성명이다!
+*/
+
+                        // 영화 한마디 넣기________________________________________________________§
+                        // for of문을 사용해서 문자데이터 한글자씩 span태그로 싸서 해당요소에 넣는다!
+                        if(x==="문구"){
+
+                            // 문자 데이터 변수
+                            let show ="";
+                            // "문구" 속성값 변수
+                            let tg = seti[x];
+                            // console.log("문구:"+tg);
+
+                            // 한글자씩 span으로 싼다!
+                            for (let x of tg){ // x는 한글자씩!
+
+                                // 공백일 경우처리
+                                if(x === " "){
+                                    // 공백 특수문자처리 : &nbsp;
+                                    show += "&nbsp;&nbsp;&nbsp;"
+                                }/////if//////
+                                else{
+                                    show += "<span>" + x + "</span>";
+                                }///////else문///////
+                            }/////// for of문 ///////
+
+                            // 넣을 대상에 html넣기
+                            document.querySelector(".show")
+                            .innerHTML = show;
+
+                        }//////if문///////________________________________________________________§
+
+
+                    }//////for in문///////
+
+                };//////클릭이벤트함수//////
+
+            }////////for of문//////////
+
+        });//////////////////////////////////로드구역///////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+//________________________________________________________________________________________________________
+
+
+
+    </script>
+</head>
+
+<body>
+    <h1>영화정보</h1>
+    <button>조제</button>
+    <button>이웃사촌</button>
+    <button>도굴</button>
+
+    <hr>
+
+    <div class="minfo">
+        <div class="photo"></div>
+        <div class="cont">
+            <h2 class="tit"></h2>
+            <h3 class="sum"></h3>
+            <h3 class="dir"></h3>
+            <h3 class="act"></h3>
+        </div>
+    </div>
+
+    <!-- 영화 한마디 -->
+    <h2 class="showtit">♥ 영화한마디!</h2>
+    <div class="show"></div>
+
+</body>
+
+</html>

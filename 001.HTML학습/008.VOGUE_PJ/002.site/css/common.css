@@ -6,17 +6,21 @@
 */
 
 /* 공사중 외곽선 */
-body * {
+/* body * {
     outline: 1px dashed rgb(99, 99, 99);
-}
+} */
 /* _________________________________________1.상단공통영역___________________________________________ */
+#top{/* 상단 최상위 부모박스에 박스그림자 */
+    box-shadow: 0 0 5px #000;
+    position: relative;
+    z-index: 9999;
+}
 .top{
     min-height: 206px;
     /* 206px 잡고 있다가 내용늘면 늘어남! */
 
 }
-
-/* _______________________________________________________________________________________ */
+/* __________________________________________________________________________________________________ */
 /* 1-1. 상단메뉴 */
 .tmenu{
     display: flex;
@@ -208,4 +212,46 @@ body * {
 /* 마우스 오버시 글자색 */
 .gnb a:hover{
     color: #f00;
+}
+
+/* ________________________________________3.하단영역______________________________________________ */
+.info{
+    min-height: 285px;
+    /* 최소 285px 높이를 유지하다가 내용이 많아지면 늘어남 */
+    background-color: #000;
+    /* 크기유지를 하면서 패딩70~! */
+    box-sizing: border-box;
+    padding: 70px;
+    font-family: 'Roboto', 'NanumBarunGothic', sans-serif;
+}
+
+/* 3-1. 하단로고 */
+.blogo{
+    text-align: center;
+}
+/* 3-2. 회사주소 */
+.addr{
+    color: #747474;
+    font-style: normal;
+    text-align: center;
+    font-size: 11px;
+    margin: 20px 0px 10px;
+        /* 위20 양쪽0 아래10 */
+}
+/* 3-3. 하단링크 */
+.blink{
+    display: flex;
+    flex-wrap: wrap/* 컨텐츠 크기보다 작아지면 줄바꿈 */;
+    /* 플렉스 가로방향 정렬-> justify-content */
+    justify-content: center;
+}
+/* 하단링크 a요소 */
+.blink a{
+    color: #747474;
+    font-size: 13px;
+    margin: 0 5px;
+}
+/* 마지막 li만 두껍게! */
+.blink li:last-child a{
+    font-weight: bold;
 }

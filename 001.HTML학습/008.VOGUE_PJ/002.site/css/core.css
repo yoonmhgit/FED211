@@ -36,13 +36,13 @@ font-family: 'NanumBarunGothic', sans-serif;
     margin: 0 auto;
     /* 1300px 보다 크면 중앙정렬
     , 작으면 auto로 width를 유지함! */
-    outline: 3px dotted blue;
+    /* outline: 3px dotted blue; */
 }
 /* 비율유지박스 */
 .rbx{   
     position: relative;
     /* 부모자격 - .rbxIn */
-    outline: 2px dotted orange;
+    /* outline: 2px dotted orange; */
 }
 /* 비율 밀기 가상요소 */
 .rbx::before{
@@ -84,11 +84,69 @@ font-family: 'NanumBarunGothic', sans-serif;
 
 /* 컨텐츠 박스 - 실제 내용이 들어가는 박스 */
 .cbx{
+    position: relative;
+    /* 가상요소의 부모자격 */
     height: 100%;
     /* 부모박스를 채움 */
     /* width는 설정안하면 오토이기때문에 굳이 안함 */
-
 }
+
+/* 컨텐츠박스 div 안넣고 가상요소로 보더애니구현 */
+.cbx::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* 나의 부모는? .cbx */
+
+    box-sizing: border-box;
+    /* 보더가 생겨도 커지지않도록 설정! */
+    border: 0px solid transparent; /* 투명 */
+
+    /* 트랜지션 속시이지! */
+    transition: all .2s ease-in;
+}
+/* .pbx에 마우스 오버시 보더 생기기 */
+.cbx:hover::after{
+    border: 20px solid #f00;
+}
+
+/* 컨텐츠 타이틀 박스 */
+.cbx h2{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    font-family: 'Pistilli', 'NanumBarunGothic';
+    /* 웹폰트 영문체(Pistilli), 한글체(NanumBarunGothic) */
+    font-size: 33px;
+    color: #fff;
+    text-align: center;
+    font-weight: lighter;
+    /* 가는 글씨두께 */
+
+    box-sizing: border-box;
+    /* 크기유지 */
+    padding: 50px;
+
+    /* 컨텐츠 타이틀 박스에 가상요소로 그라디언트배경 넣기(글자잘보이게) */
+    background-image: linear-gradient(to top, #000, transparent);  
+    
+    /*
+        [선형 그라데이션 속성]
+     background-image: linear-gradient(방향, 색1, 색2, 색3,...);
+     - 방향: 그라데이션 진행방향
+        (to top, to buttom, to left, to right)
+     - 색상은 지정한 개수만큼 등분되어 그라데이션 표현된다!
+     - 색상 비율을 바꿀 수 있다!
+     linear-gradient(방향, 색1 몇%,색2 몇%,색3 몇%,....) 
+      */
+}
+
+
 /* .pt2 아래 .cbx만 float:left(플로팅)와 3등분적용! */
 .pt2 .rbxIn{/* 3등분박스의 직계부모 */
     display: flex;/* flex는 직계부모에게 준다! */

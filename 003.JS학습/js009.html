@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS - DOM(Document Object Model)</title>
+    <script>
+        //////////// 로드구역 ///////////////////////////
+        window.addEventListener("DOMContentLoaded", function () {
+
+            // 로드구역 확인
+            console.log("로딩완료!");
+
+            //// #div01의 각 메뉴에 마우스 오버시 하위메뉴 보이기 ////
+            
+
+            /*
+            switch (txt) {
+                case "Google":
+                    url = "http://www.google.com";
+                    break;
+                case "Naver":
+                    url = "http://www.naver.com";
+                    break;
+                case "Daum":
+                    url = "http://www.daum.net";
+                    break;
+                case "Nate":
+                    url = "http://www.nate.com";
+                    break;
+                case "SK":
+                    url = "http://www.sktelecom.com";
+                    break;
+                case "KT":
+                    url = "http://www.kt.com";
+                    break;
+                case "Uplus":
+                    url = "http://www.uplus.co.kr";
+                    break;
+                case "CGV":
+                    url = "http://www.cgv.co.kr";
+                    break;
+                case "MEGABOX":
+                    url = "http://www.megabox.co.kr";
+                    break;
+                case "LOTTE CINEMA":
+                    url = "https://www.lottecinema.co.kr/NLCHS";
+                    break;
+                case "GMARKET":
+                    url = "http://www.gmarket.co.kr";
+                    break;
+                case "11번가":
+                    url = "http://www.11st.co.kr";
+                    break;
+                case "Auction":
+                    url = "http://www.auction.co.kr";
+                    break;
+                case "스토어팜":
+                    url = "https://shopping.naver.com/";
+                    break;
+                case "인터파크":
+                    url = "http://www.interpark.co.kr";
+                    break;
+                case "쿠팡":
+                    url = "http://www.coopang.co.kr";
+                    break;
+                case "Apple":
+                    url = "http://www.apple.com";
+                    break;
+                case "Samsung":
+                    url = "http://www.samsung.com";
+                    break;
+                case "넷마블":
+                    url = "http://www.netmarble.net";
+                    break;
+                case "넥슨":
+                    url = "https://www.nexon.com";
+                    break;
+                case "IMC":
+                    url = "http://www.imc.co.kr";
+                    break;
+            } ///// switch case문 ///// 
+            */
+
+
+
+            /* 
+                [ 요소의 생성, 삭제, 이동하기 ]
+
+                1. 맨뒤 생성 혹은 맨뒤 이동
+                -> 선택요소.appendChild(요소)
+
+                2. 특정위치에 요소 넣기 혹은 이동
+                -> 선택요소.insertBefore(넣을놈,넣을놈전놈)
+
+                3. 요소의 삭제
+                -> 선택요소.remove()
+
+                4. 새로운 요소 생성 (메모리상에 생성함)
+                -> document.createElement(태그명)
+
+                5. 요소에 새로운 속성넣기 (메모리상에 생성함)
+                -> document.createAttribute(속성명)
+
+                6. 생성된 속성에 값넣기
+                -> 생성된속성.value = 값
+
+                7. 요소의 새로운 속성 넣기
+                -> 선택요소.setAttributeNode(새로운속성)
+            */
+
+            // 새리스트 생성 버튼 클릭시 리스트 만들기 ////
+            // 이벤트 종류: click
+            // 이벤트 대상: .nbt
+            // 변경 대상: #div01 ul
+            
+
+
+            /// 랜덤생성 버튼 클릭시 새로운 li에 랜덤으로 img넣기
+            // 이벤트 종류: click
+            // 이벤트 대상: .rbt
+
+
+
+
+            ///// 리스트의 li를 클릭하면 지우기! //////////
+            // 이벤트: click
+            // 이벤트대상: #div02 ul li
+            // 변경대상: 이벤트대상
+            // 변경내용: 변경대상 삭제하기
+            
+
+
+            ///// 맨앞요소를 맨뒤로 이동하기 ////////////////////
+            // 이벤트 종류: click
+            // 이벤트 대상: .mvl
+            // 변경 대상1: #div02 ul li 
+            //          (매번 새로 갱신해야 함-리스트가 바뀌니까!)
+            // 변경 대상2: #div02 ul
+            //          (부모ul에서 자식추가해야함!-d2에 담김)
+            // 변경 내용: 첫번째 li를 선택하여 맨뒤로 추가함
+            // 사용 메서드: appendChild(요소)
+            // -> 기존요소를 선택하면 이동이 됨!
+            /////////////////////////////////////////////////
+            
+
+
+
+
+            /// 맨뒤요소 맨앞으로 이동하기 ///////////////////////
+            // 이벤트 종류: click
+            // 이벤트 대상: .mvf
+            // 변경대상1: #div02 ul li(마지막요소 선택-매번 갱신)
+            // 변경대상2: #div02 ul (리스트의 부모에서 이동명령!)
+            // 사용 메서드: insertBefore(넣을놈,넣을놈전놈)
+            // 넣을놈 - 마지막 li요소
+            // 넣을놈전놈 - 맨처음 li요소
+            //////////////////////////////////////////////////
+            
+
+            
+
+
+        }); ///////// 로드구역 //////////////////////////////////////
+        //////////////////////////////////////////////////////////
+    </script>
+    <style>
+        body>div {
+            outline: 1px solid red;
+            width: 200px;
+            display: inline-block;
+            vertical-align: top;
+            /*인라인블록은 인라인성격이 있어서 기본 옆으로 세로정렬은
+            baseline이므로 아래쪽선을 기준한다. 이것을 위줄 기준변경함*/
+        }
+
+        div img {
+            width: 50px;
+        }
+
+        /*서브메뉴 숨기기*/
+        .smenu>div {
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="div01">
+        마우스오버시 <br>
+        1. 서브메뉴 보이기 <br>
+        2. 링크이동하기
+
+        <!--ul>li.smenu*6>a+ol>li*6>a-->
+        <ul>
+            <li class="smenu">
+                <a href="">검색포털사이트</a>
+                <div>
+                    <ol>
+                        <li><a href="">Google</a></li>
+                        <li><a href="">Naver</a></li>
+                        <li><a href="">Daum</a></li>
+                        <li><a href="">Nate</a></li>
+                    </ol>
+                </div>
+
+            </li>
+            <li class="smenu">
+                <a href="">통신사사이트</a>
+                <div>
+                    <ol>
+                        <li><a href="">SK</a></li>
+                        <li><a href="">KT</a></li>
+                        <li><a href="">Uplus</a></li>
+                    </ol>
+                </div>
+
+            </li>
+            <li class="smenu">
+                <a href="">영화관사이트</a>
+                <div>
+                    <ol>
+                        <li><a href="">CGV</a></li>
+                        <li><a href="">MEGABOX</a></li>
+                        <li><a href="">LOTTE CINEMA</a></li>
+                    </ol>
+                </div>
+
+            </li>
+            <li class="smenu">
+                <a href="">쇼핑몰사이트</a>
+                <div>
+                    <ol>
+                        <li><a href="">GMARKET</a></li>
+                        <li><a href="">11번가</a></li>
+                        <li><a href="">Auction</a></li>
+                        <li><a href="">스토어팜</a></li>
+                        <li><a href="">인터파크</a></li>
+                        <li><a href="">쿠팡</a></li>
+                    </ol>
+                </div>
+
+            </li>
+            <li class="smenu">
+                <a href="">스마트폰사이트</a>
+                <div>
+                    <ol>
+                        <li><a href="">Apple</a></li>
+                        <li><a href="">Samsung</a></li>
+                    </ol>
+                </div>
+
+            </li>
+            <li class="smenu">
+                <a href="">게임사이트</a>
+                <div>
+                    <ol>
+                        <li><a href="">넷마블</a></li>
+                        <li><a href="">넥슨</a></li>
+                        <li><a href="">IMC</a></li>
+                    </ol>
+                </div>
+
+            </li>
+        </ul>
+
+    </div>
+
+    <div id="div02">
+        <h2>요소의 생성,삭제,이동하기</h2>
+        <button class="nbt">새리스트생성</button>
+        <button class="rbt">랜덤생성</button> <br><br>
+        <button class="mvl">맨뒤이동</button>
+        <button class="mvf">맨앞이동</button>
+        <ul>
+            <li><img src="images/img1.jpg" alt="이미지"></li>
+            <li><img src="images/img2.jpg" alt="이미지"></li>
+            <li><img src="images/img3.jpg" alt="이미지"></li>
+            <li><img src="images/img4.jpg" alt="이미지"></li>
+            <li><img src="images/img5.jpg" alt="이미지"></li>
+            <li><img src="images/img6.jpg" alt="이미지"></li>
+            <li><img src="images/img7.jpg" alt="이미지"></li>
+        </ul>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
