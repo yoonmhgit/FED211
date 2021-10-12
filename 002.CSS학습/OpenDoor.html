@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Door - CSS3 : 3D Perspective Animation</title>
+    <style>
+        /* 웹폰트 CDN */
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #9C0;
+        }
+        /* 타이틀 */
+        .tit{
+            font-size: 42px;
+            font-family: 'Comfortaa', cursive;/* 웹폰트 */
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 2px #222;
+            /* 글자그림자 */
+        }
+
+        /* 전체문부모 */
+        .cont{
+            position: relative;
+            top: 100px;
+            width: 200px;
+            height: 300px;
+            margin: 0 auto;/* 마영오! */
+            background-color: #900;
+        }
+
+        /* 문열었을때 뚫린부분 */
+        .frame{
+            position: relative;
+            top: 20px;
+            width: 150px;
+            height: 280px;
+            margin: 0 auto;/* 마영오! */
+            background: url(./images/seashore.jpg) no-repeat center/auto 100%;
+
+            /* 
+                [ 3D 원근설정 ]
+                1. 셋팅위치 : 3D원근설정을 할 대상의 부모박스에 셋팅
+                2. 설정방법:
+                perspective: 수치;
+                - 수치는 px단위로 숫자가 클수록 소실점이 먼것이므로
+                각도가 작아짐(이 거리는 기준점에서 소실점까지의 거리)
+             */
+             
+             /* 여기에 코딩! */
+
+            /* 
+                [ 뷰포인트(관찰자위치) 위치변경옵션 ]
+                perspective-origin: 가로 세로;
+                - 가로값: left, center, right (x축변경일 경우)
+                - 세로값: top, center, bottom (y축변경일 경우)
+                - 두 값 중 회전축에 따라 한 값만 쓸 수 있고
+                복합일 경우 2가지 값을 같이 셋팅할 수 있다
+                - % 사용가능(예: 50%는 중앙)
+             */
+
+             /* 애니메이션: 이시이지반방마 */
+             animation: sea 5s ease-in-out infinite alternate;
+        }
+
+        /* 프레임 배경 바다 애니메이션 */
+        @keyframes sea {
+            to{
+                background-size: auto 120%;
+            }
+        }/* 키프레임 */
+
+        /* 문짝 */
+        .door{
+            position: relative;
+            /* 부모자격 */
+            width: 150px;
+            height: 280px;
+            background-color: #C90;
+
+            /* Y축으로 문짝을 회전한다! */
+            transform: rotateY(50deg);
+            transform-origin: left;
+            /* 
+                회전기준축 변경하기
+                transform-origin: 가로 세로;
+                - 가로값: right, center, left
+                - 세로값: top, center, bottom
+                - 정해지지 않은 값: px, %도 가능함
+             */
+            /* 애니메이션: 이시이지반방마 */
+            animation: openDoor 2s ease-in-out infinite alternate;
+
+            z-index: 1;/* 엘사보다 위 */
+        }
+        /* 문짝열기 키프레임 */
+        @keyframes openDoor {
+            from{
+                transform: rotateY(65deg);
+            }
+            to{
+                transform: rotateY(-65deg);
+            }
+        }/* 키프레임 */
+
+
+        /* 손잡이 */
+        .handle{
+            position: absolute;
+            top: 150px;
+            right: 10px;
+            /* 부모는? .door */
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;/* 원 */
+            background-color: #00f;
+        }
+
+        /* 엘사박스 */
+        #elsa{
+            position: absolute;
+            top: 0;
+            /* 나의부모? .frame */
+            width: 150px;
+            height: 280px;
+            overflow: hidden;/* 넘치는 엘사이미지 숨기기 */
+        }
+        /* 엘사 이미지 */
+        #elsa img{
+            margin-left: 150px;
+            margin-top: 50px;
+            transform: rotate(0deg);
+            /* 반시계방향회전을 애니메이션에서 함 */
+            transform-origin: bottom;/* 기준축변경 */
+
+            /* 애니메이션: 이시이지반방마 */
+            animation: elsa 2s ease-in-out infinite alternate;
+        }
+
+        /* 엘사 키프레임 */
+        @keyframes elsa {
+            to{
+                transform: rotate(-15deg);
+            }
+        }/* 키프레임 */
+
+
+        /**********창문만들기*************/
+        
+        /*창문전체부모*/
+        .cont2 {
+            position: absolute;
+            top: 210px;
+            left: 70%;
+            width: 150px;
+            height: 150px;
+            background-color: #900;
+        }
+
+        /*문열었을때 뚫린부분*/
+        .frame2 {
+            position: relative;
+            top: 10px;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto;
+            background: url(images/seashore.jpg) no-repeat center top/auto 200%;
+            /*
+            [ 3D 원근설정 ]
+            1. 셋팅위치: 3D원근설정을 할 대상의 부모박스에 셋팅
+            2. 설정방법:
+            perspective: 수치;
+            - 수치는 px단위로 숫자가 클수록
+            소실점이 먼것이므로 각도가 작아짐(기준점에서 소실점까지의 거리)
+            */
+            
+            /* 여기에 코딩! */
+
+        }
+
+
+        /*창문*/
+        .door2 {
+            position: relative;
+            /*부모자격-손잡이*/
+            width: 130px;
+            height: 130px;
+            background-color: rgba(204, 153, 0, 0.58);
+
+            text-align: center;/* 글자중앙 */
+            writing-mode: vertical-lr;
+            /* 
+                글자진행방향 설정 속성
+                writing-mode:
+                옵션값
+                horizontal-tb 가로방향글자 위에서 아래로(기본값)
+                vertical-rl 세로방향글자 오른쪽에서 왼쪽으로
+                vertical-lr 세로방향글자 왼쪽에서 오른쪽으로
+             */
+
+            padding: 0 30px;
+            border: 5px solid red;
+            box-sizing: border-box;
+            /*박스크기유지-보더,패딩포함*/
+            
+            
+            /*문짝회전하기*/
+            transform: rotateX(0deg);
+            /*회전기준변경하기*/
+            transform-origin: top;
+            /*
+            회전기준선 변경하기
+            transform-origin: 가로 세로;
+            - 가로값: right, center, left
+            - 세로값: top, center, bottom
+            - 정해지지 않은값 px, %도 사용가능
+            */
+            transition: .4s;
+        }
+
+        /*창문부모에 마우스 오버시 창문열기*/
+        .cont2:hover .door2{            
+            transform: rotateX(65deg);
+        }
+
+        /*손잡이*/
+        .handle2 {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            /*부모? .door*/
+            width: 20px;
+            height: 5px;
+            background-color: #00f;
+        }
+        
+        /* 미디어쿼리 - 모바일 500px이하 */
+        @media only screen and (max-width:500px) {
+
+            /* 타이틀 변경 */
+            .tit{
+                font-size: 35px;
+            }
+            
+            /* 창문 숨기기 */
+            .cont2{
+                display: none;
+            }
+
+
+        }/* 미디어쿼리 */
+
+    </style>
+</head>
+<body>
+    <h1 class="tit">Open Door</h1>
+
+    <!-- 전체문부모 -->
+    <div class="cont">
+        <!-- 문열었을때 뚫린부분 -->
+        <div class="frame">
+            <!-- 문짝 -->
+            <div class="door">
+                <!-- 손잡이 -->
+                <div class="handle"></div>
+            </div>
+            <!-- 엘사박스 -->
+            <div id="elsa">
+                <img src="./images/elsa.png" alt="엘사">
+            </div>
+        </div><!-- .frame -->
+    </div><!-- .cont -->
+
+    <!-- 창문만들기 -->
+    <div class="cont2">
+        <!-- 문열었을때 뚫린부분 -->
+        <div class="frame2">
+            <!-- 문짝 -->
+            <div class="door2">
+                여기에<br>
+                마우스<br>
+                오버해
+                <!-- 손잡이 -->
+                <div class="handle2"></div>
+            </div>
+        </div><!-- .frame2 -->
+    </div><!-- .cont2 -->
+    
+</body>
+</html>
