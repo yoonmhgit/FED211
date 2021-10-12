@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> 슬라이딩 내비게이션(바네이 메뉴) </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+
+<style>
+
+
+body {
+	margin: 20px auto;
+	padding: 0;	
+	width: 600px;
+	font-size:13px;
+	font-family:Arial, Helvetica, sans-serif;
+	background:#05184D;
+}
+
+div#slider {
+	margin:0 auto; 
+	background:#FFF; 
+	width:600px; 
+	border:#FDF6DD 2px solid;
+	margin-top:100px;
+	overflow:hidden;
+	position:relative; 
+}
+
+div#viewer { 
+	height:350px;
+	position:relative; 
+}
+
+img{
+	
+	position:absolute;
+}
+
+img#image1{	left:0px;	top:0px;	}
+img#image2{	left:600px;	top:0px;	}
+img#image3{	left:1200px;	top:0px;	}
+img#image4{	left:1800px;	top:0px;	}
+		
+		
+/*--------   ul li CSS ------------ */		
+#btnGroup {
+	position:absolute;
+	bottom:2%;
+	right:0;
+	margin:0;
+	padding:0;
+}
+		   
+#btnGroup li {
+	float:left;
+	width:16px; 
+	height:16px;			
+	list-style:none;
+	margin-right:6px;	
+	background-color:#60F;
+	cursor:pointer;
+}
+				
+ul#btnGroup li a{
+	text-decoration:none;
+	text-align:center;
+	background:#FDF6DD;
+	display:block;
+	width:100%;
+	hiehgt:100%;
+	color:#000;
+}
+
+ul#btnGroup li a:hover{	background:#CCFF00;	}
+
+
+</style>
+
+</head>
+    
+    
+<body>
+
+<div id="slider">
+
+    <div id="viewer">
+        <img id="image1" src="image/slide1.jpg" alt="">
+        <img id="image2" src="image/slide2.jpg" alt="">
+        <img id="image3" src="image/slide3.jpg" alt="">
+        <img id="image4" src="image/slide4.jpg" alt="">
+    </div> 
+    
+  <ul id="btnGroup">
+        <li id="btn0"><a href="image/slide1.jpg">1</a></li>
+        <li id="btn1"><a href="image/slide2.jpg">2</a></li>
+        <li id="btn2"><a href="image/slide3.jpg">3</a></li>
+        <li id="btn3"><a href="image/slide4.jpg">4</a></li>        
+   </ul>
+    
+</div>
+
+<!---------- jQuery code Start ---------->        
+<script>
+	 
+			 
+</script>
+</body>
+</html>

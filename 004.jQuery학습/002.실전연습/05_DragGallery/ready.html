@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--뷰포트필수-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag and drop 응용</title>
+    <script src="jquery-1.7.2.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery-touch-punch.min.js"></script>
+    <!-- 터치펀치로 모바일에서도 작동! -->
+
+    <script>
+        
+    </script>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+
+
+        /*움직일 갤러리 화면크기의 부모박스*/
+        #handle {
+            position: relative;
+            height: 70%;
+            width: 100%;
+            overflow: hidden;
+
+        }
+
+        /*갤러리 내용만큼 가로로큰 내부박스-움직일박스*/
+        #move {
+            position: absolute;
+            /*            width: 7200px;*/
+            height: 100%;
+        }
+
+        #move img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /*플렉스박스!*/
+        #move>ul {
+            display: flex;
+        }
+
+        #move>ul li {
+            position: relative;
+            width: 300px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>ICE CREAM GALLERY</h1>
+    <div id="handle">
+        <div id="move">
+            <ul>
+                <li><img src="images/1.jpg" alt="items"></li>
+                <li><img src="images/2.jpg" alt="items"></li>
+                <li><img src="images/3.jpg" alt="items"></li>
+                <li><img src="images/4.jpg" alt="items"></li>
+                <li><img src="images/5.jpg" alt="items"></li>
+                <li><img src="images/6.jpg" alt="items"></li>
+                <li><img src="images/7.jpg" alt="items"></li>
+                <li><img src="images/8.jpg" alt="items"></li>
+                <li><img src="images/9.jpg" alt="items"></li>
+                <li><img src="images/10.jpg" alt="items"></li>
+                <li><img src="images/11.jpg" alt="items"></li>
+                <li><img src="images/12.jpg" alt="items"></li>
+                <li><img src="images/13.jpg" alt="items"></li>
+                <li><img src="images/14.jpg" alt="items"></li>
+                <li><img src="images/15.png" alt="items"></li>
+                <li><img src="images/16.png" alt="items"></li>
+                <li><img src="images/17.png" alt="items"></li>
+                <li><img src="images/18.jpg" alt="items"></li>
+                <li><img src="images/19.jpg" alt="items"></li>
+                <li><img src="images/20.png" alt="items"></li>
+                <li><img src="images/21.png" alt="items"></li>
+                <li><img src="images/22.png" alt="items"></li>
+                <li><img src="images/23.jpg" alt="items"></li>
+                <li><img src="images/24.jpg" alt="items"></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
