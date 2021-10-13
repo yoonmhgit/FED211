@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JS의 Get방식 처리 - 제이쿼리 코드비교</title>
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            padding: 0;
+            width: 800px;
+            height: 100px;
+            margin: 0 auto;
+            font: bold 28px/100px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+            color: blue;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        nav {
+            width: 800px;
+            height: 100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        nav a:hover {
+            text-decoration: overline;
+        }
+
+        section {
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        section img {
+            width: 49%;
+            height: 50%;
+        }
+    </style>
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- 
+        제이쿼리 CDN(Content Delivery Network)
+        https://developers.google.com/speed/libraries#jquery
+    -->
+    <script>
+        // 반드시 jQeury 라이브러리 아래서 코딩한다! 
+        $(function(){//////JQB//////////////
+
+        // 링크걸 대상: #gnb a
+        // 제이쿼리는 for문 없이 여러요소가 링크걸린다!
+        $("#gnb a").click(function(){
+
+            // a요소의 텍스트
+            let txt = $(this).text();
+            console.log(txt);
+
+            // 페이지이동
+            location.href = "Get02.html?sn=" + escape(txt);
+
+
+        });///////// click ///////////
+
+        });////////////////JQB///////////////
+        ////////////////////////////////////
+    </script>
+</head>
+
+<body>
+    <h1>GG Market</h1>
+    <nav>
+        <h2 id="gnb">
+            <a href="#">레드샵</a> |
+            <a href="#">오렌지샵</a> |
+            <a href="#">그린샵</a> |
+            <a href="#">블루샵</a> |
+            <a href="#">블랙샵</a>
+        </h2>
+    </nav>
+    <section>
+        <img src="images/shop_red.jpg" alt="레드샵">
+        <img src="images/shop_orange.jpg" alt="오렌지샵">
+        <img src="images/shop_green.jpg" alt="그린샵">
+        <img src="images/shop_blue.jpg" alt="블루샵">
+    </section>
+
+
+
+</body></html>
