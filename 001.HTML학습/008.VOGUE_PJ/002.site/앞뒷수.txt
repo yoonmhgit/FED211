@@ -1,0 +1,34 @@
+    // 대상 : .cbx
+    // 사용메서드 : each(function(idx,ele){구현코드})
+    //      -> idx는 순번(0부터), ele는 요소자신(this동일)
+
+    // 이미지 번호 변수
+    // 앞수선언
+    let n1 = 1;
+    // 뒷수선언
+    let n2 = 0;
+
+    $(".cbx").each(function (idx, ele) {
+        // console.log(idx);
+
+        // 이미지번호 만들기
+        // 규칙 : 1-1,1-2,1-3,2-1,2-2,2-3 순서
+        // idx 순서 0,1,2,3,4,5
+
+        // 앞수변경
+        if (idx === 3) n1 = 2;
+        // 4번째 순서일때 앞번호를 2번으로 변경!
+
+        // 뒷수변경
+        n2++;//1씩증가
+        if(n2===4) n2=1;
+        // 1,2,3이 반복됨
+
+
+        // 배경이미지 넣기
+        $(ele).css({
+            // background-image: url(../images/fashion/cont1-1a.jpg);
+            backgroundImage: "url(images/" + data["경로"] + "/cont" + n1 + "-" + n2 + "a.jpg)"
+        }); ///////// css /////////
+
+    }); ////////// each 각각 //////////
