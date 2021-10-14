@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="images/icon.jpg" type="image/x-icon"> <!-- 파비콘 - 탭메뉴 아이콘 넣기 ※확장자 ico도 있음~!!~ -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <!-- 자기가 작성한 css를 아래쪽에 써야 같은 설정일 경우 우선적용! -->
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/linksys.js"></script>
@@ -17,7 +18,7 @@
     <!-- 1. 상단영역 -->
     <!-- div->header.top.ibx -->
     
-    <div id="top">
+    <div id="top" class="on">
         <header class="top ibx">
             <!-- 1-1. 상단메뉴 -->
             <div class="tmenu">
@@ -234,6 +235,11 @@
             </ul>
         </footer>
     </div>
+
+    <!-- 위로가기 버튼 -->
+    <a href="#" class="tbtn fi fi-angle-up">
+        <span class="ir">위로가기버튼</span>
+    </a>
 
 </body>
 

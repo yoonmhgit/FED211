@@ -213,6 +213,57 @@
 .gnb a:hover{
     color: #f00;
 }
+/* _______________________________________________________________________________________ */
+/* *****슬림 상단영역 : #top에 .on을 준다****** */
+#top.on{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* 내용만큼 줄어드니까 width는 100% */
+    background-color: #fff;
+}
+/* 속박스 */
+#top.on .top{
+    min-height: auto;
+    /* 최소높이없애기 */
+}
+/* 상단메뉴 없애기 */
+#top.on .tmenu{
+    display: none;
+}
+
+/* 로고 */
+#top.on .logo{
+    position: absolute;
+    left: 0;
+    /* 부모는? #top-겉박스가 기준! */
+}
+/* 로고 이미지 */
+#top.on .logo img{
+    height: 26px;
+    margin: 5px 0 0 7px;
+}
+/* GNB */
+#top.on .gnb{
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 0 107px; /* 107은 로고를 고려한 크기 */
+    /* 양쪽 패딩으로 끝에 닿기전에 줄바꿈되게함! */
+}
+#top.on .gnb ul{
+   max-width: 631px;/* 631만큼 줄어들면  */
+}
+#top.on .gnb li{
+    margin: 0 18px;
+}
+#top.on .gnb li a{
+    color: #333;
+}
+#top.on .gnb li a:hover{
+    color: #f00;
+}
+
 
 /* ________________________________________3.하단영역______________________________________________ */
 .info{
@@ -255,3 +306,28 @@
 .blink li:last-child a{
     font-weight: bold;
 }
+
+/* 위로가기 버튼 */
+.tbtn{
+    position: fixed;
+    bottom: 0;
+    right: 75px;
+    width: 48px;
+    height: 35px;
+    text-align: center; /* 가로중앙 */
+    line-height: 35px; /* 세로중앙 */
+    color: #fff;
+    background-color: #333;
+    border-radius: 7px 7px 0 0;
+    /*둥근모서리 왼위 오른위 오른아래 왼아래 (시계방향) */
+    z-index: 999;
+
+    /* 트랜지션 속시이지! */
+    transition: .3s;
+}
+
+/* 탑버튼 마우스 오버시 */
+.tbtn:hover{
+    background-color: #f00;
+}
+
