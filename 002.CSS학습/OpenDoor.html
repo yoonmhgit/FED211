@@ -45,15 +45,15 @@
             background: url(./images/seashore.jpg) no-repeat center/auto 100%;
 
             /* 
-                [ 3D 원근설정 ]
-                1. 셋팅위치 : 3D원근설정을 할 대상의 부모박스에 셋팅
+              1. 셋팅위치 : 3D원근설정을 할 대상의 부모박스에 셋팅
                 2. 설정방법:
-                perspective: 수치;
+                     [ 3D 원근설정 ]
+             perspective: 수치;
                 - 수치는 px단위로 숫자가 클수록 소실점이 먼것이므로
                 각도가 작아짐(이 거리는 기준점에서 소실점까지의 거리)
              */
              
-             /* 여기에 코딩! */
+             perspective: 480px;
 
             /* 
                 [ 뷰포인트(관찰자위치) 위치변경옵션 ]
@@ -180,7 +180,8 @@
             소실점이 먼것이므로 각도가 작아짐(기준점에서 소실점까지의 거리)
             */
             
-            /* 여기에 코딩! */
+            perspective: 500px;
+            perspective-origin: top;
 
         }
 
@@ -194,7 +195,7 @@
             background-color: rgba(204, 153, 0, 0.58);
 
             text-align: center;/* 글자중앙 */
-            writing-mode: vertical-lr;
+            writing-mode: vertical-rl;
             /* 
                 글자진행방향 설정 속성
                 writing-mode:
