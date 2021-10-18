@@ -1,0 +1,77 @@
+----------- html -------------------------------
+
+    <!-- 3. 인디케이터(위치표시자) -->
+    <nav class="indic">
+        <ul>
+            <li class="on">
+                <a href="#pg1"><span>아수라</span></a>
+            </li>
+            <li>
+                <a href="#pg2"><span>고산자</span></a>
+            </li>
+            <li>
+                <a href="#pg3"><span>인천상륙작전</span></a>
+            </li>
+            <li>
+                <a href="#pg4"><span>봉이김선달</span></a>
+            </li>
+            <li>
+                <a href="#pg5"><span>비밀은없다</span></a>
+            </li>
+            <li>
+                <a href="#pg6"><span>아가씨</span></a>
+            </li>
+            <li>
+                <a href="#pg7"><span>탐정홍길동</span></a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+
+------------- css ---------------------------------
+
+
+
+        /* 인디케이터 */
+        .indic {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            /* 세로중앙이동 */
+            left: 5%;
+            width: 20px;
+            /* outline: 3px dotted blue; */
+        }
+
+        .indic li {
+            width: 100%;
+            height: 10px;
+            margin: 3px 0;
+            cursor: pointer;/* 손가락모양 */
+        }
+
+        /* a요소 */
+        .indic a {
+            display: block;
+            width: 100%;
+            height: 2px;
+            margin-top: 4px;
+            background-color: #ccc;
+            box-shadow: 1px 1px 1px #777;
+            transition: width .4s;
+        }
+
+        /* 마우스 오버시 + 클래스 "on" */
+        .indic li:hover a,
+        .indic li.on a {
+            width: 150%;
+            background-color: #fff;
+        }
+
+
+        /* 설명글자숨기기 */
+        .indic span {
+            display: none;
+        }
