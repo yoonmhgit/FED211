@@ -17,19 +17,19 @@
 		
 		//친척네집
 		$("div").click(function(e){
-			e.stopPropagation();//버블링차단!
+			// e.stopPropagation();//버블링차단!
 			$(this).css({backgroundColor:"green"});
 		});///// click ////////////
 		
 		//엄마집
 		$("p").click(function(e){
 			$(this).css({backgroundColor:"yellow"});
-			return false;//버블링차단!(JS기법-최하단)
+			// return false;//버블링차단!(JS기법-최하단)
 		});///// click ////////////
 		
 		//아들방
 		$("a").click(function(e){
-			e.stopPropagation();//버블링차단!(jQuery기법)
+			// e.stopPropagation();//버블링차단!(jQuery기법)
 			$(this).css({backgroundColor:"red"});
 		});///// click ////////////
 		
