@@ -7,6 +7,10 @@ html,body,ol,ul,h1,h2,h3,h4,p{
     margin: 0;
     padding: 0;
 }
+/* 가로스크롤 숨기기 - 옆에 공간이 나오는 경우 막기(모바일) */
+html,body{
+    overflow-x: hidden;
+}
 ol,ul{
     list-style: none;
 }
