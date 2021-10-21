@@ -3,10 +3,30 @@
 
 /* 웹폰트 */
 
-/* roboto체 + roboto condensed체 */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@300&display=swap');
+/* roboto체 */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(../fonts/Roboto.woff2) format('woff2');
+}
+/* roboto condensed체 */
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(../fonts/RobotoCondensed.woff2) format('woff2');
+}
+
 /* 나눔바른고딕 */
-@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css");
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-weight: 300;
+    src: url(../fonts/NanumBarunGothicLightSubset.woff) format('woff'),
+}
+
 /* pistilli체 */
 @font-face {
     font-family: 'Pistilli';
@@ -14,6 +34,7 @@
     font-weight: 400;
     src: url(../fonts/Pistilli-Roman.woff) format('woff');
 }
+
 /* 
 font-family: 'Roboto', sans-serif;
 font-family: 'Roboto Condensed', sans-serif;
@@ -26,7 +47,7 @@ font-family: 'NanumBarunGothic', sans-serif;
 /* 공통 class */
 
 /* 배경이미지 설명(또는 숨길글자) 클래스  */
-.ir{
+.ir {
     display: block;
     width: 0;
     height: 0;
@@ -35,28 +56,31 @@ font-family: 'NanumBarunGothic', sans-serif;
 
 
 /* 속박스 */
-.ibx{
+.ibx {
     max-width: 1300px;
     margin: 0 auto;
     /* 1300px 보다 크면 중앙정렬
     , 작으면 auto로 width를 유지함! */
     /* outline: 3px dotted blue; */
 }
+
 /* 비율유지박스 */
-.rbx{   
+.rbx {
     position: relative;
     /* 부모자격 - .rbxIn */
     /* outline: 2px dotted orange; */
 }
+
 /* 비율 밀기 가상요소 */
-.rbx::before{
+.rbx::before {
     content: '';
     display: block;
     /* padding-top 비율은 각 클래스와 연결한다! */
 }
+
 /* 스타일 별 비율밀기 */
 /* 이미지 하나짜리 */
-.pt1.rbx::before{
+.pt1.rbx::before {
     padding-top: 55.69%;
     /* 
         비율계산(박스의 비율유지를 위해서)
@@ -65,19 +89,21 @@ font-family: 'NanumBarunGothic', sans-serif;
         ?% = 55.69%
     */
 }
+
 /* 이미지 3개짜리 */
-.pt2.rbx::before{
+.pt2.rbx::before {
     padding-top: 50%;
     /* 부모 가로크기의 60% */
-        /* 
+    /* 
         비율계산
         1300px : 650px(소수점은 반올림이나 반내림) = 100%(일때 몇퍼센트로 할것인가) : ?%
         ?% = 650px * 100% / 1300px
         ?% = 50%
     */
 }
+
 /* 비율박스 속박스 */
-.rbxIn{
+.rbxIn {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -87,7 +113,7 @@ font-family: 'NanumBarunGothic', sans-serif;
 }
 
 /* 컨텐츠 박스 - 실제 내용이 들어가는 박스 */
-.cbx{
+.cbx {
     position: relative;
     /* 가상요소의 부모자격 */
     height: 100%;
@@ -96,7 +122,7 @@ font-family: 'NanumBarunGothic', sans-serif;
 }
 
 /* 컨텐츠박스 div 안넣고 가상요소로 보더애니구현 */
-.cbx::after{
+.cbx::after {
     content: '';
     display: block;
     position: absolute;
@@ -108,18 +134,20 @@ font-family: 'NanumBarunGothic', sans-serif;
 
     box-sizing: border-box;
     /* 보더가 생겨도 커지지않도록 설정! */
-    border: 0px solid transparent; /* 투명 */
+    border: 0px solid transparent;
+    /* 투명 */
 
     /* 트랜지션 속시이지! */
     transition: all .2s ease-in;
 }
+
 /* .pbx에 마우스 오버시 보더 생기기 */
-.cbx:hover::after{
+.cbx:hover::after {
     border: 20px solid #f00;
 }
 
 /* 컨텐츠 타이틀 박스 */
-.cbx h2{
+.cbx h2 {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -137,8 +165,8 @@ font-family: 'NanumBarunGothic', sans-serif;
     padding: 50px;
 
     /* 컨텐츠 타이틀 박스에 가상요소로 그라디언트배경 넣기(글자잘보이게) */
-    background-image: linear-gradient(to top, #000, transparent);  
-    
+    background-image: linear-gradient(to top, #000, transparent);
+
     /*
         [선형 그라데이션 속성]
      background-image: linear-gradient(방향, 색1, 색2, 색3,...);
@@ -152,10 +180,13 @@ font-family: 'NanumBarunGothic', sans-serif;
 
 
 /* .pt2 아래 .cbx만 float:left(플로팅)와 3등분적용! */
-.pt2 .rbxIn{/* 3등분박스의 직계부모 */
-    display: flex;/* flex는 직계부모에게 준다! */
+.pt2 .rbxIn {
+    /* 3등분박스의 직계부모 */
+    display: flex;
+    /* flex는 직계부모에게 준다! */
 }
-.pt2 .cbx{
+
+.pt2 .cbx {
     /* flex자식요소로 등분할 할 경우 flex:1만 설정 */
     flex: 1;
 
@@ -166,7 +197,7 @@ font-family: 'NanumBarunGothic', sans-serif;
 }
 
 /* ************배경이미지 공통************ */
-.bgi{
+.bgi {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
