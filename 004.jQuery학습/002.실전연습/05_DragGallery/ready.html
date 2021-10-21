@@ -6,14 +6,6 @@
     <!--뷰포트필수-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>drag and drop 응용</title>
-    <script src="jquery-1.7.2.min.js"></script>
-    <script src="jquery-ui.min.js"></script>
-    <script src="jquery-touch-punch.min.js"></script>
-    <!-- 터치펀치로 모바일에서도 작동! -->
-
-    <script>
-        
-    </script>
     <style>
         html,
         body {
@@ -33,6 +25,13 @@
             list-style: none;
         }
 
+        /* 드래그 선택안되게하는 css */
+        .dselect{
+            user-select: none;
+            /* 선택안되게함 */
+            -webkit-user-drag: none;
+            /* 드래그안되게함 */
+        }
 
 
         /*움직일 갤러리 화면크기의 부모박스*/
@@ -72,6 +71,84 @@
         }
     </style>
 
+    <script src="jquery-1.7.2.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery-touch-punch.min.js"></script>
+    <!-- 터치펀치로 모바일에서도 작동! -->
+
+    <script>
+        $(function(){/////////////////jQB////////////////////////
+
+            // 드래그 대상 : #move
+            let move = $("#move");
+
+            // 드래그 설정 : 제이쿼리 UI 기능
+            move.draggable({
+                axis:"x"
+                // 드래그 x축고정 ("y"라고 쓰면 y축고정)
+            }); ////////////draggable////////////
+
+            // 드래그 대상에 transition을 적용하여 드래그시 
+            // 약간 더 가는 효과를 애니메이션으로 준다!
+            // 이징효과가 중요한데.... 시작시엔 빠르고 나중에 느림!
+            // -> ease-out
+
+            move.css({
+                transition: "all .8s ease-out"
+            }); /////////////// css //////////////
+
+
+            // 이동위치 한계설정 //
+            // 첫번째 한계선 : 화면가로크기의 절반값
+            let fpt = $(window).width()/4;
+            // first point 첫번째 포인트 지점
+
+            // 마지막 한계선 : move박스 가로크기 - 화면절반 - 2/3
+            let lpt = move.width() - fpt*2;
+            // last point 마지막 포인트 지점(끝 절반이 보인다)
+            console.log("마지막포인트:"+lpt);
+
+            // 화면에서 마우스가 움직일때 이벤트는? 
+            //  -> mousemove (터치펀치 모바일변경 -> touchmove)
+            // 화면에서 마우스버튼 내려갈때 이벤트는? 
+            // -> mousedown (터치펀치 모바일변경 -> touchstart)
+            // 화면에서 마우스버튼 올라갈때 이벤트는? 
+            // -> mouseup (터치펀치 모바일변경 -> touchend)
+
+
+            // on(이벤트명,함수) -> 이벤트명에 띄어쓰기로 여러개쓰면 다중적용
+            $("html,body").on("mousemove mousedown mouseup",
+            function(){
+
+                // console.log("마우스움직여!");
+
+                // 1. 움직이는 박스의 left값
+                let mpos = move.offset().left;
+                // offset().left; 현재박스의 화면에서의 left값
+                // console.log("현재left"+mpos);
+
+                // 2. 처음한계값 체크후 고정하기
+                if(mpos > fpt){
+                    // 첫번째 한계값에 고정하기
+                    move.css({
+                        left: fpt + "px"
+                    });//// css ////
+                }//////////if/////////////
+                // 3. 마지막 한계값 체크 후 고정하기
+                else if(mpos < -lpt){
+                    move.css({
+                        left: -lpt + "px"
+                    });/////// css //////
+                } //////////else if/////////
+
+
+            });//////////////mousemove//////////////
+            
+
+        });/////////////////jQB////////////////////////
+    </script>
+
+
 </head>
 
 <body>
@@ -79,7 +156,7 @@
     <h1>ICE CREAM GALLERY</h1>
     <div id="handle">
         <div id="move">
-            <ul>
+            <ul class="dselect">
                 <li><img src="images/1.jpg" alt="items"></li>
                 <li><img src="images/2.jpg" alt="items"></li>
                 <li><img src="images/3.jpg" alt="items"></li>
