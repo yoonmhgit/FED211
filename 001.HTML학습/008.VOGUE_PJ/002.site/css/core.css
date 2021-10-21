@@ -9,7 +9,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(../fonts/Roboto-Light.woff) format('woff2');
+    src: url(../fonts/Roboto-Light.woff) format('woff');
 }
 /* roboto condensed체 */
 @font-face {
@@ -17,7 +17,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(../fonts/RobotoCondensed-Bold.woff) format('woff2');
+    src: url(../fonts/RobotoCondensed-Bold.woff) format('woff');
 }
 
 /* 나눔바른고딕 */
