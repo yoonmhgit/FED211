@@ -1,0 +1,15 @@
+[ 그래픽요소 ]
+
+1. 비트맵 이미지 : 픽셀로 표현되는 특정해상도를 가지는 아미지
+    특징 : 축소확대시 이미지 깨짐
+    대표툴 : 포토샵
+    -> html5에 등장한 비트맵 이미지 요소는? canvas
+    참조 : https://www.w3schools.com/html/html5_canvas.asp
+2. 백터 이미지 : 화면에 계산되어 디스플레이되는 이미지
+    특징 : 축소확대시 이미지 원형이 유지된다
+    대표툴 : 일러스트레이터
+    -> html5에서 등장한 백터 이미지 요소는? SVG
+    참조 : https://www.w3schools.com/html/html5_svg.asp
+
+[ SVG : Scalable Vector Graphic ]
+-> svg파일은 코드로 구성되어 있다!

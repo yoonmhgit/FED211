@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG - Circle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        /* font-family: 'Fredoka One', cursive; */
+
+        html,body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            background-image: linear-gradient(to bottom, rgb(223, 219, 255),rgb(255, 204, 247), skyblue);
+        }
+        /* 4등분박스 */
+        .cbx{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;/* 플렉스박스 */
+            flex-wrap: wrap;/* 자동줄바꿈 */
+            height: 100%;
+        }
+        .cbx li{
+            position: relative;
+            /* 부모자격 - .btns */
+            width: 50%;
+            height: 50%;
+            /* flex자식일때 높이값을 안주면 자동채움
+            (내용에 따라 유동적인 크기) */
+            /* outline: 2px dotted blue; */
+        }
+        /* 원을 담는 박스 */
+        .btns{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            min-width: 150px;
+            background: url(images/man.jpg) no-repeat top/cover;
+            border-radius: 50%;
+        }
+        /* 비율밀기 */
+        .btns::before{
+            content: '';
+            display: block;
+            padding-top: 100%;
+        }
+        /* svg셋팅 */
+        .btns svg{
+            position: absolute;
+            top: 0;
+            /* 부모박스가 패딩탑으로 비율밀기하므로
+            앱솔로 부모박스 맨위로 위치고정! 
+            svg 자체는 viewBox설정 때문에 채우기 비율유지함!*/
+        }
+
+        /* circle 설정 */
+        .c1{
+            fill: none;
+            /* 채우기-기본색은 검정색(transparent-투명,none-없음) */
+            stroke: red;
+            /* 선색(안쓰면 안나옴) */
+            stroke-width: 10;
+            /* 선두께는 안쓰면 1px, 단위없으면 px */
+            stroke-linecap: round;/* 선끝둥글게 */
+
+            stroke-dasharray: 300%;
+            /* 데쉬어레이를 50%로 놓고 선,공백이 몇조각나는지 본다!
+            50% * 6조각 = 300% 즉, 선으로만 채우는 크기임! */
+
+            stroke-dashoffset: 300%;
+            /* 데쉬어레이와 같은 크기를 데쉬옵셋에 주면 시작점이
+            밀려서 공백부터 시작함-> 선이 숨겨지는 효과가 생김! */
+
+            /* 오버시 애니효과 위해 트랜지션주기 */
+            transition: .7s ease-in-out;
+        }
+        /* .btns 에 마우스 오버시 circle 옵셋값 0으로! */
+        .btns:hover .c1{
+            stroke-dashoffset: 0;
+        }
+
+        /* 두번째 원 */
+        .btns2{
+            background-image: url(images/black.jpg);
+        }
+        .btns2 .c1{
+            stroke: black;
+            stroke-dasharray: 20;
+        }
+        .btns2:hover .c1{
+            stroke: red;
+        }
+
+        /* 세번째 원 */
+        .btns3{
+            background-image: url(images/doc.jpg);
+        }
+
+        /* 네번째 원 */
+        .btns4{
+            width: 20%;
+            min-width: 75px;
+            background-image: url(images/wan.jpg);
+        }
+        .btns4::before{
+            padding-top: 200%;
+        }
+
+        /* svg text 박스 */
+        .svgtxt{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            min-width: 200px;
+            font-family: 'Fredoka One', cursive;
+            /* outline: 5px solid lime; */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 4등분박스 -->
+    <ul class="cbx">
+        <li>
+            <div class="btns">
+                <svg viewBox="0 0 200 200">
+                    <circle class="c1" cx="100" cy="100" r="95" transform="rotate(-90,100,100)"></circle>
+                </svg>
+            </div>
+        </li>
+        <li>
+            <div class="btns btns2">
+                <svg viewBox="0 0 200 200">
+                    <circle class="c1" cx="100" cy="100" r="95" transform="rotate(-90,100,100)"></circle>
+                </svg>
+            </div>
+        </li>
+        <li>
+            <div class="btns btns3">
+                <svg viewBox="0 0 200 200">
+                    <!-- 
+                        [defs요소] : 요소에 효과를 정의함
+
+                        [linearGradient요소] : 선형그라데이션
+                        - id속성 : 적용할 요소에 이 id명을 연결함
+                            예) stroke:url(#아이디명)
+                        - x1,y1 하나의점에서 x2,y2 하나의 점
+                         방향으로 그라데이션이 적용된다!
+
+                        [stop요소] : 색상옵션 설정요소
+                        - offset속성: 색상변경 지점
+                        - stop-color속성: 실제색적용
+                     -->
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="rgb(43, 255, 0)" />
+                          <stop offset="30%" stop-color="rgb(0, 81, 255)" />
+                          <stop offset="60%" stop-color="rgb(255, 0, 212)" />
+                          <stop offset="100%" stop-color="rgb(238, 255, 0)" />
+                        </linearGradient>
+                      </defs>
+                    <circle class="c1" cx="100" cy="100" r="95" style="stroke:url(#grad1)" transform="rotate(-90,100,100)"></circle>
+                </svg>
+            </div>
+        </li>
+        <li>
+            <div class="btns btns4">
+                <svg viewBox="0 0 100 200">
+                    <defs>
+                        <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="0%">
+                          <stop offset="0%" stop-color="red" />
+                          <stop offset="50%" stop-color="green" />
+                          <stop offset="100%" stop-color="hotpink" />
+                        </linearGradient>
+                      </defs>
+                    <ellipse class="c1" cx="50" cy="100" rx="95" ry="45" style="stroke:url(#grad2)" transform="rotate(-90,50,100)"></ellipse>
+                </svg>
+            </div>
+        </li>
+    </ul>
+
+    <!-- svg text -->
+    <div class="svgtxt">
+        <svg viewBox="0 0 300 150">
+            <defs>
+                <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="red" />
+                  <stop offset="60%" stop-color="green" />
+                  <stop offset="100%" stop-color="blue" />
+                </linearGradient>
+              </defs>
+            <text style="fill:url(#grad3)">
+                <tspan font-size="50" x="0" y="40">Avengers</tspan>
+                <tspan font-size="60" x="10" dy="80">End Game</tspan>                
+            </text>
+        </svg>
+    </div>
+    
+    <!-- 
+        [ circle 요소 : 원 ]
+        - cx : 중심원 x좌표 (center x) 단위없는 숫자는 px
+        - cy : 중심원 y좌표 (center y) 단위없는 숫자는 px
+        - r : 반지름(radius)
+        - transform : svg 요소를 변형하기 위한 속성
+            rotate(각도,x위치,y위치)
+            -> 회전속성 각도를 단위없이 사용하며 마이너스는 반시계방향
+            (이런속성을 쓰는 이유는 css의 transform속성이 안먹힌다)
+            -> css transform속성은 svg요소에 적용해야 적용된다!
+
+
+        [ ellipse 요소 : 타원 ]
+        - cx : 중심원 x좌표 (center x) 단위없는 숫자는 px
+        - cy : 중심원 y좌표 (center y) 단위없는 숫자는 px
+        - rx : x축 반지름(radius)
+        - ry : y축 반지름(radius)
+
+        [ text 요소 : 글자 ]
+        - tspan요소: 글자가 여러줄일때 사용
+        - font-size 속성: 글자크기속성
+        - x 속성: x축위치
+        - y 속성: y축위치
+        - dy 속성: 윗줄 아래에서 부터 y축위치
+
+     -->
+
+
+</body>
+</html>
