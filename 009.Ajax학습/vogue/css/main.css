@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* VOGUE PJ 메인 CSS -main.css */
+
+/* 외부 css 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+
+/* 메인페이지 공통 다지자인 */
+.bgc{
+    background-color: #f9f9f9;
+}
+
+
+
+
+/* _________________________________________2.메인영역___________________________________________ */
+.cont>div{
+    outline: 2px dashed red;
+}
+
+
+
+
+/* 1번 컨텐츠 */
+.bg1{
+    background-image: url(../images/cont1a.jpg);
+}
+/* 2번 3등분 컨텐츠 */
+.bg2{
+    background-image: url(../images/cont2-1.jpg);
+}
+.bg3{
+    background-image: url(../images/cont2-2.jpeg);
+}
+.bg4{
+    background-image: url(../images/cont2-3.jpg);
+}
+/* 3번 컨텐츠 */
+.bg5{
+    background-image: url(../images/cont3a.jpg);
+}
+/* 4번 3등분 컨텐츠 */
+.bg6{
+    background-image: url(../images/cont4-1.jpg);
+}
+.bg7{
+    background-image: url(../images/cont4-2.jpg);
+}
+.bg8{
+    background-image: url(../images/cont4-3.jpg);
+}
+/* 5번 컨텐츠 */
+.bg9{
+    background-image: url(../images/cont5a.jpg);
+}
+/* 6~8번 3등분 컨텐츠 */
+.bg10{
+    background-image: url(../images/cont6-1.png);
+}
+.bg11{
+    background-image: url(../images/cont6-2.jpg);
+}
+.bg12{
+    background-image: url(../images/cont6-3.png);
+}
+/* 4번 3등분 컨텐츠 */
+.bg13{
+    background-image: url(../images/cont7-1.jpg);
+}
+.bg14{
+    background-image: url(../images/cont7-2.jpg);
+}
+.bg15{
+    background-image: url(../images/cont7-3.jpg);
+}
+
+
+
+
+
+/* 파트타입1 - 이미지1개
+.pt1{
+    height: 724px; 
+    비율유지를 따로 주기때문에 주석처리함
+}
+파트타입2 - 이미지3개
+.pt2{
+    height: 650px;
+} */
+
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion | 보그 코리아 (Vogue Korea)</title>
+    <link rel="shortcut icon" href="images/icon.jpg" type="image/x-icon"> <!-- 파비콘 - 탭메뉴 아이콘 넣기 ※확장자 ico도 있음~!!~ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css">
+    <link rel="stylesheet" href="css/sub.css"><!-- 서브페이지 별도 css걸기 -->
+    <link rel="stylesheet" href="css/media.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/linksys.js"></script>
+    <script src="js/common.js"></script> <!-- 스크롤 js -->
+    <script src="js/sub.js"></script> <!-- 서브페이지에만 들어가는 js -->
+</head>
+
+<body>
+    <!-- 1. 상단영역 -->
+    <!-- div->header.top.ibx -->
+
+    <div id="top">
+    <?php include "inc/top.inc" ?>
+    </div><!-- #top -->
+
+    <!-- 2. 메인영역 -->
+
+    <!-- div->main.cont.ibx -->
+    <div class="bgc">
+        <main class="cont ibx">
+            <!-- 1. 타이틀 -->
+            <h2 class="stit"></h2>
+
+            <!-- 2. 서브메뉴(LNB-Local Navigation Bar) -->
+            <nav class="lnb"></nav>
+
+            <!-- 3. 서브컨텐츠박스 -->
+            <section class="pt2 rbx">
+                <div class="rbxIn">
+                    <div class="cbx bgi bg1-1">
+                        <h2></h2>
+                    </div>
+                    <div class="cbx bgi bg1-2">
+                        <h2></h2>
+                    </div>
+                    <div class="cbx bgi bg1-3">
+                        <h2></h2>
+                    </div>
+                </div>
+
+            </section>
+            <section class="pt2 rbx">
+                <div class="rbxIn">
+                    <div class="cbx bgi bg2-1">
+                        <h2></h2>
+                    </div>
+                    <div class="cbx bgi bg2-2">
+                        <h2></h2>
+                    </div>
+                    <div class="cbx bgi bg2-3">
+                        <h2></h2>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+    <!-- 3. 하단영역 -->
+    <!-- div.footer.info.ibx -->
+    <div class="bgc">
+    <?php include "inc/info.inc" ?>
+    </div>
+
+ 
+
+
+</body>
+
+</html>
