@@ -8,6 +8,35 @@
 
 
 /* 2. 페이지영역 */
+
+/* 페이지 액션 class */
+.act {
+    display: block;
+    /* 트랜스폼적용위해 블록으로 */
+    /* a 요소는 인라인으로 트랜스폼 적용이 안되므로! */
+    transform: rotate(25deg) translateY(50px);
+    transform-origin: left top;
+    opacity: 0;
+    transition: all 1s ease-out;
+}
+/* 액션상태변경 */
+.act.on {
+    transform: rotate(0deg);
+    opacity: 1;
+}
+/* 트랜지션 지연시간 차이주기 */
+/* 이미지 */
+img.act.on{
+    transition-delay: .3s;
+}
+/* 글자 */
+a.act.on{
+    transition-delay: .8s;
+}
+
+
+
+
 /* 개별 페이지 셋팅 */
 
 /********** 2-1.배너영역 ************/
