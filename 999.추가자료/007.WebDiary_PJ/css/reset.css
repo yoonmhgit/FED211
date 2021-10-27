@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* 웹 다이어리 리셋 CSS - reset.css */
+/* 리셋내용: 미리 디자인된 요소를 초기화함 */
+
+/* 1. 마진,패딩 없애기 */
+html,body,h1,h2,h3,ul,ol{
+    margin: 0;
+    padding: 0;
+}
+/* 2. a요소 초기화 */
+a{
+    color: #222;
+    text-decoration: none;
+}

@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* 그리드 뷰 - gridView.css */
+/*그리드 시스템을 사용하는 웹 페이지에 그리드를 화면에 보여주는 역할*/
+
+.grid{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /*화면고정 가로중앙, 세로꽉참*/
+    
+    /*크기지정*/
+    width: 960px;
+    /*가로폭은 960px/1200px또는 사용자지정 가로폭*/
+    height: 100%;
+    
+    /*ul 3無*/
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    opacity: .2;
+    z-index: -1;
+    /* z-index: 999999; */
+    /* display: none; */
+}
+
+/*12컬럼 설정*/
+.grid li{
+   float: left; 
+    /*옆으로 흐르게*/
+    width: 8.33%;
+    /*12등분*/
+    height: 100%;
+    background-color: #00f;
+    box-sizing: border-box;
+    /*패딩,보더 포함 크기유지*/
+    padding: 0 10px;
+    background-clip: content-box;
+    /*패딩영역은 배경색 빼기*/
+    
+    /*
+    background-clip 은 배경색 영역설정 속성
+    선택값 옵션:
+    1) border-box 는 보더영역까지 배경색 넣기(기본값)
+    2) padding-box 는 패딩영역까지 배경색 넣기
+    3) content-box 는 컨텐트영역만 배경색 넣기
+    
+    
+    background-origin 은 배경이미지 영역설정 속성
+    선택값 옵션:
+    1) padding-box 는 패딩영역까지 배경이미지 넣기(기본값)
+    2) border-box 는 보더영역까지 배경이미지 넣기
+    3) content-box 는 컨텐트영역만 배경이미지 넣기
+    */
+}
+
+
+
+
+
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Web Diary PJ</title>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!-- 1.전체부모박스 : section.cont -->
+        <section class="cont">
+
+            <!-- 2.체크배경박스 : aside#check -->
+            <aside id="check">
+                <span class="bld">체크무늬배경</span>
+                <!-- 클래스 bld는 배경처리된 이미지설명숨기기(IR) -->
+                <!-- 고양이 애니메이션요소 -->
+                <img id="cat" src="images/actor2.png" alt="흰고양이">
+            </aside>
+            <!-- aside는 div의 형제요소(의미:한쪽에 나오는 부수적인것) -->
+
+            <!-- 3.타이틀박스 : header#tit -->
+            <header id="tit">
+                <h1 class="bld">걸어서 세계속으로~!</h1>
+                <!-- 제목에 해당하는 이미지이므로 설명을 h1처리 -->
+                <!-- 걷는남자 애니메이션 요소 -->
+                <img id="man" src="images/man.png" alt="걷는남자">
+            </header>
+            <!-- 4.다이어리박스 : main#diary -->
+            <main id="diary">
+                <span class="bld">다이어리이미지</span>
+                <!-- 4-1.폴라1 -->
+                <div class="pola pola1">
+                    <img src="images/pola1_tit.png" alt="알함브라 궁전의 정원">
+                </div>
+                <!-- 4-2.폴라2 -->
+                <div class="pola pola2">
+                    <img src="images/pola2_tit.png" alt="구엘공원">
+                </div>
+                <!-- 4-3.스케줄박스 -->
+                <div class="schedule">
+                    <img src="images/schedule.png" alt="일정표">
+                    <img src="images/schedule_over.png" alt="일정체크표시">
+                </div>
+                <!-- 4-4.포스트잍1 -->
+                <div class="post post1">
+                    <img src="images/toto.jpg" alt="투우장면">
+                </div>
+                <!-- 4-5.포스트잍2 -->
+                <div class="post post2">
+                    <img src="images/real.jpg" alt="축구장면">
+                </div>
+                <!-- 4-6.스페인음식 -->
+                <div class="food">
+                    <img src="images/food.png" alt="스페인음식" usemap="#fmap">
+                    <!-- 이미지맵설정(코딩위치는 아무데나가능) -->
+                    <map name="fmap">
+                        <area shape="rect" coords="9,33,109,123" href="https://youtu.be/Ra55OXUQBUE" alt="꼬치니요 아사도" target="_blank">
+                        <area shape="circle" coords="163,76,40" href="https://youtu.be/fUDP9D-JAzk" alt="빠에야" target="_blank">
+                        <area shape="poly" coords="266,51,226,105,301,107" href="https://youtu.be/zyDgKVaHsOw" alt="하몬" target="_blank">
+                    </map>
+                </div>
+            </main>
+            <!-- 5.하단바다박스 : footer#sea -->
+            <footer id="sea">
+                <span class="bld">바다이미지</span>
+                <!-- 상어 애니메이션 요소 -->
+                <img id="shark" src="images/shark.gif" alt="상어">
+            </footer>
+        </section>
+
+        <!-- 자유로운 애니 캐릭터 -->
+        <img id="act1" src="images/actor1.png" alt="날날이">
+        <div id="act2"><img src="images/actor3.png" alt="망아지"></div>
+
+        <!--   
+            [ 이미지맵이란? ]
+            - 이미지를 자르지 않고 이미지 안에 도형모양의 링크영역을
+            지정하여 여러개의 링크를 한 이미지에 생성하는 기법
+
+            [ 이미지맵 사용법 ]
+            1. img 태그에 usemap 속성에 "#맵이름"을 쓴다.
+            2. map태그에 name값을 #이 없는 같은 이름으로 지정한다.
+            3. area 요소의 하위 속성들을 셋팅한다.
+            1) shape 속성 : 링크가 걸릴 영역을 도형으로 지정한다
+            - rect(사각형), circle(원), poly(다각형)
+            2) coords 속성 : 도형의 위치값
+            3) href 속성 : 이동할 페이지 url
+            4) target 속성 : 새창열기 등 옵션 지정(_blank새창)
+            5) alt 속성 : 영역이 잡힌 이미지에 대한 설명
+                            (웹접근성 필수!!!)
+                            
+            [ 맵모양에 따른 coords 설정법 ]
+            - 위치값은 포토샵 info(F8)에서 읽어온다!
+            1. rect : 사각형
+            - 기준: 왼쪽위의 x,y좌표, 오른쪽 아래의 x,y좌표값을
+                    단위없는 px값으로 지정함
+                    예) coords = "x1,y1,x2,y2"
+            2. circle : 원
+            - 기준: 원의 중심점 x,y좌표값과 반지름을 
+                    단위없는 px값으로 지정함
+                    예) coords = "x,y,r"
+            3. poly : 다각형
+            - 기준: 다각형의 각 점을 x,y 좌표 순으로 나열하여 
+                    단위없는 px값으로 지정함
+                    예) coords = "x1,y1,x2,y2,x3,y3,....."
+            
+          -->
+        
+    </body>
+</html>

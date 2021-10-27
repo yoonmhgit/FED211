@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* 마이아이템 아이템 페이지 CSS - item.css */
+
+/* 외부파일 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+#cont{
+    overflow: hidden;
+    /* 첫번째 자식요소 마진탑포함! */
+}
+
+/* 2-1. 아이템 타이틀 */
+.stit{
+    width: 700px;
+    height: 45px;
+    margin: 0 auto;/* 마영오! */
+    margin-top: 80px;
+    /* 첫번째 자식요소의 마진탑은
+    부모요소에 포함되지 않으므로
+    부모에게 overflow:hidden을 주어
+    이를 포함한다! */
+
+    font-size: 17px;
+    line-height: 45px;
+    color: #777;
+    /* outline: 1px solid red; */
+}
+/* 가상요소로 아이콘 넣기 */
+.stit::before{
+    vertical-align: -17px;
+    margin-right: 10px;
+}
+/* 아이템에 따라 가상요소 이미지 아이콘이 달라짐 class셋팅 */
+.ico1::before{
+    content: url(../images/myitems_icon_01.png);
+}
+.ico2::before{
+    content: url(../images/myitems_icon_02.png);
+}
+.ico3::before{
+    content: url(../images/myitems_icon_03.png);
+}
+.ico4::before{
+    content: url(../images/myitems_icon_04.png);
+}
+.ico5::before{
+    content: url(../images/myitems_icon_05.png);
+}
+.ico6::before{
+    content: url(../images/myitems_icon_06.png);
+}
+
+/* 2-2.아이템 컨텐츠 박스 */
+.itbx{
+    position: relative;
+    /* 부모자격 */
+    width: 700px;
+    height: 300px;
+    margin: 0 auto;/* 마영오! */
+    /* outline: 4px dashed blue; */
+}
+
+/* 2-2-1.이미지박스 */
+.imbx{
+    position: absolute;
+    top: 0;
+    left: 25%;/* 중앙위치 */
+    width: 50%;
+    height: 100%;
+
+    opacity: 0;/* 투명하게 */
+
+    /* outline: 3px dotted red; */
+}
+/* 아이템 이미지 */
+.imbx img{
+    width: 90%;
+    margin: 18px 0 0 5px;
+}
+
+/* 2-2-2.설명박스 */
+.dcbx{
+    position: absolute;
+    top: 0;
+    left: 25%;/* 중앙위치 */
+    width: 50%;
+    height: 100%;
+
+    padding: 20px;
+    box-sizing: border-box;
+    /* 패딩으로 커지지 않게 크기유지! */
+
+    font-size: 13px;
+    line-height: 30px;
+    color: #777;
+
+    opacity: 0;/* 투명하게 */
+
+    /* outline: 3px dotted red; */
+}
+
+/* 아이템 컨텐츠 박스의 중앙분리선 가상요소로 넣기 */
+.itbx::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 1px;
+    height: 80%;
+    background-color: #ccc;
+}

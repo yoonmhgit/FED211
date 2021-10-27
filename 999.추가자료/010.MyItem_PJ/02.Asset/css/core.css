@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* 마이아이템 공통 클래스 CSS - core.css */
+
+/* 웹폰트 */
+@font-face{
+    font-family: ng;
+    src: url(../fonts/NanumGothic.woff) format("woff");
+}
+
+/* 공통 class */
+
+/* IR 클래스(배경이미지숨기기) */
+.ir{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+/* 숨김 클래스 */
+.bld{
+    display: none;
+}
+/* 부모자격 클래스 */
+.prt{
+    position: relative;
+}
+/* 중앙정렬 속박스 */
+.ibx{
+    width: 1000px;
+    margin: 0 auto;
+}

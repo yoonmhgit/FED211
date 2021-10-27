@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* 마이아이템 메인페이지 CSS - main.css */
+
+/* 외부파일 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+/* 메인페이지 셋팅 */
+
+/* 메인박스 */
+#cont{
+    position: relative;
+    /* 부모자격 */
+    min-height: 570px;
+}
+
+/* 2-1. 큰 메인이미지 박스 */
+.mibx{
+    height: 288px;/* 세로크기를 일정하게함! */
+    text-align: center;
+    /* width가 auto이므로 박스가 끝까지 가고
+    내부의 인라인요소인 이미지를 텍스트 중앙정렬로 가운데 오게함 */
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+.mibx img{
+    height: 100%;
+    /* 박스크기에 세로만 맞춤 
+    이미지는 세로크기를 맞춘 비율변경!*/
+}
+
+/* 2-2.썸네일 이미지박스 */
+.thumbs{/* 중앙정렬 스테이지 박스 */
+    position: absolute;
+    left: -50%;
+    /* top방향은 젠틀앱솔루트! 따라서 위의 .mibx아래에 위치함! */
+    /* left값의 부모 #cont */
+    width: 200%;
+    height: 100px;
+    /* outline: 3px dashed red; */
+}
+/* 중앙이동박스 ol */
+.thumbs ol{
+    position: absolute;
+    left: 50%;
+    /* 부모는? .thumbs */
+    transform: translateX(-50%);
+    /* 가로중앙이동 */
+}
+.thumbs img{
+    height: 100px;
+    /* width는 자동(비율유지) */
+    margin: 0 10px;
+    transition: all .4s;
+}
+/* 이미지에 마우스 오버시 크기변경하기 */
+.thumbs img:hover{
+    height: 150px;
+    /* 기존높이보다 50px증가 */
+    margin-top: -50px;
+    /* 늘어난 높이만큼 박스에서 위로 올라옴! */
+}

@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* 웹 다이어리 공통 CSS - common.css */
+/* 공통내용: 공용class, 상단/하단 GNB메뉴 등 */
+
+/* 1. IR(Image Replacement) 숨기기 class */
+.bld{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}

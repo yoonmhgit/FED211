@@ -1,0 +1,478 @@
+@charset "utf-8";
+/* 서울랜드 공통 CSS - common.css */
+/* 공통 CSS 범위 : 상단영역, 하단영역(메인,서브공통) */
+
+/* 공통글자체 */
+body{
+    font-family: dotum, "돋움", sans-serif;
+}
+
+/********** 상단영역 *************/
+#top{
+    z-index: 99999;/* 가장위! */
+}
+/* 높이값을 파티션박스에 설정! */
+.top>.pbx{
+    height: 87px;
+}
+/* 로고 이미지 */
+.tit img{    
+    margin-top: 12px;
+    margin-left: -4px;
+}
+
+/* 1. GNB 디자인 */
+.gnb{
+    position: absolute;
+    width: 762px;
+    /* 크기는 자동이면 마진이동으로 인해 작아져서 마지막 li가 
+    아래로 떨어지므로 width크기를 설정해 준다! */
+
+    top: 44px;
+    left: 37px;/* float된 마지막dl요소가 떨어지지않는 위치 */
+    /* 부모는? 싸고 있는 .pbx */
+    /* 첫번째 대메뉴 글자로 위치를 맞춘다! */
+
+
+    
+    /* 
+    absolute는 자식요소의 크기만큼 자동으로 늘어나지만
+    부모요소의 크기보다 커지면 부모요소의 크기가 그 한계크기가 된다!
+    따라서 left값을 조정하여 마지막 요소가 떨어지지 않게 조정한다*/
+
+    
+    height: 28px;
+    /* 마우스오버시에 높이값 171px로 변경 */
+    overflow: hidden;
+    /* 넘치는 자식요소 숨기기 */
+    background-color: #fff;
+    /* outline: 2px solid red; */
+
+    letter-spacing: -1px;/* 자간 */
+
+    /* 트랜지션: 속시이지 */
+    transition: height .3s ease-out;
+}
+/* .gnb박스에 마우스 오버시 높이값 변경으로 하위메뉴 보이기 */
+.gnb:hover{
+    height: 176px;
+}
+/* #top하위 GNB배경 박스 */
+.gnbbx{
+    position: absolute;
+    top: 87px;/* 위치조정 */
+    left: 0;
+    width: 100%;
+    height: 0;/* 크기조정 - 마우스 오버시 155px로! */
+    border-bottom: 3px solid red;/* 하단보더 */
+    background-color: #fff;
+    
+    /* 트랜지션: 속시이지 -.gnb와 같은 값으로! */
+    transition: height .3s ease-out;
+}
+/* 중앙에 오는 가상요소박스를 .gnbbx에 만들어서 배경을 넣는다! */
+.gnbbx::before{
+    content: '';
+    display: block;/* div박스와 유사 */
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;/* 마영오! */
+
+    /* 배경설정 */
+    background-color: #fff;
+    background-image: url(../images/bg_gnb.gif);
+    background-repeat: no-repeat;
+    background-position: -5px 6px;
+}
+
+/* .gnbbx에 클래스가 on되면 높이값 변경하기 */
+/* JS에서 해당박스에 클래스를 on주도록 한다! */
+.gnbbx.on{
+    height: 141px;
+}
+
+/* 메뉴 개별박스 공통 */
+.gnb dl{
+    position: relative;
+    /* 가상요소 before보다 위에 오도록 포지션을 준다!(나중것이 위에옴) */
+    width: 127px;
+    /* 메뉴박스 하나당 크기를 확보해 준다 */
+    height: 180px;
+    /* .gnb 오버 영역을 확보해 준다 */
+    float: left;/* 옆으로 흐르게 */
+    font-family: ng;/* 웹폰트:나눔고딕 */
+    
+    padding-left: 19px;
+    box-sizing: border-box;
+    /* 왼쪽패딩으로 글자 가로방향 위치조정
+    이때 박스가 패딩때문에 커지므로 border-box로 설정하여 크기유지함 */
+}
+
+/* .gnb에 마우스 오버시 dl에 가상요소로 왼쪽 선 만들기 */
+.gnb:hover dl::before{
+    content: '';
+    display: block;
+    position: absolute;
+    /* 젠틀앱솔루트! */
+    margin-top: -2px;
+    margin-left: -16px;
+    width: 1px;
+    height: 171px;
+    background-color: #e8e8e8;
+}
+
+/* 상위메뉴(dt) */
+.gnb dt{
+    padding-bottom: 7px;
+    /* 하단공백 */
+}
+.gnb dt a{
+    font-size: 15px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* 하위메뉴(dd) */
+.gnb dd{
+    display: none;/* 처음에 안보임 */
+}
+/* .gnb에 마우스 오버시 보이기 */
+.gnb:hover dd{
+    display: block;
+}
+
+.gnb dd a{
+    font-size: 11px;
+    color: #979797;
+    font-weight: bold;
+    letter-spacing: normal;/* 자간설정해제 */
+    line-height: 20px;/* 줄간격 */
+}
+
+/* 세번째 dl(단체프로그램) 위치 미세조정 */
+.gnb dl:nth-child(3){
+    margin-left: -3px;
+}
+
+/* 마지막 dl(캐릭터 쇼핑몰)의 dt에 가상요소로 아이콘 넣기 */
+.gnb dl:last-child dt::before{
+    content: url(../images/micon.png);
+    margin-right: 1px;
+    vertical-align: -2px;/* 인라인요소 세로정렬 */
+}
+/* 캐릭터 쇼핑몰 글자색 변경 (a요소) */
+.gnb dl:last-child dt a{
+    color: red;
+}
+
+/* dl에 마우스 오버시 dt>a의 글자색 빨간색 변경하기 */
+.gnb dl:hover dt a{
+    color: red;
+}
+/* dl에 마우스 오버시 dt>a의 오른쪽위에 가상요소로 별만들기 */
+.gnb dl:hover dt a::after{
+    content: "＊";    
+    /* font-size: 18px;
+    vertical-align: -2px; */
+    transform: translateY(-5px) scale(1.2);
+    display: inline-block;
+    /* 트랜스폼 적용을 위해 inline-block으로 변경 */
+    /* 트랜스폼은 이미지를 제외한 inline요소엔 적용되지 않는다! */
+}
+/* 마지막 dl(캐릭터 쇼핑몰)에 마우스 오버시엔 별 안보이기 */
+.gnb dl:last-child:hover dt a::after{
+    content: "";
+}
+/* 서브메뉴에 마우스 오버시 글자색 바꾸기 */
+.gnb dd a:hover{
+    color: #818181;
+}
+/* 서브메뉴에 마우스 오버시 빨간공 맨앞에 만들기 */
+.gnb dd a:hover::before{
+    content: '＞';
+    display: block;
+    position: absolute;
+    /* 젠틀앱솔루트! */    
+    margin-top: 6px;
+    margin-left: -20px;
+    /* 위치값 없이 마진으로 위치이동 */
+
+    color: #fff;
+    width: 11px;
+    height: 11px;
+    background-color: red;
+    border-radius: 50%;/* 원 */
+    font: bold 9px/11px arial;
+    text-align: center;
+}
+
+/* 2. 공통 메뉴 디자인 */
+.tmenu{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    /* 부모는? 싸고 있는 .pbx */
+    font-family: ng;
+    font-size: 10px;
+    font-weight: bold;
+    /* outline: 1px solid red; */
+}
+/* 가상요소로 사이점 넣기 */
+/* li+li는 앞에 li가 있는 형제li요소를 선택함
+즉, 첫번째 li는 선택되지 않는다! */
+.tmenu li+li::before{
+    content: '·';
+    font-size: 12px;
+    margin: 0 6px;
+    vertical-align: middle;
+    /* 점의 글자크기가 크기때문에 인라인 세로정렬설정 필요함 */
+}
+
+/* 첫번째 li 글자색 변경하기 */
+.tmenu li:first-child a{
+    color: #f26522;
+}
+
+/* 4번째 li 미세조정 */
+.tmenu li:nth-child(4){
+    transform: translateX(4px);
+}
+
+/* 5번째 li 가상요소 안보이게하기 */
+.tmenu li:last-child::before{
+    opacity: 0;
+    /* 투명하게 안보임 */
+}
+
+/* 언어선택박스 */
+#lang{
+    width: 110px;
+    height: 19px;
+    transform: translate(2px,-4px);
+    /* 트랜스폼으로 다른요소에 영향없이 이동함
+    select박스는 display:inline-block이므로 
+    트랜스폼 적용이 가능함 */
+
+    font-family: arial;
+    font-size: 11px;
+    color: #979797;
+    padding-left: 4px;
+    box-shadow: inset 1px 1px 8px #d1d1d1;
+
+}
+/* 크롬 브라우저 포커스 아웃라인 없애기 */
+/* :focus 포커스 가상클래스 */
+#lang:focus{
+    outline: none;
+}
+
+/* 모바일용 햄버거 버튼 */
+#ham{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scaleX(1.4);
+    right: 5%;
+    background-color: transparent;
+    border: none;
+    font-size: 14vw;
+    color: red;
+    display: none;/* DT에서 안보임 */
+}
+/* 가상요소로 햄버거모양 글자넣기
+(왜?가상요소야? css에서 x버튼으로 변경하려고!) */
+#ham::before{
+    content: '≡';
+}
+/* .on먹은 햄버거버튼 */
+#ham.on{
+    color: #fff;
+    transform: translateY(-50%) scaleX(1);
+    z-index: 999999;
+}
+/* 닫기버튼 모양글자로 변경 */
+#ham.on::before{
+    content: '×';
+}
+
+/* 모바일용 GNB메뉴 */
+.mgnb{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.7);
+    z-index: 99999;
+    display: none;/* 햄버거버튼 클릭전엔 안보임 */
+}
+
+.mgnb ul{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+.mgnb li{
+    width: 100%;
+    text-align: center;
+}
+
+.mgnb a{
+    color: #fff;
+    font-family: ng;
+    font-size: 5vh;
+    line-height: 2;
+}
+
+
+
+/************* 하단영역 ***********/
+#info{/* 겉박스 */
+    position: relative;
+    /* 부모자격 - 배경바 가상요소 */
+}
+/* 배경바 가상요소 */
+#info::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: -1px;/* 조정 */
+    left: 0;
+    width: 100%;
+    height: 36px;
+    box-sizing: border-box;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #e2e2e2;
+    z-index: -1;
+    /* z-index 값이 마이너스이면 
+    포지션이 없는 0층의 요소보다 아래로 내려간다! */
+}
+.info{
+    height: 130px;
+}
+/* 높이값을 파티션박스에 설정! */
+.info>.info1{/* 하단 첫째줄 */
+    height: 36px;
+}
+.info>.info2{/* 하단 두번째줄 */
+    height: 94px;
+}
+
+/* 하단컨텐츠 셋팅 */
+/* 4-1. 하단링크리스트 */
+.link{
+    font: bold 10px/17px ng;
+}
+.link li+li::before{
+    content: "·";/* (ㄱ한자)특수문자 */
+    font-size: 22px;
+    vertical-align: -4px;
+    margin-left: 10px;
+    margin-right: 5px;
+    color: #888;
+}
+.link a{
+    color: #888;
+}
+/* 강조색 */
+.link a.em{
+    color: #222;
+}
+
+/* 4-2.SNS링크 */
+#snsico{
+    padding: 0;
+}
+.snsico{
+    padding-left: 34px;
+}
+.snsico li{
+    width: 39px;
+    height: 34px;
+    background: url(../images/ico_sns.png) no-repeat;
+    /* outline: 1px solid blue; */
+}
+/* 개별위치설정(Sprites) */
+.snsico li:nth-child(2){/* 카스 */
+    background-position: -39px 0;
+}
+.snsico li:nth-child(3){/* 인스타 */
+    background-position: -78px 0;
+}
+.snsico li:nth-child(4){/* 블로그 */
+    background-position: -117px 0;
+}
+.snsico li:nth-child(5){/* 유튜브 */
+    background-position: -156px 0;
+}
+
+/* sns a요소 */
+.snsico a{
+    display: block;
+    /* 디자인적용위해 */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    /* 보더,패딩포함(크기유지) */
+}
+/* 사이구분선 */
+.snsico li a{
+    border-left: 1px solid #c8c8c8;
+}
+.snsico li:last-child a{
+    border-right: 1px solid #c8c8c8;
+}
+
+/* 하단로고 */
+.blogo{
+    vertical-align: top;
+    margin-top: 12px;
+}
+
+/* 회사주소 */
+.addr{
+    display: inline-block;
+    width: 640px;
+    margin-left: 34px;
+    margin-top: 8px;
+    font: normal bold 10px/14px ng;
+    /* 스타일 두께 크기/줄간격 글자체 (스두크/줄체) */
+    color: #808080;
+}
+/* 바기준 간격주기 */
+.addr span{
+    margin: 0 -2px;
+}
+/* 카피라이트 */
+.copy{
+    display: block;
+    margin-left: 3px;
+    margin-top: 4px;
+    font-family: arial;
+}
+
+/* 패밀리사이트 선택박스 */
+#fslink{
+    width: 162px;
+    height: 19px;
+    transform: translate(2px,-4px);
+    /* 트랜스폼으로 다른요소에 영향없이 이동함
+    select박스는 display:inline-block이므로 
+    트랜스폼 적용이 가능함 */
+
+    font-family: arial;
+    font-size: 11px;
+    color: #979797;
+    padding-left: 4px;
+    box-shadow: inset 1px 1px 8px #d1d1d1;
+    margin-top: 14px;
+    margin-left: -23px;
+
+}
+/* 크롬 브라우저 포커스 아웃라인 없애기 */
+/* :focus 포커스 가상클래스 */
+#fslink:focus{
+    outline: none;
+}

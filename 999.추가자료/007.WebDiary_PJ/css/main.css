@@ -1,0 +1,517 @@
+@charset "utf-8";
+/* 웹 다이어리 메인 CSS - main.css */
+/* 메인페이지에서만 등장하는 디자인 */
+
+/* 다른 외부 CSS 합치기 */
+@import url(reset.css);
+@import url(common.css);
+/* 
+    [ CSS 임포트방식이란? ]
+    1. 형식 : @import url(경로)
+    2. 위치 : CSS파일 최상단(@charset) 아래에 위치
+    3. 사용횟수 : 무제한
+    4. 사용이유 : 별도의 CSS외부파일을 html에 넣을때
+        link 요소를 이용하여 넣으면 웹요청(http requeset)이
+        증가함에따라 html파일의 랜더링 속도가 느려지게 된다!
+        따라서 @import로 하나의 CSS파일에서 다른 CSS파일을
+        합쳐서(머징하여marging) link하면 속도향상에 도움이 된다!
+*/
+
+/* 전체 배경색 */
+body {
+    background-color: #4d7bf3;
+}
+
+/* 1. 전체 컨텐츠 박스 */
+.cont {
+    position: relative;
+    /* 부모자격 */
+    width: 1000px;
+    height: 800px;
+    margin: 0 auto;
+    /* 블록요소 가로중앙정렬 - 마영오! */
+    background-color: #fff;
+    overflow: hidden;
+    /* 넘치는 자식요소 숨기기 */
+    /* outline: 2px solid red; */
+}
+
+/* 2.체크배경박스 */
+#check {
+    position: absolute;
+    top: 0;
+    left: -384px;
+    /* 왼쪽에 나가있음! */
+    /* 부모는? .cont */
+    width: 384px;
+    height: 345px;
+    background: url(../images/check.png) no-repeat;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: chkAni 1s ease-out 2s forwards;
+    /* forwards는 마지막상태유지! */
+    /* animation: chkAni 2s ease-in-out 2s 2 alternate forwards; */
+}
+
+/* 체크배경박스 키프레임 */
+@keyframes chkAni {
+
+    /* 초기값과 from값이 같으면 생략한다! */
+    /* from{
+        left: -384px;
+    } */
+    to {
+        left: 0;
+    }
+}
+
+/* 키프레임 */
+
+/* 고양이 */
+#cat{
+    position: absolute;    
+    bottom: 107px;
+    left: -77px;
+    /* 부모는? #check */
+    transform: rotate(-13deg);
+    /* rotate(50deg); 애니메이션 변경값 */
+    transform-origin: bottom;
+    /* 트랜스폼 세로 기준축 하단으로 변경 */
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: catAni 1.5s ease-in-out 10s infinite alternate;
+    /* alternate 는 from->to,to->from으로 되돌아온다! */
+
+}
+/* 고양이 키프레임 */
+@keyframes catAni {
+    to{
+        transform: rotate(50deg);
+    }
+}/* 키프레임 */
+
+
+/* 3.타이틀박스 */
+#tit {
+    position: absolute;
+    top: 0;
+    right: -620px;
+    /* 오른쪽에 나가있음 */
+    /* 부모는? .cont */
+    width: 620px;
+    height: 198px;
+    background: url(../images/title.png) no-repeat;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: titAni 1s ease-out 2.5s forwards;
+}
+
+/* 타이틀 키프레임 */
+@keyframes titAni {
+    to {
+        right: 0;
+    }
+}/* 키프레임 */
+
+/* 걷는남자 */
+#man{
+    position: absolute;
+    top: 23px;
+    right: -80px;
+    /* 오른쪽에 나가있음(80px로 들어옴) */
+    /* 부모는? #tit */
+    transform: rotate(10deg);
+
+    /* 애니메이션: 이시이지반방마 */
+    /* 2개이상 애니메이션 주기 - 콤마로 구분한다! */
+    animation: manWalk .6s linear 8s infinite alternate,
+                /* 8초후 0.6초간 rotate변경으로 계속 애니메이션 */
+                manAni 5s linear 8s forwards;
+                /* 8초후 5초간 right값 변경으로 등장하기 */
+}
+/* 걷는남자 걷기 키프레임 */
+@keyframes manWalk {
+    to{
+        transform: rotate(-10deg);
+    }
+}/* 키프레임 */
+
+/* 걷는남자 등장 키프레임 */
+@keyframes manAni {
+    to{
+        right: 80px;
+    }
+}/* 키프레임 */
+
+
+
+
+/* 4.다이어리박스 */
+#diary {
+    position: absolute;
+    top: 80%;/* 원래값 50%에서 아래로 내려가 있음 */
+    left: 50%;
+    /* 부모는? .cont */
+    transform: translate(-50%, -50%);
+    /* 정중앙이동(내크기의 절반가로,세로 이동) */
+    margin-left: 15px;
+    /* 오른쪽 책갈피 만큼 오른쪽으로 이동 */
+    width: 834px;
+    height: 500px;
+    background: url(../images/diary.png) no-repeat;
+
+    /* 위치가 가장위에 와야 하므로 (하단바다박스보다 위!) */
+    z-index: 1;
+    opacity: 0;
+    /* 처음에 투명도 0 */
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: diaryAni 3s ease-in-out 3.5s forwards;
+}
+/* 다이어리 키프레임 */
+@keyframes diaryAni {
+    to{
+        top: 50%;
+        opacity: 1;
+    }
+}/* 키프레임 */
+
+/* 다이어리 직계하위 박스요소는 모두 앱솔루트로 #diary가 부모다! */
+/* 4-1.폴라1 */
+.pola1 {
+    position: absolute;
+    top: 45px;
+    left: 5px;
+    width: 223px;
+    height: 235px;
+    background: url(../images/pola1.png) no-repeat;
+}
+
+/* 폴라1 타이틀 이미지 */
+.pola1 img {
+    position: absolute;
+    bottom: 4px;
+    left: 60%;
+    /* 부모는? .pola1 */
+}
+
+/* 4-2.폴라2 */
+.pola2 {
+    position: absolute;
+    top: 29px;
+    left: 106px;
+    width: 210px;
+    height: 200px;
+    background: url(../images/pola2.png) no-repeat;
+}
+
+/* 폴라2 타이틀 이미지 */
+.pola2 img {
+    position: absolute;
+    top: 6px;
+    left: 75%;
+    /* 부모는? .pola2 */
+}
+
+/* 폴라 공통 */
+/* 이미지 처음에 안보임(그 자리에 없음) */
+.pola img {
+    display: none;
+}
+
+/* 폴라에 오버시 이미지 보이기 */
+.pola:hover img {
+    display: block;
+    /* 인라인인 이미지가 앱솔루트이면 블록으로 자동변환된다!
+    따라서 다시 보이게 할때도 블록으로! */
+}
+
+/* 폴라에 오버시 z-index올려서 위로 오게하기 */
+.pola:hover {
+    z-index: 1;
+}
+
+/* 4-3.스케줄박스 */
+.schedule {
+    position: absolute;
+    /* 부모자격도 있음! */
+    bottom: 42px;
+    left: 64px;
+    /* 부모는? #diary */
+}
+
+/* 스케줄체크표시 이미지 겹치게하기(숨기기) */
+.schedule img:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 부모는? .schedule */
+    display: none;
+}
+
+/* 스케줄박스에 마우스 오버시 스케줄체크표시 이미지 보이기 */
+.schedule:hover img:last-child {
+    display: block;
+}
+
+/* 4-4.포스트잍1 */
+.post1 {
+    position: absolute;
+    top: 88px;
+    right: 140px;
+    width: 167px;
+    height: 171px;
+    background: url(../images/post1.png) no-repeat;
+    z-index: 1;
+    /* 처음에 위 */
+
+}
+
+/* 포스트잍1에 마우스 오버시 회전하며 확대 */
+.post1:hover {
+    transform: rotate(-11deg) scale(1.2);
+}
+
+.post2 {
+    position: absolute;
+    top: 75px;
+    right: 246px;
+    width: 160px;
+    height: 145px;
+    background: url(../images/post2.png) no-repeat;
+}
+
+/* 포스트잍2에 마우스 오버시 확대하기 */
+.post2:hover {
+    transform: scale(1.2);
+    z-index: 1;
+    /* 위로 올라옴 */
+}
+
+/* 포스트잍 공통 트랜지션주기 */
+.post {
+    transition: transform .6s ease-out;
+    /* 트랜지션 : 속시이지 */
+}
+
+/* 포스트잍 이미지 공통 */
+.post img {
+    position: absolute;
+    /* 위치이동 포지션 */
+    width: 70%;
+    border-radius: 50%;
+    /* 경계선 둥글게 - 50%는 원형 */
+    box-shadow: 2px 2px 3px #333;
+    /* 박스그림자: 가로 세로 블러 (퍼짐) 색 */
+
+    /* 공통트랜지션 */
+    transition: all .6s ease-out;
+}
+
+.post1 img {
+    /* 둘째날일정 이미지 */
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    /* 투명 */
+}
+
+/* 오버시 -위치이동+보이게+회전 */
+.post1:hover img {
+    bottom: 37px;
+    right: -62px;
+    transform: rotate(11deg);
+    opacity: 1;
+}
+
+.post2 img {
+    /* 셋째날일정 이미지 */
+    top: 0;
+    left: 0;
+    opacity: 0;
+    /* 투명 */
+}
+
+/* 오버시 -위치이동+보이게 */
+.post2:hover img {
+    top: 16px;
+    left: -83px;
+    opacity: 1;
+}
+
+/* 4-6.스페인음식 */
+.food {
+    position: absolute;
+    bottom: 40px;
+    right: 92px;
+}
+
+
+
+/* 5.하단바다박스 */
+#sea {
+    position: absolute;
+    bottom: -219px;/* 아래쪽에 나가있음 */
+    left: 0;
+    /* 부모는? .cont */
+    width: 1000px;
+    height: 219px;
+    background: url(../images/sea.png) no-repeat;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: seaAni 1s ease-out 3s forwards,
+                updown 2s ease-in-out 4s infinite alternate;
+}
+/* 하단바다 키프레임 */
+@keyframes seaAni {
+    to{
+        bottom: 0;
+    }
+}/* 키프레임 */
+
+/* 하단바다 오르락내리락 키프레임 */
+/* 동작: 바다박스 등장애니 후 바로 시작해서 영원히~~~! */
+@keyframes updown {
+    to{
+        bottom: -10px;
+    }
+}/* 키프레임 */
+
+/* 상어 */
+#shark{
+    position: absolute;
+    bottom: -20px;
+    left: 100%;/* 왼쪽에 나가있음 */
+    /* 부모는? #sea */
+    height: 150px;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: sharkAni 20s ease-in-out 10s infinite;
+}
+/* 상어 키프레임 */
+@keyframes sharkAni {
+    0%{/* 오른쪽 바깥 */
+        left: 100%;
+        transform: rotateY(0deg);
+    }
+    5%{
+        left: 67%;
+        transform: rotateY(0deg);
+    }
+    40%{
+        left: 16%;
+        transform: rotateY(0deg);
+    }
+    50%{/* 왼쪽화면바깥 */
+        left: -30%;
+        transform: rotateY(0deg);
+    }
+    51%{/* 왼쪽화면바깥에서 방향뒤집기 */
+        left: -30%;
+        transform: rotateY(180deg);
+    }
+    60%{
+        left: 6%;
+        transform: rotateY(180deg);
+    }
+    95%{
+        left: 53%;
+        transform: rotateY(180deg);
+    }
+    100%{/* 오른쪽 화면 바깥 */
+        left: 100%;
+        transform: rotateY(180deg);
+    }
+}
+
+
+/* 자유로운 애니 캐릭터 */
+/* 날날이 */
+#act1{
+    position: fixed;
+    top: 10%;
+    left: 100%;
+    /* fixed는 부모가 무조건 보이는 화면(window)이다! */
+    z-index: 100;/* 맨위! */
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: freeAni 15s ease-in-out 5s infinite alternate;
+}
+/* 자유로운 캐릭터 키프레임 */
+@keyframes freeAni {
+    0%{/* 오른쪽위 바깥 */
+        top: 10%;
+        left: 100%;
+        transform: rotate(0deg);
+    }
+    30%{/* 왼쪽위 바깥 */
+        top: 30%;
+        left: -10%;
+        transform: rotate(720deg);
+    }
+    60%{/* 왼쪽아래 */
+        top: 70%;
+        left: 30%;
+        transform: rotate(-360deg);
+    }
+    100%{/* 오른쪽위 바깥 */
+        top: 30%;
+        left: 110%;
+        transform: rotate(360deg);
+    }
+}/* 키프레임 */
+
+/* 망아지박스 */
+#act2{
+    position: fixed;
+    top: 40%;
+    left: 100%;
+    /* fixed는 부모가 무조건 보이는 화면(window)이다! */
+    z-index: 100;/* 맨위! */
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: mvAni 40s linear 7s infinite;
+}
+/* 움직이는 망아지박스 키프레임 */
+@keyframes mvAni {
+    0%{/* 오른쪽 바깥 */
+        top: 40%;
+        left: 110%;
+        transform: rotateY(0deg);
+    }
+    50%{/* 왼쪽바깥 */
+        top: 30%;
+        left: -10%;
+        transform: rotateY(0deg);
+    }
+    50.1%{/* 왼쪽바깥 */
+        top: 60%;
+        left: -10%;
+        transform: rotateY(180deg);
+        /* 반대로 뒤집기 */
+    }
+    100%{/* 오른쪽 바깥 */
+        top: 50%;
+        left: 110%;
+        transform: rotateY(180deg);
+        /* 반대로 뒤집기 */
+    }
+    
+}/* 키프레임 */
+
+/* 망아지 이미지 */
+/* 이미지 망아지박스에 transform이 적용되어 있으므로
+내부의 이미지에 별도의 애니메이션을 적용하여 계속 뛰는 모습을 연출한다 */
+#act2 img{
+    /* 애니메이션: 이시이지반방마 */
+    animation: runAni .2s ease-in-out 7s infinite alternate;
+}
+/* 망아지 뛰는 키프레임 */
+@keyframes runAni {
+    from{
+        transform: rotate(-15deg);
+    }
+    to{
+        transform: rotate(15deg);
+    }
+}/* 키프레임 */

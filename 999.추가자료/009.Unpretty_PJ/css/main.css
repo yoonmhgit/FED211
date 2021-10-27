@@ -1,0 +1,415 @@
+@charset "utf-8";
+/* 언프리티 PJ 메인 CSS - main.css */
+
+/* 공통 */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    /* 부모자격 */
+    background-color: #000;
+}
+
+/* 검수용이미지넣기 */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* body요소에 밀착-부모는 body */
+    background: url(../images/Unpretty_over.jpg) no-repeat center top;
+    /* background: 색이반고윙/크 */
+    z-index: -1;
+    /* z-index: 1; */
+    /* 일반요소보다 아래 */
+    opacity: 0.7;
+}
+
+/* 공통 CSS */
+
+/* 요소숨김 클래스 */
+.bld {
+    display: none;
+}
+
+/* 배경설명숨기기 클래스 */
+.ir {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* 전체부모박스 */
+.wrap{
+    position: relative;
+    /* 부모자격 */
+    width: 1000px;
+    height: 1000px;
+    margin: 0 auto;/* 마영오! - 블록가로중앙 */
+    outline: 5px solid lime;
+    background: url(../images/bg.jpg) no-repeat;
+}
+
+/* 1.로고그룹 */
+.logo{
+    padding-top: 20px;
+}
+/* 엠넷로고 */
+.logo img:first-child{
+    margin-left: 20px;/* 이미지 왼쪽여백조정 */
+}
+/* 언프로고 */
+.logo img:last-child{
+    float: right;
+    /* 인라인요소 오른쪽 끝으로 가기 */
+    margin-right: 19px;
+}
+
+
+/* 2.전체큰별 */
+#bigstar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 부모는? .wrap */
+
+    /* 트랜스폼셋팅 */
+    transform: scale(0) rotateY(720deg);
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: rotScale 3s ease-in-out 1s forwards;
+}
+/* 큰별+랩퍼박스 키프레임 */
+@keyframes rotScale {
+    to{
+        transform: scale(1) rotateY(0deg);
+    }
+} /* 키프레임 */
+
+/* 3.메인로고 */
+#mlogo{
+    position: absolute;
+    top: 51%;/* 약간조정 */
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    /* 앱솔루트 정중앙이동 - 부모는? .wrap */
+    transform-origin: bottom;/* 축변경-하단 */
+    opacity: 0;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: mlogo 2s ease-in-out 5s forwards;
+}
+/* 메인로고 키프레임 */
+@keyframes mlogo {
+    to{
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 1;
+    }
+}/* 키프레임 */
+
+/* 4. 랩퍼컨텐츠박스 */
+.cont{
+    position: absolute;
+    /* 부모자격 */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* 부모박스에 밀착! 부모는? .wrap */
+}
+/* 각 랩퍼박스 공통 */
+.rapper{
+    position: absolute;
+    /* 부모는? .cont */
+    width: 170px;
+    height: 170px;
+    border: 10px solid #ccc;
+    border-radius: 50%;/* 원 */
+    box-sizing: border-box;
+    /* 보더,패딩내부포함박스(크기유지) */
+
+    /* 배경셋팅 */
+    background-color: #000;
+    background-image: url(../images/tv3_small.png);
+    background-repeat: no-repeat;
+    background-position: center 150px;/* x축으로 밀어서 아랫쪽 숨김 */
+    background-size: 160px;
+
+    cursor: pointer;/* 손가락모양 */
+
+    /* 트랜지션: 속시이지 */
+    transition: all .4s ease-out;
+
+    /* 트랜스폼셋팅 */
+    transform: scale(0) rotateY(720deg);
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: rotScale .8s ease-in-out 4s forwards;
+}
+/* 뮤지션 공통 */
+.mu{
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    /* 보더크기만큼 위치이동: 부모는? .rapper */
+    width: 170px;
+    height: 170px;
+    border: 10px solid #ccc;
+    border-radius: 50%;/* 원 */
+    box-sizing: border-box;
+    /* 보더,패딩내부포함박스(크기유지) */
+
+    /* 배경셋팅 */
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: 199px;
+
+    /* 트랜지션: 속시이지 */
+    transition: all .4s ease-out;
+
+}
+
+/* .rapper박스에 오버시 배경위치변경(공통) */
+.rapper:hover{
+    background-position: center 5px;
+}
+
+/* .rapper박스에 오버시 
+하위요소 .mu 디자인변경(공통) */
+.rapper:hover .mu{
+    width: 239px;
+    height: 520px;
+    border-radius: 10px;
+    background-position: center 18px;
+    background-size: auto 90%;
+}
+
+/* 가상요소로 글자넣기(공통) */
+.rapper::before{
+    /* content: "애쉬비\a뮤비보기"; */
+    /* \a (역슬래쉬a) 는 줄바꿈표시자 */
+    white-space: pre;
+    /* 위의 줄바꿈 표시자를 작동시키려면 white-space: pre해야함*/
+    
+    display: block;
+    padding-top: 40px;
+    padding-right: 20px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    color: #fff;
+    opacity: 0;
+}
+.rapper:hover::before{
+    opacity: 1;
+    transition: .4s .3s;
+    /* 마우스 오버시에만 트랜지션 설정!(TV가 올라온 후) */
+}
+
+/* 가상요소로 글자넣기 개별설정 */
+.r1::before{
+    content: "애쉬비\a뮤비보기";
+}
+.r2::before{
+    content: "엑시\a뮤비보기";
+}
+.r3::before{
+    content: "헤이즈\a뮤비보기";
+}
+.r4::before{
+    content: "효린\a뮤비보기";
+}
+.r5::before{
+    content: "전지윤\a뮤비보기";
+}
+.r6::before{
+    content: "캐스퍼\a뮤비보기";
+}
+.r7::before{
+    content: "키디비\a뮤비보기";
+}
+.r8::before{
+    content: "수아\a뮤비보기";
+}
+.r9::before{
+    content: "트루디\a뮤비보기";
+}
+.r10::before{
+    content: "유빈\a뮤비보기";
+}
+
+
+
+/* 1. 애쉬비 */
+.r1{
+    /* 랩퍼개별위치값 */
+    top: 18px;
+    left: 416px;
+}
+.r1 .mu{
+    background-image: url(../images/01ash-b.png);
+    background-position: -31px 15px;
+}
+/* 개별박스 오버시 위치이동 */
+.r1:hover .mu{
+    top: 212px;
+    left: -46px;
+}
+
+/* 2. 엑시 */
+.r2{
+    /* 랩퍼개별위치값 */
+    top: 70px;
+    right: 162px;
+}
+.r2 .mu{
+    background-image: url(../images/01EXY.png);
+    background-position: -30px 20px;
+}
+/* 개별박스 오버시 위치이동 */
+.r2:hover .mu{
+    top: 160px;
+    left: -297px;
+}
+
+/* 3. 헤이즈 */
+.r3{
+    /* 랩퍼개별위치값 */
+    top: 289px;
+    right: 21px;
+}
+.r3 .mu{
+    background-image: url(../images/01heize.png);
+    background-position: -24px -10px;
+}
+/* 개별박스에 오버시 위치이동 */
+.r3:hover .mu{
+    top: -59px;
+    left: -438px;
+}
+
+/* 4. 효린 */
+.r4{
+    /* 랩퍼개별위치값 */
+    top: 531px;
+    right: 21px;
+}
+.r4 .mu{
+    background-image: url(../images/01hyorin.png);
+    background-position: -23px -4px;
+    background-size: 222px;
+}
+/* 개별박스 오버시 위치이동 */
+.r4:hover .mu{
+    top: -301px;
+    left: -439px;
+}
+
+/* 5. 전지윤 */
+.r5{
+    /* 랩퍼개별위치값 */
+    bottom: 68px;
+    right: 162px;
+}
+.r5 .mu{
+    background-image: url(../images/01jenyer.png);
+    background-position: -71px -1px;
+    background-size: 251px;
+}
+/* 개별박스 오버시 위치이동 */
+.r5:hover .mu{
+    top: -532px;
+    left: -298px;
+}
+
+/* 6. 캐스퍼 */
+.r6{
+    /* 랩퍼개별위치값 */
+    bottom: 21px;
+    left: 416px;
+}
+.r6 .mu{
+    background-image: url(../images/01kasper.png);
+    background-position: -46px -1px;
+    background-size: 251px;
+}
+/* 개별박스 오버시 위치이동 */
+.r6:hover .mu{
+    top: -579px;
+    left: -46px;
+}
+
+/* 7. 키디비 */
+.r7{
+    /* 랩퍼개별위치값 */
+    bottom: 68px;
+    left: 160px;
+}
+.r7 .mu{
+    background-image: url(../images/01kittib.png);
+    background-position: -29px -1px;
+    background-size: 242px;
+}
+/* 개별박스 오버시 위치이동 */
+.r7:hover .mu{
+    top: -532px;
+    left: 211px;
+}
+
+/* 8. 수아 */
+.r8{
+    /* 랩퍼개별위치값 */
+    top: 531px;
+    left: 21px;
+}
+.r8 .mu{
+    background-image: url(../images/01sua.png);    
+    background-position: -37px 6px;
+    background-size: 209px;
+}
+/* 개별박스 오버시 위치이동 */
+.r8:hover .mu{
+    top: -301px;
+    left: 349px;
+}
+
+/* 9. 트루디 */
+.r9{
+    /* 랩퍼개별위치값 */
+    top: 289px;
+    left: 21px;
+}
+.r9 .mu{
+    background-image: url(../images/01truedy.png);
+    background-position: -39px -52px;
+    background-size: 210px;
+}
+/* 개별박스 오버시 위치이동 */
+.r9:hover .mu{
+    top: -59px;
+    left: 349px;
+}
+
+/* 10. 유빈 */
+.r10{
+    /* 랩퍼개별위치값 */
+    top: 69px;
+    left: 159px;
+}
+.r10 .mu{
+    background-image: url(../images/01yubin.png);
+    background-position: -85px 5px;
+    background-size: 279px;
+}
+/* 개별박스 오버시 위치이동 */
+.r10:hover .mu{
+    top: 161px;
+    left: 211px;
+}

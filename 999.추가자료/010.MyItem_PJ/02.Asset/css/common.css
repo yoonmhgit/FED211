@@ -1,0 +1,353 @@
+@charset "utf-8";
+/* 마이아이템 공통모듈 CSS - common.css */
+
+/* 사이트 전체설정 */
+body {
+    background-image: url(../images/bg.png);
+    font-family: ng, "맑은 고딕", Verdana;
+    font-size: 15px;
+    /* 기본글자크기는 16px */
+    letter-spacing: -1px;
+    /* 글자간격(기본값은 0) */
+    /* 글자셋팅은 하위자손요소로 상속됨! */
+}
+
+/* 임시아웃라인표시 */
+/* body>*>* {
+    outline: 2px dashed blue;
+} */
+
+/* 전체 부모박스 */
+.wrap {
+    background-color: #fff;
+    box-shadow: 0 0 5px #777;
+}
+
+/* 1.상단영역 */
+#top {
+    position: relative;
+    /* 부모자격 */
+    height: 130px;
+    z-index: 999;
+    /* .gnb 하위메뉴 맨위로 하기위함 */
+}
+
+/* 1-1. 로고 */
+.tit {
+    position: relative;
+    /* 부모자격 */
+    width: 150px;
+    height: 90px;
+    /* outline: 2px dotted red; */
+}
+
+.tit a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* 로고타이틀 */
+#mytit {
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+}
+
+/* 빨간공 */
+#rball {
+    position: absolute;
+    top: 32px;
+    left: 59px;
+}
+
+/* .tit.on일때 애니메이션하기 */
+.tit.on #rball {
+    /* 애니메이션 */
+    animation: rballAni .5s ease-in-out 2 alternate;
+}
+
+/* 빨간공 키프레임 */
+@keyframes rballAni {
+    to {
+        top: 7px;
+    }
+}
+
+/* 키프레임 */
+
+/* 카멜레온 박스 */
+#cambx {
+    position: absolute;
+    top: 21px;
+    left: 82px;
+}
+
+/* .tit.on일때 애니메이션하기 */
+.tit.on #cambx {
+    /* 애니메이션 */
+    animation: cambxAni 2s ease-in-out 1.6s;
+}
+
+/* 카멜레온 박스 키프레임 */
+@keyframes cambxAni {
+    0% {
+        left: 82px;
+    }
+
+    35% {
+        left: 10px;
+    }
+
+    65% {
+        left: 82px;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        left: 82px;
+        transform: rotate(-360deg);
+    }
+}
+
+/* 키프레임 */
+
+/* 카멜레온 혀 */
+#tung {
+    position: absolute;
+    /* 부모는? #cambx */
+    top: 6px;
+    left: -21px;
+    width: 48px;
+    height: 8px;
+    background: url(../images/mlogo_01.png) no-repeat;
+    /* outline: 1px solid red; */
+}
+
+/* .tit.on일때 애니메이션하기 */
+.tit.on #tung {
+    /* 애니메이션 */
+    animation: tungAni .3s linear 1s 2 alternate;
+}
+
+
+/* 혀 애니 키프레임 */
+@keyframes tungAni {
+    0% {
+        left: -21px;
+        background-image: url(../images/mlogo_01.png);
+    }
+
+    35% {
+        left: -26px;
+        background-image: url(../images/mlogo_02.png);
+    }
+
+    65% {
+        left: -30px;
+        background-image: url(../images/mlogo_03.png);
+    }
+
+    100% {
+        left: -50px;
+        background-image: url(../images/mlogo_04.png);
+    }
+}
+
+/* 키프레임 */
+
+/* 카멜레온 이미지 */
+#cam {
+    position: relative;
+    /* 혀보다 위에옴! 나중에 그려서 위치관계성립-포지션이 있어야함! */
+}
+
+
+/* 1-2.GNB메뉴 */
+.gnb {
+    position: absolute;
+    bottom: 0;
+    /* 부모는? #top */
+    width: 100%;
+    background-image: linear-gradient(to bottom, #cecece 0%, #bababa 20%, #8a8a8a 80%, #5c5c5c 100%);
+}
+
+/* gnb메뉴 배경 100%바를 body의 가상요소로 만들어 준다! */
+body::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 90px;
+    /* body가 부모가 아니고 window(보이는화면)임! */
+    width: 100%;
+    height: 40px;
+    background-image: linear-gradient(to bottom, #cecece 0%, #bababa 20%, #8a8a8a 80%, #5c5c5c 100%);
+}
+
+.gnb>ul {
+    width: 600px;
+    margin: 0 auto;
+    /* 블록가로중앙정렬 - 마영오! */
+    /* outline: 2px solid lime; */
+}
+
+.gnb>ul>li {
+    width: 150px;
+    text-align: center;
+}
+
+/* a요소 - 글자색, 밑줄처리 */
+/* 유의사항: li와 a요소 사이의 띄어쓰기는
+아래의 모든 자손 a를 선택한 것임! */
+.gnb>ul>li a {
+    display: block;
+    width: 150px;
+    height: 40px;
+    color: #fff;
+    text-decoration: none;
+
+    /* 글자설정 */
+    /* 글자체는 기본 나눔고딕(body에서) */
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 40px;
+
+    /* 트랜지션: 속시이지 */
+    transition: all .4s;
+}
+
+/* 마우스오버시 글자색, 배경색변경 */
+.gnb>ul>li:hover>a {
+    color: #777;
+    text-shadow: 0 1px 0 #fff;
+    /* 배경 그라데이션 */
+    background-image: linear-gradient(to top, #cecece 0%, #bababa 20%, #8a8a8a 80%, #5c5c5c 100%);
+}
+
+/* 서브메뉴 */
+.smenu {
+    position: absolute;
+    /* 젠틀앱솔루트! - 위치값을 안썼을때
+스테틱한 a요소를 존중하여 아래쪽에
+나오며 li박스를 존중하여 그 안에 위치함 */
+    width: 150px;
+    background-color: #cecece;
+    text-shadow: 1px 1px 0 #777;
+    /* 추가 */
+
+    /* 왼쪽 아래, 오른쪽아래 둥근모서리적용 */
+    border-radius: 0 0 4px 4px;
+    /* 왼쪽위부터 시계방향! */
+
+    /* 서브메뉴를 숨기기위해 높이값0, 
+넘치는 자식요소 숨기기 */
+    height: 0;
+    overflow: hidden;
+
+    /* 트랜지션: 속시이지 */
+    transition: height .4s ease-out;
+}
+
+/* 서브메뉴에 마우스 오버시 글자색, 배경색변경 */
+.smenu li:hover a {
+    color: #777;
+    background-color: #bababa;
+    text-shadow: 0 1px 0 #fff;
+    /* 추가 */
+}
+
+/* 상위메뉴 li에 오버시 서브메뉴 높이값 변경 */
+.gnb>ul>li:hover .smenu {
+    height: 120px;
+}
+
+/* 1-3. 공통메뉴 */
+.tmenu {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    /* 부모는? #top */
+}
+
+/* 공통메뉴 리스트 */
+.tmenu li {
+    padding: 0 3px;
+    line-height: 40px;
+    font-size: 12px;
+}
+
+/* 공통메뉴 사이점 가상요소로 만들기 */
+.tmenu li+li::before {
+    content: "·";
+    /* ㄱ한자 */
+    margin-right: 3px;
+}
+
+/* 1-4.sns메뉴 */
+.sns {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    /* 부모는? #top */
+}
+
+.sns a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url(../images/icons.png) no-repeat;
+    /* outline: 2px solid red; */
+}
+
+/* 마우스 오버시 배경이미지위치 변경하기(공통) */
+/* 적용우선순위를 높여서 #top부터 써줌! */
+#top .sns li:hover a {
+    background-position-y: -30px;
+}
+
+/* 트위터셋팅 */
+.sns li:nth-child(1) a {
+    background-position: 0 0;
+}
+
+/* 인스타그램셋팅 */
+.sns li:nth-child(2) a {
+    background-position: -30px 0;
+}
+
+/* 페이스북셋팅 */
+.sns li:nth-child(3) a {
+    background-position: -60px 0;
+}
+
+
+/* 2.컨텐츠영역 */
+#cont {
+    min-height: 500px;
+    /* 최소높이 500px을 유지하다가 내용이 많이지면 자동으로 늘어남 */
+}
+
+/* 3.하단영역 */
+#info {
+    height: 90px;
+    border-top: 1px solid #ccc;
+}
+
+/* 3-1.하단로고 */
+#info img {
+    vertical-align: top;
+}
+
+/* 3-2.회사주소 */
+#info address {
+    display: inline-block;
+    width: 822px;
+    height: 100%;
+    color: #555;
+    text-align: center;
+    line-height: 100px;
+    font-style: normal;
+    text-indent: -168px;
+    /* 들여쓰기로 위치이동 */
+    /* outline: 2px solid red; */
+}
