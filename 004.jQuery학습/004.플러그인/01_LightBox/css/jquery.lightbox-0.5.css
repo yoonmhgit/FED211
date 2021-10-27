@@ -64,10 +64,14 @@
 }
 #lightbox-nav-btnPrev { 
 	left: 0; 
+	background-position-y: center !important;
+	/* 버튼이 배경이므로 세로위치 중앙으로 변경하기! */
 	float: left;
 }
 #lightbox-nav-btnNext { 
 	right: 0; 
+	background-position-y: center !important;
+	/* 버튼이 배경이므로 세로위치 중앙으로 변경하기! */
 	float: right;
 }
 #lightbox-container-image-data-box {
@@ -88,7 +92,7 @@
 	float: left; 
 	text-align: left; 
 }	
-#lightbox-image-details-caption { font-weight: bold; }
+#lightbox-image-details-caption { font-weight: bold; font-size: 14px; }
 #lightbox-image-details-currentNumber {
 	display: block; 
 	clear: left; 
