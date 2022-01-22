@@ -1,0 +1,241 @@
+@charset "utf-8";
+/* 서울랜드 메인 미디어쿼리 - media.css */
+
+/* 모바일 미디어쿼리 */
+@media only screen and (max-width:500px) {
+
+    /* 1. 속박스 크기를 화면에 맞추기! (기존크기 960px) */
+    .ibx {
+        width: 100vw;
+        overflow-x: hidden;
+        /* 가로스크롤 숨기기! */
+    }
+
+    /* 2. 상단영역 두번째 파티션박스 없애기 */
+    .top>div:last-child {
+        display: none;
+    }
+
+    /* 3. 상단영역 첫번재 파티션(로고포함) 변경하기 */
+    .top>div:first-child {
+        width: auto;
+        float: none;
+        text-align: center;
+    }
+
+    /* 4. 햄버거 버튼 보이기 */
+    #ham {
+        display: block;
+    }
+
+    /* 5. 배너 속박스 두번째 파티션 박스(사이드배너포함) 없애기 */
+    /* .ban하위 자식으로 h2,div 가 섞여 있어서 last-of-type사용! */
+    .ban>div:last-of-type {
+        display: none;
+    }
+
+    /* 6. 배너 속박스 첫번째 파티션 박스 변경 */
+    .ban>div:first-of-type {
+        width: 100%;
+    }
+
+    /* 7. 배너 블릿박스 가로 중앙이동하기 */
+    .indic {
+        right: auto;
+        /* 해제 */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* 8. 배너 슬라이드 배경이미지 모바일용으로 변경하기 */
+    .slide>ul>li:nth-child(1) {
+        background-image: url(../images/mob/ban01.jpg);
+    }
+
+    .slide>ul>li:nth-child(2) {
+        background-image: url(../images/mob/ban02.jpg);
+    }
+
+    .slide>ul>li:nth-child(3) {
+        background-image: url(../images/mob/ban03.jpg);
+    }
+
+    .slide>ul>li:nth-child(4) {
+        background-image: url(../images/mob/ban04.jpg);
+    }
+
+    .slide>ul>li:nth-child(5) {
+        background-image: url(../images/mob/ban05.png);
+    }
+
+    .slide>ul>li:nth-child(6) {
+        background-image: url(../images/mob/ban06.jpg);
+    }
+
+    /* 9. 배너 양쪽이동버튼 위치변경하기 */
+    /* 왼쪽이동버튼 */
+    .lb {
+        left: 20px;
+    }
+
+    /* 오른쪽이동버튼 */
+    .rb {
+        right: 20px;
+    }
+
+    /* 10. 컨텐츠 한줄에 한칸씩 레이아웃 변경하기  */
+    /* 공통 파티션 클래스 변경하기! */
+    .pbx {
+        float: none;
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* 11. 컨텐츠 타이틀+more버튼 변경하기 */
+    .tit {
+        font-size: 20px;
+    }
+
+    .more img {
+        width: 50px;
+    }
+
+    /* 12. 운영시간 변경 */
+    .time {
+        height: 92px;
+        background-repeat: repeat;
+    }
+
+    .today,
+    .today strong,
+    .timesec {
+        font-size: 30px;
+    }
+
+    .guide,
+    .guide img {
+        width: 100%;
+    }
+
+    .guide li {
+        width: 25%;
+        /* 4등분 */
+    }
+
+    /* 13.뉴스박스 */
+    .news {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    /* 14.바로가기 링크 */
+    .links,
+    .links img {
+        width: 100%;
+    }
+
+    .links li {
+        width: 50%;
+    }
+
+    /* 15. 컨텐츠영역 파티션박스 높이값 변경 */
+    .cont>.pbx {
+        height: auto;
+    }
+
+    /* 16.SNS 박스 */
+    .sns {
+        width: 100%;
+        height: 230px;
+    }
+
+    /* 17.sns 탭메뉴 */
+    .tabTit {
+        height: 40px;
+    }
+
+    /* 18.탭메뉴 a링크 */
+    .tabTit a {
+        font-size: 16px;
+        line-height: 40px;
+    }
+
+    /* 19. 모바일용 아이프레임 보이기 */
+    .ifr2 {
+        display: block;
+    }
+
+    .ifr1 {
+        /* DT용 숨기기 */
+        display: none;
+    }
+
+    /* 20.탭내용 박스 */
+    .tabCont {
+        height: 187px;
+    }
+
+    /* 21. 블로그 이미지 크기변경 */
+    .tabCont li:nth-child(2) img {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* 22. 하단링크 일부 없애기 */
+    .link li:nth-child(5),
+    .link li:nth-child(6) {
+        display: none;
+    }
+
+    /* 23. 하단링크 글자크기 등 변경 */
+    .link {
+        font-size: 14px;
+        width: 310px;
+        /* 가상요소 점때문에 조금크게하기 */
+        margin: 0 auto;
+    }
+
+    /* 24. sns 아이콘 박스 */
+    .snsico {
+        padding: 0;
+        width: 195px;
+        margin: 10px auto;
+    }
+
+
+    /* 25. 하단 배경바 */
+    #info::before {
+        height: 90px;
+    }
+
+    /* 26. 하단 속박스영역 높이값 없앰 */
+    .info {
+        height: auto;
+    }
+
+    /* 27. 하단박스 마지막 div 파티션
+    (패밀리사이트링크) 없애기 */
+    .info>div:last-of-type {
+        display: none;
+    }
+
+    /* 28. 하단박스 둘째줄 높이값 없애기 */
+    .info>.info2 {
+        height: auto;
+        text-align: center;
+        /* 이미지중앙 */
+    }
+
+    /* 29. 회사주소 */
+    .addr {
+        width: 100%;
+        margin: 14px 0 10px;
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+
+
+}
+
+/* 미디어쿼리 */

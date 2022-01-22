@@ -1,0 +1,456 @@
+@charset "utf-8";
+/* 서울랜드 메인페이지 CSS - main.css */
+
+/* 외부CSS 합치기 */
+@import url(gridSet.css);
+@import url(gridView.css);
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+/* 메인페이지(index.html)에만 나오는 요소 css */
+
+body {
+    position: relative;
+    /* 부모자격 */
+}
+
+/* 디자인 검수용 이미지넣기 */
+/* body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    부모는? body -> 부모요소에 꽉차는 크기
+    background: url(../images/SeoulLand_main.jpg) no-repeat center top;
+    background: url(../images/SeoulLand_main_over.jpg) no-repeat center top;
+    배경이미지는 오버시 이미지도 미리셋팅한다
+    z-index: -1;
+    z-index: 9999;
+    디자인 검수를 위해 z-index를 위로 올릴 수 있게 셋팅한다
+    opacity: 0.5;
+    디자인 검수시 겹쳐질때 이미지 반투명으로 위치값 확인
+} */
+
+/* 배너영역 */
+.ban {
+    position: relative;
+    /* 부모자격 */
+}
+
+/* 높이값을 파티션박스에 설정! */
+.ban>.pbx {
+    height: 419px;
+}
+
+/* 배너 슬라이드 */
+.slide,
+.slide>ul,
+.slide>ul>li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* .slide의 부모는? #ban->.prt를 줘서 부모자격 */
+    width: 100%;
+    height: 100%;
+}
+
+/* 배너 이미지 li에 셋팅하기 */
+.slide>ul>li{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    opacity: 0;/* 모두투명 */
+
+    /* 트랜지션: 속시이지 */
+    transition: opacity .8s ease-in-out;
+}
+/* 각 배너이미지 셋팅 */
+.slide>ul>li:nth-child(1){
+    background-image: url(../images/ban00.jpg);
+}
+.slide>ul>li:nth-child(2){
+    background-image: url(../images/ban01.jpg);
+}
+.slide>ul>li:nth-child(3){
+    background-image: url(../images/ban02.jpg);
+}
+.slide>ul>li:nth-child(4){
+    background-image: url(../images/ban03.jpg);
+}
+.slide>ul>li:nth-child(5){
+    background-image: url(../images/ban04.jpg);
+}
+.slide>ul>li:nth-child(6){
+    background-image: url(../images/ban05.jpg);
+}
+
+/* 선택슬라이드 클래스 */
+.slide>ul>li.on{
+    opacity: 1;
+    z-index: 1;/* 선택슬라이드가 맨위 */
+}
+
+/* 배너이동버튼 */
+.abtn{
+    position: absolute;
+    top: 50%;
+    /* 부모는? .ban */
+    transform: translateY(-50%);/* 세로중앙이동 */
+    width: 25px;
+    height: 49px;
+    background-repeat: no-repeat;
+    z-index: 1;/* 배너위로! */
+    /* outline: 4px solid lime; */
+}
+/* 왼쪽이동버튼 */
+.lb{
+    left: -30px;
+    background-image: url(../images/btn_shop_bn_left.png);
+}
+/* 오른쪽이동버튼 */
+.rb{
+    right: -30px;
+    background-image: url(../images/btn_shop_bn_right.png);
+}
+/* 이동버튼에 마우스 오버시 배경이미지 위치변경 */
+.abtn:hover{
+    background-position: 0 -49px;
+}
+
+/* 배너블릿박스 */
+.indic{
+    position: absolute;
+    bottom: 13px;
+    right: 27px;
+    /* 부모는? 싸고있는 .pbx -> .prt를 줌 */
+    z-index: 1;
+}
+
+/* 사이드 배너 박스 */
+.sideBan{
+    position: relative;
+    top: -6px;
+    left: -1px;
+    z-index: 1;
+    width: 141px;
+    height: 410px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;/* 추가코드 */
+    box-sizing: border-box;/* 추가코드 */
+}
+
+/* 1.타이틀 */
+.titbx{/* h2 */
+    margin-top: -4px;
+    padding-left: 3px;
+}
+.tit{/* 타이틀 공통 클래스 */
+    font-family: ng;
+    color: #222;
+    font-size: 12px;
+}
+/* 타이틀 뒷글자 */
+.tit b{/* 타이틀 공통 클래스 */
+    color: #ff4e00;
+}
+/* 더보기 버튼 */
+.more{/* 타이틀 공통 클래스 */
+    /* margin-left: 11px; */
+    float: right;/* 추가코딩 */
+    /* 인라인요소 오른쪽끝위치 */
+}
+
+/* 2.할인배너박스 */
+.halban{
+    width: 116px;
+    height: 356px;
+    margin-left: 3px;/* 수정 */
+    margin-top: 10px;
+    overflow: hidden;
+    /* 넘치는 배너요소 숨기기 */
+    /* outline: 2px dotted blue; */
+}
+
+/* 할인배너 ul */
+.halban ul{
+    position: relative;
+    top: 0;/* 배너이동하기 위한 설정! */
+    height: 100%;
+    /* .halban의 높이만큼 꽉채움 */
+}
+
+/* 할인배너 각 li공통 */
+.halban li{
+    height: 25%;
+    /* ul 크기의 1/4만큼 높이값 설정 */
+    margin-bottom: 3px;
+    /* 4번째 배너하단공간을 바깥영역으로 내보냄조정 */
+    /* outline: 2px dashed red; */
+}
+
+/* 할인배너 이미지 크기맞춤 */
+.halban li img{
+    width: 100%;
+    height: 81px;
+    border: 1px solid #d7d7d7;
+    box-sizing: border-box;
+}
+/* 할인배너 첫번째 이미지 보더 빨간색 */
+.halban li:first-child img{
+    border-color: red;
+}
+
+/* 3.이동버튼박스 */
+.halbtn{
+    text-align: center;
+    padding-left: 1px;
+}
+/* 각 이동버튼 박스 */
+.halbtn a{
+    display: inline-block;
+    /* 한줄에 오면서 크기 디자인적용! */
+    width: 21px;
+    height: 11px;
+    margin-top: 5px;
+    vertical-align: 14px;
+    /* 인라인요소간 세로위치정렬 */
+    /* outline: 1px solid red; */
+}
+/* 마우스 오버시 버튼 배경이동하기(공통) */
+.halbtn a:hover{
+    background-position: 0 -11px;
+}
+
+/* 위로버튼 */
+.upb{
+    background: url(../images/btn_up.png) no-repeat;
+}
+/* 아래로버튼 */
+.dwb{
+    background: url(../images/btn_down.png) no-repeat;
+}
+
+
+
+
+/*********** 컨텐츠 영역 ***************/
+
+/* 높이값을 파티션박스에 설정! */
+.cont>.pbx {
+    height: 256px;
+}
+
+/* 1. 운영시간 */
+/* 1-1.타이틀 */
+.titbx2{
+    margin-top: 8px;
+}
+.titbx2 .tit{
+    vertical-align: -2px;
+    /* 인라인요소간 진행방향 세로정렬 */
+}
+/* 1-2.운영시간박스 */
+.time{
+    height: 65px;
+    margin-top: 6px;
+    text-align: center;
+    /* outline: 2px dotted blue; */
+    letter-spacing: -1px;/* 자간 */
+    background: url(../images/timebg.png) no-repeat;
+}
+/* 날짜 */
+.today{
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 11px 0 1px 0;
+}
+/* 날짜숫자 */
+.today strong{
+    font-size: 21px;
+    color: #ff0;
+    font-family: arial;
+}
+/* 개장시간 */
+.timesec{
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: arial;
+    
+    /* 글자전체 위치조정 */
+    text-indent: -4px;
+    /* 글자들여쓰기를 응용 (블록박스에서 적용) 
+    보통은 양수값을 사용하여 들여씀. 반대방향은 음수*/
+    display: block;
+}
+
+/* 1-3.가이드버튼박스 */
+.guide{
+    width: 140px;
+    /* ul>li가 옆으로 흐를때 크기확보! */
+}
+
+/* 2-1.타이틀 */
+/* 하단 구분선 공통 클래스 */
+.line{
+    position: relative;
+    /* 부모자격 */
+}
+/* 가상요소로 구분선 만들기 */
+.line::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 28px;
+    width: 100%;
+    height: 1px;
+    background-color: #777;
+}
+
+/* 2-2.유튜브박스*/
+.ubx{
+    margin-top: 19px;
+    height: 165px;
+}
+.ubx iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 3. 뉴스와 공지 */
+/* 3-1.타이틀 */
+/* 타이틀 글자 변경 클래스 */
+.tf1{
+    font-family: Verdana;
+    text-indent: -1px;
+    display: inline-block;/* 들여쓰기 적용위해 */
+}
+/* 3-2.뉴스박스 */
+.news{
+    margin-top: 10px;/* 박스위쪽밀기 */
+    font-size: 12px;
+    line-height: 19px;
+    padding: 8px 0;/* 위아래 패딩 */
+    /* outline: 2px dashed red; */
+}
+
+.news li{
+    /* [말줄임 셋팅에 필요한 4가지] */
+    width: 100%;
+    /* 1.박스크기 한정 (li의 크기를 ul크기에 맞춘다!) */
+    white-space: nowrap;
+    /* 2.줄바꿈방지 */
+    overflow: hidden;
+    /* 3.넘치는 글자를 숨긴다! */
+    text-overflow: ellipsis;
+    /* 4.말줄임표시 (ellipsis 입술에 손가락대고...) */
+    /* 말줄임표시는 글자체에 따라 다르다! */
+}
+/* 가상요소로 아이콘넣기 */
+.news li::before{
+    content: url(../images/ico_news.png);
+    vertical-align: -2px;/* 인라인요소간 세로정렬 */
+}
+/* 3-3. 바로가기링크 */
+.links{
+    margin-top: 11px;
+}
+
+/* 4.SNS 박스 */
+.sns{
+    width: 300px;
+    height: 196px;
+    box-sizing: border-box;
+    /* 보더,패딩포함-크기유지 */
+    border: 1px solid #ccc;
+    margin-top: 16px;
+    background-color: #fff;
+}
+/* 4-1.sns 탭메뉴 */
+.tabTit{
+    width: 100%;
+    height: 28px;
+    /* outline: 1px dotted blue; */
+}
+.tabTit li{
+    width: 25%;/* 4등분 */
+    height: 100%;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;/* 크기유지 */
+}
+/* li사이 구분선 넣기 */
+.tabTit li+li{/* 첫번째 li가 빠짐! */
+    border-left: 1px solid #ccc;
+}
+/* 탭메뉴 a링크 */
+.tabTit a{
+    display: block;
+    /* 디자인적용위해 */
+    width: 100%;
+    height: 100%;
+    font-size: 11px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #f0f0f0;
+}
+/* 선택메뉴 클래스 on 셋팅! */
+.tabTit li.on{
+    border-bottom: none;
+}
+.tabTit li.on a{
+    color: #3345a9;
+    background-color: #fff;
+}
+
+
+/* 4-2.sns 탭내용 */
+.tabCont{
+    width: 100%;
+    height: 166px;
+    /* outline: 1px dotted purple; */
+}
+/* li공통 */
+.tabCont li{
+    width: 100%;
+    height: 100%;
+    display: none;/* 모두 안보이게함! */
+}
+/* 클래스 on인 것만 보이게 */
+.tabCont li.on{
+    display: block;
+}
+
+/* 페이스북 */
+/* .tabCont li:nth-child(1){
+    background-color: rgb(255, 187, 187);
+} */
+
+/* 모바일용 숨기기 */
+.ifr2{
+    display: none;
+}
+/* 블로그 */
+/* .tabCont li:nth-child(2){
+    background-color: rgb(187, 205, 255);
+} */
+/* 트위터 */
+.tabCont li:nth-child(3){    
+    overflow-y: scroll;
+    /* background-color: rgb(252, 253, 168); */
+}
+/* 인스타그램 */
+.tabCont li:nth-child(4){
+    overflow-y: scroll;
+    /* overflow-x: hidden; */
+    /* background-color: rgb(172, 252, 172); */
+}
+.tabCont li:nth-child(4) iframe{
+    width: 100%;
+    height: 415px;
+    border: none;/* 아이프레임 고유보더 없앰! */
+}

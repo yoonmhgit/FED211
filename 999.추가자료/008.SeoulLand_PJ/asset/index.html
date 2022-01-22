@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 뷰포트 미디어쿼리 필수!!! -->
+    <meta name="description" content="서울랜드,놀이동산,동물원,식물원,어린이날,가족과함께 즐거운 놀이동산">
+    <!-- meta태그 description은 사이트 요약정보를 검색엔진에 제공함 -->
+    <title>서울랜드에 오신것을 환영합니다!</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/media.css">
+    <!-- 미디어쿼리 외부파일은 link방식으로 불러온다(@import안됨) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <!-- 1.상단영역(공통모듈) -->
+    <div id="top" class="prt">
+        <!-- GNB 배경박스 -->
+        <div class="gnbbx"></div>
+        <header class="ibx top">
+            <div class="pbx col-2">
+                <h1 class="tit">
+                    <a href="index.html">
+                        <img src="./images/logoTop.png" alt="메인로고">
+                    </a>
+                </h1>
+            </div>
+            <div class="pbx col-10 prt">
+                <!-- 1. GNB 메뉴 -->
+                <nav class="gnb clb" onmouseover="showGNB(1)" onmouseout="showGNB(0)">
+                    <!-- 1.계획세우기 -->
+                    <dl>
+                        <dt>
+                            <a href="#">계획세우기</a>
+                        </dt>
+                        <dd>
+                            <a href="#">이용시간</a>
+                        </dd>
+                        <dd>
+                            <a href="#">이용요금</a>
+                        </dd>
+                        <dd>
+                            <a href="#">할인프로모션</a>
+                        </dd>
+                        <dd>
+                            <a href="#">제휴카드</a>
+                        </dd>
+                        <dd>
+                            <a href="#">온라인쿠폰</a>
+                        </dd>
+                        <dd>
+                            <a href="#">교통정보</a>
+                        </dd>
+                        <dd>
+                            <a href="#">주변볼거리</a>
+                        </dd>
+                    </dl>
+                    <!-- 2.즐거운상상 -->
+                    <dl>
+                        <dt>
+                            <a href="#">즐거운상상</a>
+                        </dt>
+                        <dd>
+                            <a href="#">놀이기구</a>
+                        </dd>
+                        <dd>
+                            <a href="#">공연/전시</a>
+                        </dd>
+                        <dd>
+                            <a href="#">연간축제안내</a>
+                        </dd>
+                        <dd>
+                            <a href="#">음식점/상점</a>
+                        </dd>
+                        <dd>
+                            <a href="#">편의시설</a>
+                        </dd>
+                        <dd>
+                            <a href="#">함께하는 이벤트</a>
+                        </dd>
+                    </dl>
+                    <!-- 3.단체프로그램 -->
+                    <dl>
+                        <dt>
+                            <a href="#">단체프로그램</a>
+                        </dt>
+                        <dd>
+                            <a href="#">학생단체</a>
+                        </dd>
+                        <dd>
+                            <a href="#">기업체행사</a>
+                        </dd>
+                        <dd>
+                            <a href="#">외국인단체</a>
+                        </dd>
+                        <dd>
+                            <a href="#">일반단체</a>
+                        </dd>
+                    </dl>
+                    <!-- 4.연간회원 -->
+                    <dl>
+                        <dt>
+                            <a href="#">연간회원</a>
+                        </dt>
+                        <dd>
+                            <a href="#">서울랜드 연간회원</a>
+                        </dd>
+                        <dd>
+                            <a href="#">둘모아 연간회원</a>
+                        </dd>
+                        <dd>
+                            <a href="#">다모아 연간회원</a>
+                        </dd>
+                        <dd>
+                            <a href="#">연간회원 약관</a>
+                        </dd>
+                    </dl>
+                    <!-- 5.예매/예약 -->
+                    <dl>
+                        <dt>
+                            <a href="#">예매/예약</a>
+                        </dt>
+                        <dd>
+                            <a href="#">예매</a>
+                        </dd>
+                        <dd>
+                            <a href="#">나의 예매/예약내역</a>
+                        </dd>
+                    </dl>
+                    <!-- 6.캐릭터 쇼핑몰 -->
+                    <dl>
+                        <dt>
+                            <a href="#">캐릭터 쇼핑몰</a>
+                        </dt>
+                        <dd></dd><!-- dd는 필수 -->
+                    </dl>
+                </nav>
+                <!-- 2. 공통메뉴 -->
+                <nav class="tmenu">
+                    <ul>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">고객의소리함</a></li>
+                        <li><a href="#">사이트맵</a></li>
+                        <li>
+                            <select name="lang" id="lang">
+                                <option value="opt">LANGUAGE</option>
+                                <option value="en">English</option>
+                                <option value="jp">Japanese</option>
+                                <option value="ch">Chinese</option>
+                            </select>
+                            <!-- 
+                                select 요소 : 선택옵션을 제공하는 요소
+                                - option :필수하위요소, 선택메뉴제공
+                                - value 속성 : 선택시 코드설정
+                                (만약 value속성을 사용하지 않을 경우
+                                option요소의 데이터를 읽어감)
+                                - 주로 사용되는 이벤트: change이벤트
+                                : 선택이 변경될 경우 발생하는 이벤트
+
+                             -->
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- 모바일용 햄버거 메뉴 -->
+        <button id="ham"></button>
+
+        <!-- 모바일용 GNB 메뉴 -->
+        <nav class="mgnb">
+            <ul>
+                <li>
+                    <a href="#">계획세우기</a>
+                </li>
+                <li>
+                    <a href="#">즐거운상상</a>
+                </li>
+                <li>
+                    <a href="#">단체프로그램</a>
+                </li>
+                <li>
+                    <a href="#">연간회원</a>
+                </li>
+                <li>
+                    <a href="#">예매/예약</a>
+                </li>
+                <li>
+                    <a href="#">캐릭터쇼핑몰</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+    <!-- 2.배너영역 -->
+    <div id="ban" class="prt">
+        <section class="slide">
+            <ul>
+                <li class="on"><span class="ir">배너이미지1</span></li>
+                <li><span class="ir">배너이미지2</span></li>
+                <li><span class="ir">배너이미지3</span></li>
+                <li><span class="ir">배너이미지4</span></li>
+                <li><span class="ir">배너이미지5</span></li>
+                <li><span class="ir">배너이미지6</span></li>
+            </ul>
+        </section>
+        <section class="ibx ban">
+            <h2 class="bld">배너영역</h2>
+            <!-- 블릿이 포함된 파티션 박스 -->
+            <div class="pbx col-10 prt">
+                <!-- 블릿 -->
+                <div class="indic">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="images/ico_pm_55_on.png" alt="블릿">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/ico_pm_55_off.png" alt="블릿">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/ico_pm_55_off.png" alt="블릿">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/ico_pm_55_off.png" alt="블릿">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/ico_pm_55_off.png" alt="블릿">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/ico_pm_55_off.png" alt="블릿">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 할인배너가 포함된 파티션 박스 -->
+            <div class="pbx col-2">
+                <!-- 사이드배너 -->
+                <aside class="sideBan">
+                    <!-- 1.타이틀 -->
+                    <h2 class="titbx">
+                        <span class="tit">
+                            할인 <b>프로모션</b>
+                        </span>
+                        <a href="#" class="more">
+                            <img src="images/more.png" alt="더보기">
+                        </a>
+                    </h2>
+                    <!-- 2.할인배너박스 -->
+                    <div class="halban">
+                        <ul>
+                            <li><a href="#"><img src="images/sm01.jpg" alt="사이드배너"></a></li>
+                            <li><a href="#"><img src="images/sm02.jpg" alt="사이드배너"></a></li>
+                            <li><a href="#"><img src="images/sm03.jpg" alt="사이드배너"></a></li>
+                            <li><a href="#"><img src="images/sm04.jpg" alt="사이드배너"></a></li>
+                            <li><a href="#"><img src="images/sm05.jpg" alt="사이드배너"></a></li>
+                            <li><a href="#"><img src="images/sm06.jpg" alt="사이드배너"></a></li>
+                            <li><a href="#"><img src="images/sm07.jpg" alt="사이드배너"></a></li>
+                            <li><a href="#"><img src="images/sm08.jpg" alt="사이드배너"></a></li>
+                        </ul>
+                    </div>
+                    <!-- 3.이동버튼박스 -->
+                    <div class="halbtn">
+                        <a href="#" class="upb">
+                            <span class="ir">위로이동버튼</span>
+                        </a>
+                        <a href="#" class="dwb">
+                            <span class="ir">아래로이동버튼</span>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+            <!-- 배너이동버튼 -->
+            <a href="#" class="abtn lb">
+                <span class="ir">배너왼쪽이동버튼</span>
+            </a>
+            <a href="#" class="abtn rb">
+                <span class="ir">배너오른쪽이동버튼</span>
+            </a>
+        </section>
+    </div>
+    <!-- 3.컨텐츠영역 -->
+    <div id="cont">
+        <main class="ibx cont">
+            <h2 class="bld">컨텐츠영역</h2>
+            <!-- 1.운영시간 -->
+            <div class="pbx col-2">
+                <!-- 1-1.타이틀 -->
+                <h2 class="titbx2">
+                    <span class="tit">
+                        운영<b>시간</b>
+                    </span>
+                    <a href="#" class="more">
+                        <img src="images/more.png" alt="더보기">
+                    </a>
+                </h2>
+                <!-- 1-2.운영시간박스 -->
+                <div class="time">
+                    <p class="today">
+                        <strong class="month"></strong>월
+                        <strong class="date"></strong>일
+                        (<b class="day"></b>)
+                    </p>
+                    <span class="timesec">
+                        09:30 ~21:00
+                    </span>
+                </div>
+                <!-- 1-3.가이드버튼박스 -->
+                <div class="guide">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="./images/ico_guide_01.png" alt="이용요금">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./images/ico_guide_02.png" alt="공연시간">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./images/ico_guide_03.png" alt="가이드맵">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./images/ico_guide_04.png" alt="오시는 길">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 2.다이나믹 서울랜드 -->
+            <div class="pbx col-3">
+                <!-- 2-1.타이틀 -->
+                <h2 class="titbx2 line">
+                    <span class="tit">
+                        다이나믹<b>서울랜드</b>
+                    </span>
+                </h2>
+                <!-- 2-2.유튜브영상박스 -->
+                <div class="ubx">
+                    <iframe src="https://www.youtube.com/embed/QTNvwnidfBw" allow="autoplay; encrypted-media"
+                        allowfullscreen=""></iframe>
+                </div>
+            </div>
+            <!-- 3.뉴스와 공지 -->
+            <div class="pbx col-3">
+                <!-- 3-1.타이틀 -->
+                <h2 class="titbx2 line">
+                    <span class="tit tf1">
+                        NEWS &amp;<b>NOTICE</b>
+                    </span>
+                    <a href="#" class="more">
+                        <img src="images/more.png" alt="더보기">
+                    </a>
+                </h2>
+                <!-- 3-2.뉴스박스 -->
+                <div class="news">
+                    <ul>
+                        <li>
+                            <a href="#">[안내]루나댄스페스티벌 오픈!</a>
+                        </li>
+                        <li>
+                            <a href="#">[안내] 크리에이터 제작 지원 '크리에이터 라운지'</a>
+                        </li>
+                        <li>
+                            <a href="#">[공지] 도심 속 최고의 불빛축제 '루나파크'</a>
+                        </li>
+                        <li>
+                            <a href="#">[안내] 서울랜드가 추천하는 키즈 코스</a>
+                        </li>
+                        <li>
+                            <a href="#">[안내]어트랙션 예약앱 루나패스 출시</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 3-3.바로가기링크 -->
+                <div class="links">
+                    <ul>
+                        <li><a href="#"><img src="images/ico_faq.png" alt="FAQ"></a></li>
+                        <li><a href="#"><img src="images/ico_cust.png" alt="고객의소리함"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 4. SNS박스 -->
+            <div class="pbx col-4">
+                <div class="sns">
+                    <!-- 4-1.sns 탭메뉴 -->
+                    <ol class="tabTit">
+                        <li class="on">
+                            <a href="#">페이스북</a>
+                        </li>
+                        <li>
+                            <a href="#">블로그</a>
+                        </li>
+                        <li>
+                            <a href="#">트위터</a>
+                        </li>
+                        <li>
+                            <a href="#">인스타그램</a>
+                        </li>
+                    </ol>
+                    <!-- 4-2.sns탭내용 -->
+                    <ol class="tabCont">
+                        <li class="on">
+                            <!-- 페이스북 -->
+                            <iframe class="ifr1"
+                                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fseoullandpark%2F&tabs=timeline&width=298&height=166&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                                width="298" height="166" style="border:none;overflow:hidden" scrolling="no"
+                                frameborder="0" allowfullscreen="true"
+                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                                <!-- 모바일용 아이프레임 -->
+                                <iframe class="ifr2"
+                                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fseoullandpark%2F&tabs=timeline&width=380&height=186&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                                width="380" height="186" style="border:none;overflow:hidden" scrolling="no"
+                                frameborder="0" allowfullscreen="true"
+                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        </li>
+                        <li>
+                            <a href="https://blog.naver.com/seoullandblog1" target="_blank">
+                                <img src="./images/blog.png" alt="블로그바로가기">
+                            </a>
+                        </li>
+                        <li>
+                            <!-- 트위터 -->
+                            <a class="twitter-timeline"
+                                href="https://twitter.com/StarbucksKorea?ref_src=twsrc%5Etfw">Tweets by
+                                StarbucksKorea</a>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </li>
+                        <li>
+                            <!-- 인스타그램 -->
+                            <iframe src="http://instagram.com/p/CQXvKN1lMV_/embed"></iframe>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- 4.하단영역(공통모듈) -->
+    <div id="info">
+        <footer class="ibx info">
+            <h2 class="bld">하단영역</h2>
+            <!-- 4-1. 하단링크리스트 -->
+            <div class="pbx col-9 info1">
+                <ol class="link">
+                    <li>
+                        <a href="#">회사소개</a>
+                    </li>
+                    <li>
+                        <a href="#" class="em">인재채용</a>
+                    </li>
+                    <li>
+                        <a href="#">고객센타</a>
+                    </li>
+                    <li>
+                        <a href="#">제휴문의</a>
+                    </li>
+                    <li>
+                        <a href="#" class="em">개인정보처리방침</a>
+                    </li>
+                    <li>
+                        <a href="#">이메일 무단 수집거부</a>
+                    </li>
+                </ol>
+            </div>
+            <!-- 4-2. SNS링크 -->
+            <div class="pbx col-3 info1" id="snsico">
+                <ol class="snsico">
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="ir">페이스북</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="ir">카카오스토리</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="ir">인스타그램</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="ir">블로그</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="ir">유튜브</span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+            <div class="pbx col-10 info2">
+                <!-- 하단로고 -->
+                <img src="./images/logoB.png" alt="하단로고" class="blogo">
+                <!-- 회사주소 -->
+                <address class="addr">
+                    주소 : 13829 경기도 과천시 광명로 181 (주)서울랜드 <span>|</span> 대표이사 최형기 <span>|</span> 사업자등록번호 138-81-04654
+                    <span>|</span> 통신판매업신고번호 : 과천 제137호 <br>
+                    안내전화 02-509-6000 <span>|</span> 개인정보관리 책임자 마케팅1팀 김태형 <span>|</span> 운영자 이메일
+                    webmaster@seoulland.co.kr
+
+                    <strong class="copy">Copyright(c) Seoulland all rights reserved.</strong>
+
+                </address>
+            </div>
+            <div class="pbx col-2 info2">
+                <!-- 패밀리사이트 -->
+                <select name="fslink" id="fslink">
+                    <option value="fs">Family Site</option>
+                    <option value="cal">캘리포니아 피자키친</option>
+                    <option value="rose">로즈힐</option>
+                </select>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 그리드뷰 -->
+    <!-- <ul class="grid">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul> -->
+
+
+</body>
+
+</html>

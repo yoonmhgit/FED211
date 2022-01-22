@@ -1,0 +1,177 @@
+@charset "utf-8";
+/* 마이아이템 프로필 페이지 CSS - profile.css */
+
+/* 외부파일 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+/* 메인영역 재정의 */
+#cont {
+    position: relative;
+    /* 부모자격 - .showtxt */
+    height: 590px;
+}
+
+/* 아이폰 부모박스 */
+.iphone{
+    position: relative;
+    /* 부모자격 */
+    top: 100px;
+    width: 200px;
+    height: 400px;
+    margin: 0 auto;/* 마영오 */
+
+    /* 트랜스폼 3D 설정하기 */
+    transform-style: preserve-3d;
+    transform: rotateY(30deg) rotateX(10deg);
+
+    /* 애니메이션 */
+    animation: rotAni 1.5s ease-in-out 1s 2 alternate;
+    /* 횟수를 2번, 대체경로 설정시 반대방향으로 다시 돌아와서 끝남! */
+}
+
+/* 아이폰 회전 애니메이션 키프레임 */
+@keyframes rotAni {
+    to{
+        transform: rotateY(-330deg) rotateX(10deg);
+    }
+    
+}/* 키프레임 */
+
+/* 공통 li각면 */
+.iphone li{
+    position: absolute;
+    width: 200px;
+    height: 400px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/* 앞면 */
+.iphone li:nth-child(1) {
+    background-image: url(../images/ip01.png);
+    transform: translateZ(10px);
+}
+/* 뒷면 */
+.iphone li:nth-child(2) {
+    background-image: url(../images/ip02.png);
+    transform: translateZ(-10px) rotateY(180deg);
+    /* 뒷면 이미지 반대로 돌러서 뒷면에서 볼때 바로보이게함! */
+}
+/* 왼쪽면(음량스위치) */
+.iphone li:nth-child(3) {
+    background-image: url(../images/ip04.png);
+    width: 20px;
+    left: -10px;
+    transform: rotateY(-90deg);
+}
+/* 오른쪽면(전원스위치) */
+.iphone li:nth-child(4) {
+    background-image: url(../images/ip03.png);
+    width: 20px;
+    right: -10px;
+    transform: rotateY(90deg);
+}
+/* 윗쪽면 */
+.iphone li:nth-child(5) {
+    background-image: url(../images/ip06.png);
+    height: 20px;
+    top: -10px;
+    transform: rotateX(90deg);
+}
+/* 아랫쪽면 */
+.iphone li:nth-child(6) {
+    background-image: url(../images/ip05.png);
+    height: 20px;
+    bottom: -10px;
+    transform: rotateX(90deg);
+}
+
+/* 앞면 얼굴이미지 박스 */
+.newFace{
+    position: absolute;
+    /* 싸고 있는 li가 부모임 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 정중앙이동 */
+    width: 150px;
+    height: 250px;
+    /* span이 앱솔루트이므로 block! */
+    background: url(../images/prof01.png) no-repeat center/100%;
+
+    /* 애니메이션 */
+    animation: newFace 1.2s linear 4s forwards;
+    /* 한번만 변경되고 마지막상태(이미지변경) 유지해야함! */
+}
+
+/* 얼굴바꾸기 키프레임 */
+@keyframes newFace {
+    0%{
+        height: 250px;
+        background-image: url(../images/prof01.png);
+    }
+    40%{
+        height: 0px;
+        background-image: url(../images/prof01.png);
+    }
+    60%{/* 이미지변경!!! */
+        height: 0px;
+        background-image: url(../images/prof02.png);
+    }
+    100%{
+        height: 250px;
+        background-image: url(../images/prof02.png);
+    }
+}/* 키프레임 */
+
+/* 소개글박스 공통 */
+.showtxt{
+    position: absolute;
+    /* 부모는? #cont */
+    top: 50%;
+    transform: translateY(-50%);
+    /* 세로방향 중앙이동 */
+    width: 300px;
+    height: 0;/* 200px; */
+    opacity: 0.5;
+
+    /* 애니메이션 */
+    animation: showtxt .48s linear 4.72s forwards;
+    /* 얼굴애니가 1.2초간 작동시 60%시점까지 닫혀있으므로 
+    1.2s*0.6=0.72 나오므로 실제 작동시간은 1.2-0.72=0.48s
+    그래서 위와 같은 시간셋팅이 나오게 된다!  */
+
+}
+
+/* 자기소개 보이기 키프레임 */
+@keyframes showtxt {
+    to{
+        height: 200px;
+    }
+}/* 키프레임 */
+
+/* 마우스 오버시 표시하기 */
+.showtxt:hover{
+    border: 5px dotted DarkCyan;
+    cursor: pointer;
+    border-radius: 50%;
+    background-position: center;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 10px #777;
+    opacity: 1;
+}
+
+/* 디자이너 글박스 */
+.dtxt{
+    left: 10px;
+    background: url(../images/prof01_txt.png) no-repeat;
+}
+/* 코더 글박스 */
+.ctxt{
+    right: 10px;
+    background: url(../images/prof02_txt.png) no-repeat;
+}
+

@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* 마이아이템 게시판 페이지 CSS - board.css */
+
+/* 외부파일 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+#cont {
+    overflow: hidden;
+    /* 자식요소의 마진포함 */
+}
+
+/* 게시판 타이틀 */
+.stit {
+    width: 200px;
+    height: 60px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 20px auto;
+    font: bold 20px/60px ng;
+    text-align: center;
+    box-shadow: 1px 1px 1px #999;
+    color: #222;
+    background:
+        url(../images/myitems_icon_01.png) no-repeat left center,
+        url(../images/myitems_icon_03.png) no-repeat right center;
+}
+
+/* 게시판박스 */
+.bbox {
+    width: 700px;
+    min-height: 300px;
+    /* 아이프레임이 늘어나면 늘어나도록 최소높이값 설정 */
+    margin: 0 auto;
+    padding-bottom: 100px;/* 하단여유공간! */
+    /* outline: 1px solid red; */
+}
+
+/* 게시판 아이프레임 */
+.bbox iframe {
+    width: 100%;
+    /* 높이값은 자동으로 줌(안주면된다!) */
+    border: none;
+    /* 아이프레임 기본보더 없앰! */
+}

@@ -1,0 +1,34 @@
+
+페이스북, 트위터 위젯 페이지에 삽입하기
+
+1.페이스북
+
+
+
+https://developers.facebook.com/docs/plugins/page-plugin
+
+
+
+위의 사이트에 가서 위젯설정을 한다.
+
+
+
+2.트위터
+
+https://publish.twitter.com/#
+
+
+
+위의 사이트에 가서 @트위터명 등으로 찾아서 소스 카피
+
+
+
+3. 인스타그램
+
+https://www.instagram.com/developer/embedding/
+
+<iframe src="http://instagram.com/p/Bzc0gzVHOCI/embed"></iframe>
+
+읽어보고 따라해요~!
+
+ 
